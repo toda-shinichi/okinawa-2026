@@ -853,6 +853,15 @@
       return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
     }
 
+    function escapeHtml(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
     function loadState() {
       try {
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -862,6 +871,11 @@
         }
       } catch (e) {
         console.warn('LocalStorage 讀取略過', e);
+      }
+      if (!Array.isArray(state.tastingNotes)) {
+        state.tastingNotes = [
+          { id: 1, type: '泡盛 / 古酒', rating: '5', name: '甕藏古酒 43度（範例）', shop: 'Oni no Ude / Urizun', note: '以壺屋燒陶杯品飲，初入口有黑麴特有的甘潤米香與微酸，尾韻帶有類似香草與木質的深邃甜感。', time: '行前預設筆記' }
+        ];
       }
       const fxInput = document.getElementById('fx-rate');
       if (fxInput) fxInput.value = state.fxRate || 0.215;
@@ -1412,12 +1426,16 @@
 
     // ==================== 7. TAB 4: 風土遊覽・品飲筆記・手指日語 ====================
     function switchCultureSub(panel) {
-      ['story', 'tasting', 'phrase'].forEach(p => {
-        document.getElementById('cul-panel-' + p).classList.add('hidden');
-        document.getElementById('cul-btn-' + p).classList.remove('pill-active');
+      ['story', 'tasting'].forEach(p => {
+        const pan = document.getElementById('cul-panel-' + p);
+        if (pan) pan.classList.add('hidden');
+        const btn = document.getElementById('cul-btn-' + p);
+        if (btn) btn.classList.remove('pill-active');
       });
-      document.getElementById('cul-panel-' + panel).classList.remove('hidden');
-      document.getElementById('cul-btn-' + panel).classList.add('pill-active');
+      const targetPan = document.getElementById('cul-panel-' + panel);
+      if (targetPan) targetPan.classList.remove('hidden');
+      const targetBtn = document.getElementById('cul-btn-' + panel);
+      if (targetBtn) targetBtn.classList.add('pill-active');
     }
 
     function addTastingNote() {
@@ -1428,6 +1446,7 @@
       const note = document.getElementById('taste-note').value.trim();
       if (!name) return alert('請輸入酒款、咖啡豆或菜色名稱');
 
+      if (!Array.isArray(state.tastingNotes)) state.tastingNotes = [];
       const now = new Date();
       const timeStr = '2026/' + (now.getMonth() + 1) + '/' + now.getDate();
       state.tastingNotes.unshift({ id: Date.now(), type, rating, name, shop, note, time: timeStr });
@@ -1440,6 +1459,7 @@
     }
 
     function deleteTastingNote(id) {
+      if (!Array.isArray(state.tastingNotes)) return;
       state.tastingNotes = state.tastingNotes.filter(t => t.id !== id);
       saveState();
       renderTastingNotes();
@@ -1447,18 +1467,24 @@
 
     function renderTastingNotes() {
       const container = document.getElementById('tasting-list');
+      if (!container) return;
+      if (!Array.isArray(state.tastingNotes)) state.tastingNotes = [];
+      if (state.tastingNotes.length === 0) {
+        container.innerHTML = '<div class="bg-white rounded-xl p-6 text-center text-xs text-stone-400 border border-stone-200">目前尚無品飲筆記，歡迎在上方新增第一筆紀錄。</div>';
+        return;
+      }
       container.innerHTML = state.tastingNotes.map(t => `
         <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold bg-ryukyu-indigo text-white px-2.5 py-1 rounded">${t.type}</span>
+            <span class="text-xs font-bold bg-ryukyu-indigo text-white px-2.5 py-1 rounded">${escapeHtml(t.type)}</span>
             <div class="flex items-center space-x-2">
-              <span class="text-xs sm:text-sm font-mono font-bold text-amber-600">評分 ${t.rating} / 5.0</span>
-              <button onclick="deleteTastingNote(${t.id})" class="text-stone-300 hover:text-stone-500 text-sm px-1.5">✕</button>
+              <span class="text-xs sm:text-sm font-mono font-bold text-amber-600">評分 ${escapeHtml(t.rating)} / 5.0</span>
+              <button onclick="deleteTastingNote(${t.id})" class="text-stone-300 hover:text-stone-500 text-sm px-1.5" title="刪除此筆記">✕</button>
             </div>
           </div>
-          <h4 class="text-base sm:text-lg font-bold text-stone-900 leading-snug">${t.name}</h4>
-          ${t.shop ? `<p class="text-xs sm:text-sm text-ryukyu-terracotta font-medium">@ ${t.shop} <span class="text-stone-400 font-normal ml-1">(${t.time})</span></p>` : ''}
-          ${t.note ? `<p class="text-sm text-stone-700 leading-relaxed bg-stone-50 p-3 rounded-lg border border-stone-100">${t.note}</p>` : ''}
+          <h4 class="text-base sm:text-lg font-bold text-stone-900 leading-snug">${escapeHtml(t.name)}</h4>
+          ${t.shop ? `<p class="text-xs sm:text-sm text-ryukyu-terracotta font-medium">@ ${escapeHtml(t.shop)} <span class="text-stone-400 font-normal ml-1">(${escapeHtml(t.time)})</span></p>` : ''}
+          ${t.note ? `<p class="text-sm text-stone-700 leading-relaxed bg-stone-50 p-3 rounded-lg border border-stone-100">${escapeHtml(t.note)}</p>` : ''}
         </div>
       `).join('');
     }
