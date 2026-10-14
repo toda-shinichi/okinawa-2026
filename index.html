@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>OKINAWA 2026 | 子桓的沖繩隨身旅行助理</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ryukyu: {
+              indigo: '#1E3A5F',
+              ocean: '#0F4C81',
+              teal: '#0D9488',
+              terracotta: '#C84B31',
+              sand: '#F7F5F0',
+              stone: '#2C302E',
+              gold: '#D97706'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Noto Sans TC"', '"Hiragino Sans"', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F7F5F0;
+      color: #2C302E;
+      -webkit-tap-highlight-color: transparent;
+      padding-bottom: 84px;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif;
+    }
+    .hidden { display: none !important; }
+    * { box-sizing: border-box; }
+    button { cursor: pointer; }
+
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .tab-active {
+      color: #C84B31;
+      font-weight: 700;
+      border-top: 3px solid #C84B31;
+      background-color: rgba(200, 75, 49, 0.04);
+    }
+    .pill-active {
+      background-color: #1E3A5F !important;
+      color: #FFFFFF !important;
+      border-color: #1E3A5F !important;
+    }
+    .subpill-active {
+      background-color: #C84B31 !important;
+      color: #FFFFFF !important;
+      border-color: #C84B31 !important;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-ryukyu-terracotta selection:text-white">
+
+  <!-- 頂部常駐狀態列 -->
+  <header class="sticky top-0 z-30 bg-ryukyu-indigo text-white shadow-md">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xs tracking-widest uppercase bg-ryukyu-terracotta px-2 py-0.5 rounded font-mono">2026.10.22 - 10.25</span>
+          <span class="text-xs text-slate-300 font-mono">4D3N NAHA</span>
+        </div>
+        <h1 class="text-lg font-bold tracking-tight mt-0.5">沖繩旅行隨身助理</h1>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '松尾二丁目（浮島通り・公設市場近く）')" class="bg-white/10 hover:bg-white/20 border border-white/20 text-xs px-2.5 py-1.5 rounded flex items-center space-x-1 transition">
+          <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>回飯店卡</span>
+        </button>
+        <button onclick="switchTab('sos')" class="bg-ryukyu-terracotta hover:bg-red-700 text-white text-xs font-bold px-2.5 py-1.5 rounded flex items-center space-x-1 shadow-sm transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span>保單急救</span>
+        </button>
+      </div>
+    </div>
+    <!-- 快速資訊副欄 -->
+    <div class="bg-slate-900/60 border-t border-white/10 text-[11px] text-slate-300 px-4 py-1.5">
+      <div class="max-w-3xl mx-auto flex items-center justify-between overflow-x-auto hide-scrollbar whitespace-nowrap space-x-4">
+        <span>去程 10/22 <b>NU0302</b> (10:05 TPE → 12:40 OKA)</span>
+        <span>|</span>
+        <span>回程 10/25 <b>NU0307</b> (17:55 OKA → 18:40 TPE)</span>
+        <span>|</span>
+        <span>10月下旬日落約 <b>17:48</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主要內容容器 -->
+  <main class="max-w-3xl mx-auto px-4 pt-4">
+
+    <!-- ==================== TAB 1: 行程與交通中樞 ==================== -->
+    <section id="tab-itinerary" class="space-y-4">
+      <!-- 住宿與航班核心資訊折疊卡 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-ryukyu-teal bg-teal-50 px-2 py-0.5 rounded">Basecamp 住處基準點</span>
+            <h2 class="text-base font-bold text-stone-900 mt-1">ON THE SAME HOTEL</h2>
+            <p class="text-xs text-stone-600 font-mono mt-0.5">〒900-0014 沖縄県那覇市松尾２丁目１９−28</p>
+            <p class="text-xs text-stone-500 mt-1">位於浮島通與松尾交界，步行 2 分鐘即達 `ORBIT RENT A CAR`（140m）、`Tamagusuku Coffee`（60m）、`第一牧志公設市場`（230m）。</p>
+          </div>
+          <div class="flex flex-col space-y-1.5 shrink-0 ml-2">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJhwJPV4Jp5TQRLsNITjiDb_c" target="_blank" class="bg-ryukyu-indigo text-white text-xs px-3 py-1.5 rounded text-center font-medium">開啟地圖</a>
+            <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '国際通りの浮島通り近く、松尾2丁目19-28までお願いします。')" class="border border-stone-300 text-stone-700 text-xs px-3 py-1.5 rounded text-center font-medium">司機指路卡</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 日期切換器 -->
+      <div class="grid grid-cols-4 gap-2">
+        <button onclick="selectDay(1)" id="day-btn-1" class="day-btn pill-active bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
+          <div class="text-[11px] opacity-80">10/22 (四)</div>
+          <div class="text-sm font-bold">Day 1</div>
+          <div class="text-[10px] mt-0.5 opacity-90">單軌＋老街</div>
+        </button>
+        <button onclick="selectDay(2)" id="day-btn-2" class="day-btn bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
+          <div class="text-[11px] opacity-80">10/23 (五)</div>
+          <div class="text-sm font-bold">Day 2</div>
+          <div class="text-[10px] mt-0.5 opacity-90">首里＋榮町</div>
+        </button>
+        <button onclick="selectDay(3)" id="day-btn-3" class="day-btn bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
+          <div class="text-[11px] opacity-80">10/24 (六)</div>
+          <div class="text-sm font-bold">Day 3</div>
+          <div class="text-[10px] mt-0.5 opacity-90">租車自駕日</div>
+        </button>
+        <button onclick="selectDay(4)" id="day-btn-4" class="day-btn bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
+          <div class="text-[11px] opacity-80">10/25 (日)</div>
+          <div class="text-sm font-bold">Day 4</div>
+          <div class="text-[10px] mt-0.5 opacity-90">採買＋賦歸</div>
+        </button>
+      </div>
+
+      <!-- 當日交通模式提示橫幅 -->
+      <div id="day-transport-banner" class="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-stone-800 space-y-1"></div>
+
+      <!-- 週六自駕路線切換器 (僅在 Day 3 顯示) -->
+      <div id="sat-route-selector" class="hidden bg-white border border-stone-200 rounded-xl p-3.5 shadow-sm space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-ryukyu-indigo">週六自駕路線提案（可依當日天氣與心情切換）</span>
+          <span class="text-[11px] text-stone-500">取還車：ORBIT RENT A CAR</span>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <button onclick="selectSatRoute('south')" id="sat-btn-south" class="sat-route-btn subpill-active border border-stone-200 rounded-lg py-2 px-2 text-xs font-medium text-center transition">
+            A. 南部海景與古民家<br><span class="text-[10px] opacity-80">南城・知念岬・糸滿</span>
+          </button>
+          <button onclick="selectSatRoute('central')" id="sat-btn-central" class="sat-route-btn border border-stone-200 rounded-lg py-2 px-2 text-xs font-medium text-center transition">
+            B. 中部海岸與コザ<br><span class="text-[10px] opacity-80">北谷・沖繩市・瀬長島</span>
+          </button>
+          <button onclick="selectSatRoute('north')" id="sat-btn-north" class="sat-route-btn border border-stone-200 rounded-lg py-2 px-2 text-xs font-medium text-center transition">
+            C. 中北部經典巡禮<br><span class="text-[10px] opacity-80">恩納中村麵・名護</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 時間軸行程列表 -->
+      <div id="itinerary-list" class="space-y-3"></div>
+
+      <!-- 新增自訂行程表單 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <h3 class="text-sm font-bold text-stone-800 flex items-center justify-between">
+          <span>手動新增行程節點至本日</span>
+          <button onclick="resetDefaultItinerary()" class="text-[11px] font-normal text-stone-400 underline">還原預設行程</button>
+        </h3>
+        <div class="grid grid-cols-3 gap-2">
+          <input type="text" id="new-item-time" placeholder="時間 (例 15:30)" class="border border-stone-300 rounded-lg px-3 py-2 text-xs font-mono">
+          <input type="text" id="new-item-title" placeholder="地點或活動名稱" class="col-span-2 border border-stone-300 rounded-lg px-3 py-2 text-xs">
+        </div>
+        <input type="text" id="new-item-note" placeholder="備註、交通方式或預約代號" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs">
+        <button onclick="addCustomItineraryItem()" class="w-full bg-ryukyu-indigo text-white text-xs font-bold py-2.5 rounded-lg hover:bg-slate-800 transition">加入本日時間軸</button>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: 雙地圖引擎與 199 點資料庫 ==================== -->
+    <section id="tab-places" class="hidden space-y-4">
+      <!-- Google My Maps 嵌入折疊面板 -->
+      <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+        <div class="p-3.5 flex items-center justify-between bg-stone-50 border-b border-stone-200">
+          <div>
+            <h2 class="text-sm font-bold text-stone-900">重要地點地圖（Icon 分類互動版）</h2>
+            <p class="text-[11px] text-stone-500">子桓自建 Google My Maps 圖層（連線時可縮放點擊）</p>
+          </div>
+          <button onclick="toggleIframeMap()" id="toggle-map-btn" class="text-xs bg-ryukyu-indigo text-white px-3 py-1.5 rounded font-medium">收合地圖</button>
+        </div>
+        <div id="iframe-map-container" class="w-full h-72 sm:h-96 bg-stone-100 relative">
+          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1sOzZzg1eK0syRR2XR4a8FhUFUNSXyH4&ehbc=2E312F" class="w-full h-full border-0" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- 離線 199 點搜尋與多重篩選器 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3 sticky top-[88px] z-20">
+        <div class="flex items-center space-x-2">
+          <div class="relative flex-1">
+            <input type="text" id="place-search" oninput="renderPlaces()" placeholder="搜尋 199 個地點名稱、備註（如：房東推薦、泡盛、古民家）..." class="w-full border border-stone-300 rounded-lg pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-ryukyu-indigo">
+            <svg class="w-4 h-4 text-stone-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <button onclick="pickRandomPlace()" class="bg-ryukyu-terracotta text-white text-xs font-bold px-3 py-2 rounded-lg shrink-0 shadow-sm">隨機靈感</button>
+        </div>
+
+        <!-- 資料來源與排序切換 -->
+        <div class="flex items-center justify-between gap-2 overflow-x-auto hide-scrollbar pb-1">
+          <div class="flex space-x-1.5 shrink-0">
+            <button onclick="setSourceFilter('all')" id="src-all" class="src-btn pill-active text-xs border border-stone-300 px-2.5 py-1 rounded-full">全部 (199)</button>
+            <button onclick="setSourceFilter(1)" id="src-1" class="src-btn text-xs border border-stone-300 px-2.5 py-1 rounded-full bg-stone-50">重要精選 (40)</button>
+            <button onclick="setSourceFilter(2)" id="src-2" class="src-btn text-xs border border-stone-300 px-2.5 py-1 rounded-full bg-stone-50">好地點隨記 (159)</button>
+            <button onclick="setSourceFilter('fav')" id="src-fav" class="src-btn text-xs border border-stone-300 px-2.5 py-1 rounded-full bg-stone-50">已星號收藏</button>
+          </div>
+          <select id="place-sort" onchange="renderPlaces()" class="text-xs border border-stone-300 rounded-lg px-2 py-1 bg-white shrink-0">
+            <option value="dist">依距離飯店（近→遠）</option>
+            <option value="rating">依 Google 評分（高→低）</option>
+            <option value="source">重要精選優先</option>
+          </select>
+        </div>
+
+        <!-- 地區篩選 -->
+        <div class="flex space-x-1.5 overflow-x-auto hide-scrollbar pb-1">
+          <button onclick="setRegionFilter('all')" id="reg-all" class="reg-btn subpill-active text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0">全沖繩</button>
+          <button onclick="setRegionFilter('walk10')" id="reg-walk10" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">飯店步行 800m 內</button>
+          <button onclick="setRegionFilter('那霸（市區）')" id="reg-那霸（市區）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">那霸市區</button>
+          <button onclick="setRegionFilter('那霸（首里）')" id="reg-那霸（首里）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">那霸首里</button>
+          <button onclick="setRegionFilter('南部（南城・八重瀨）')" id="reg-南部（南城・八重瀨）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">南城・八重瀨</button>
+          <button onclick="setRegionFilter('南部（糸滿・豐見城）')" id="reg-南部（糸滿・豐見城）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">糸滿・豐見城</button>
+          <button onclick="setRegionFilter('中部（北谷・沖繩市）')" id="reg-中部（北谷・沖繩市）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">北谷・沖繩市</button>
+          <button onclick="setRegionFilter('北部（恩納・名護）')" id="reg-北部（恩納・名護）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">恩納・名護</button>
+        </div>
+
+        <!-- 情境與分類標籤 -->
+        <div class="flex space-x-1.5 overflow-x-auto hide-scrollbar">
+          <button onclick="setTagFilter('all')" id="tag-all" class="tag-btn pill-active text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0">所有類型</button>
+          <button onclick="setTagFilter('微醺酒館')" id="tag-微醺酒館" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">微醺酒館・居酒屋</button>
+          <button onclick="setTagFilter('咖啡甜點')" id="tag-咖啡甜點" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">咖啡・烘焙・甜點</button>
+          <button onclick="setTagFilter('正餐美食')" id="tag-正餐美食" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">沖繩麵・燒肉・食堂</button>
+          <button onclick="setTagFilter('選物採買')" id="tag-選物採買" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">陶藝・選物・超市</button>
+          <button onclick="setTagFilter('風景名勝')" id="tag-風景名勝" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">海灘・神社・美術館</button>
+          <button onclick="setTagFilter('交通與應變')" id="tag-交通與應變" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">租車・醫院・車站</button>
+        </div>
+      </div>
+
+      <!-- 篩選結果統計 -->
+      <div class="flex items-center justify-between px-1 text-xs text-stone-500">
+        <span id="places-count-label">顯示 199 個地點</span>
+        <span>距離皆以住處 ON THE SAME HOTEL 為基準直線計算</span>
+      </div>
+
+      <!-- 地點卡片列表 -->
+      <div id="places-container" class="space-y-3"></div>
+    </section>
+
+    <!-- ==================== TAB 3: 旅伴分帳與退稅計算 ==================== -->
+    <section id="tab-split" class="hidden space-y-4">
+      <!-- 匯率設定與快速換算＋免稅湊單進度條 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-stone-100 pb-2.5">
+          <div>
+            <h2 class="text-sm font-bold text-stone-900">即時匯率換算 ＆ 單店 ¥5,000 免稅湊單器</h2>
+            <p class="text-[11px] text-stone-500">日本退稅門檻為同一店家當日未稅滿 ¥5,000（含稅 ¥5,500）</p>
+          </div>
+          <div class="flex items-center space-x-1 text-xs">
+            <span class="text-stone-500">匯率:</span>
+            <input type="number" id="fx-rate" step="0.001" value="0.215" onchange="updateFxRate()" class="w-16 border border-stone-300 rounded px-1.5 py-0.5 font-mono text-right">
+          </div>
+        </div>
+
+        <!-- 快速換算器 -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] text-stone-500 block mb-1">輸入日圓 (JPY)</label>
+            <input type="number" id="calc-jpy" oninput="calcFromJpy()" placeholder="例: 3500" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm font-mono">
+          </div>
+          <div>
+            <label class="text-[11px] text-stone-500 block mb-1">折合新台幣 (TWD)</label>
+            <input type="text" id="calc-twd" readonly class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm font-mono font-bold text-ryukyu-indigo" value="NT$ 0">
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-stone-600 bg-stone-50 px-3 py-2 rounded-lg font-mono">
+          <span>若為未稅價，加 10% 含稅：<b id="calc-tax-inc">¥0</b></span>
+          <button onclick="addToTaxFreeBasket()" class="bg-ryukyu-teal text-white px-2.5 py-1 rounded text-[11px] font-sans font-bold">+ 加入湊免稅籃</button>
+        </div>
+
+        <!-- 免稅進度條 -->
+        <div class="space-y-1.5 pt-1">
+          <div class="flex justify-between text-xs">
+            <span class="font-medium text-stone-700">目前免稅籃累計（未稅）：<b id="tax-basket-total" class="font-mono text-ryukyu-indigo">¥0</b></span>
+            <span id="tax-basket-status" class="font-bold text-ryukyu-terracotta">還差 ¥5,000 達標</span>
+          </div>
+          <div class="w-full bg-stone-200 h-2.5 rounded-full overflow-hidden">
+            <div id="tax-progress-bar" class="bg-ryukyu-teal h-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <div class="flex justify-between items-center pt-1">
+            <span id="tax-basket-items" class="text-[11px] text-stone-400 font-mono">尚未加入商品</span>
+            <button onclick="clearTaxBasket()" class="text-[11px] text-stone-400 underline">清空免稅籃</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 旅伴名單設定 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-stone-900">同行旅伴設定（分帳成員）</h3>
+          <span class="text-[11px] text-stone-400">點選可新增或移除</span>
+        </div>
+        <div id="members-list" class="flex flex-wrap gap-2"></div>
+        <div class="flex space-x-2">
+          <input type="text" id="new-member-name" placeholder="輸入旅伴稱呼（例：阿哲）" class="flex-1 border border-stone-300 rounded-lg px-3 py-1.5 text-xs">
+          <button onclick="addMember()" class="bg-stone-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg">新增旅伴</button>
+        </div>
+      </div>
+
+      <!-- 新增消費與分帳表單 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <h3 class="text-sm font-bold text-stone-900">記一筆開銷</h3>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="col-span-2 sm:col-span-1">
+            <label class="text-[11px] text-stone-500 block mb-1">消費項目 / 店名</label>
+            <input type="text" id="exp-title" placeholder="例：ORBIT 租車費、燕食堂午餐" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs">
+          </div>
+          <div class="grid grid-cols-2 gap-2 col-span-2 sm:col-span-1">
+            <div>
+              <label class="text-[11px] text-stone-500 block mb-1">金額</label>
+              <input type="number" id="exp-amount" placeholder="金額" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs font-mono">
+            </div>
+            <div>
+              <label class="text-[11px] text-stone-500 block mb-1">幣別</label>
+              <select id="exp-currency" class="w-full border border-stone-300 rounded-lg px-2 py-2 text-xs bg-white font-mono">
+                <option value="JPY">JPY (日圓)</option>
+                <option value="TWD">TWD (台幣)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="text-[11px] text-stone-500 block mb-1">誰先墊錢？</label>
+            <select id="exp-payer" class="w-full border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white"></select>
+          </div>
+          <div>
+            <label class="text-[11px] text-stone-500 block mb-1">付款方式</label>
+            <select id="exp-method" class="w-full border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white">
+              <option value="現金">日幣現金</option>
+              <option value="信用卡">信用卡</option>
+              <option value="Suica/IC">Suica / 交通卡</option>
+              <option value="PayPay">PayPay / 電子支付</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-[11px] text-stone-500 block mb-1">參與分攤的人（預設全選平分）</label>
+          <div id="exp-splitters" class="flex flex-wrap gap-2 pt-1"></div>
+        </div>
+
+        <button onclick="addExpense()" class="w-full bg-ryukyu-terracotta text-white text-xs font-bold py-2.5 rounded-lg shadow-sm hover:opacity-95 transition">儲存這筆帳目</button>
+      </div>
+
+      <!-- 分帳結算面板 -->
+      <div class="bg-ryukyu-indigo text-white rounded-xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between border-b border-white/15 pb-2">
+          <h3 class="text-sm font-bold">旅伴分帳結算表（誰該給誰多少錢）</h3>
+          <span id="total-trip-spend" class="text-xs font-mono text-amber-300">總支出：¥0</span>
+        </div>
+        <div id="settlement-list" class="space-y-2 text-xs"></div>
+      </div>
+
+      <!-- 帳目明細列表 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-stone-900">消費明細紀錄</h3>
+          <button onclick="exportExpensesText()" class="text-xs text-ryukyu-ocean font-medium underline">複製文字報表</button>
+        </div>
+        <div id="expense-list" class="divide-y divide-stone-100 text-xs"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: 沖繩風土與品飲筆記 ==================== -->
+    <section id="tab-culture" class="hidden space-y-4">
+      <!-- 區塊切換：風土讀本 vs 品飲筆記 -->
+      <div class="grid grid-cols-2 gap-2">
+        <button onclick="switchCultureSub('story')" id="cul-btn-story" class="cul-btn pill-active bg-white border border-stone-200 rounded-xl py-2.5 text-xs font-bold text-center">風土歷史讀本</button>
+        <button onclick="switchCultureSub('tasting')" id="cul-btn-tasting" class="cul-btn bg-white border border-stone-200 rounded-xl py-2.5 text-xs font-bold text-center">風味品飲誌</button>
+      </div>
+
+      <!-- 4A: 沖繩歷史與街區脈絡讀本 -->
+      <div id="cul-panel-story" class="space-y-3">
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
+          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 01 | 住處周邊：松尾・浮島通・第一牧志公設市場</div>
+          <h3 class="text-base font-bold text-stone-900">戰後黑市長出來的「那霸廚房」與迷宮商店街</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            你下榻的 `ON THE SAME HOTEL` 位於松尾二丁目，正好卡在國際通、浮島通與第一牧志公設市場的交會點。1945 年沖繩島戰役後，那霸市中心被劃為美軍基地與物資集散區，居民被迫遷往壺屋與牧志一帶的沼澤地（當時稱為ガーブ川，Gabu 川）。最初是由女性攤販在河岸搭起棚架交換美軍流出物資與農漁產，逐漸演變成「牧志公設市場」。
+          </p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            走進市場本通與平和通的拱廊，抬頭還能看見戰後水上店舖（水上店舗）留下的建築結構——例如你清單裡的精釀啤酒吧 `Ukishima Brewing` 就設在老水上店舖第二街區三樓；而市場二樓的 `燕食堂` 則是延續了戰後「一樓買魚、二樓代客熱炒（持ち上げ）」的庶民飲食傳統。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
+          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 02 | 壺屋やちむん通り（Yachimun Street）與福福茶</div>
+          <h3 class="text-base font-bold text-stone-900">琉球王國的工藝集中營與奇蹟躲過轟炸的石疊路</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            「やちむん（Yachimun）」是沖繩方言的「陶器」。西元 1682 年，琉球王國尚貞王為了統一管理並提升製陶技術，將原本分散在首里（寶口窯）、美里（知花窯）與那霸（湧田窯）的三座窯場全部遷聚到「壺屋」。這裡融合了中國閩南傳入的龍窯與施釉技術、朝鮮陶工的技法，以及日本薩摩藩的器型需求。
+          </p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            二戰期間那霸幾乎被夷為平地，唯獨壺屋一帶幸運避開猛烈砲火，保留了蜿蜒的琉球石灰岩鋪面與百年「南窯（フェーヌカマ）」。你在壺屋通喝到的 `UCHINA CAFÉ BUKU-BUKU`（福福茶），源自琉球王國冊封使來訪時的宮廷茶道，利用含鈣量高的沖繩硬水與炒米打出綿密氣泡，寓意「福氣高漲、航海平安」。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
+          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 03 | 泡盛（Awamori）與古酒（クース）的身世</div>
+          <h3 class="text-base font-bold text-stone-900">比日本燒酎更古老的東南亞黑麴蒸餾酒</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            泡盛是日本列島現存歷史最悠久的蒸餾酒。15 世紀大航海時代，琉球王國與暹羅（今泰國）貿易頻繁，引進了泰國香米（秈米）與蒸餾技術，並結合沖繩特有的「黑麴菌（黒麹菌）」釀造。因為黑麴在發酵時會產生大量檸檬酸，能抑制亞熱帶高溫下的雜菌腐敗。
+          </p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            泡盛經過三年以上陶甕熟成即稱為「古酒（Kusu，クース）」。二戰前首里城周邊酒造存有大量百年古酒，幾乎在戰火中全毀。你在清單裡標記的安里老店 `Urizun（うりずん）` 與壺屋深夜酒吧 `Oni no Ude（オニノウデ）`，正是戰後致力於復興古酒文化與傳統琉球陶杯品飲的代表酒場。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
+          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 04 | 安里榮町市場 ＆ 沖繩市（Koza）的戰後地景</div>
+          <h3 class="text-base font-bold text-stone-900">昭和庶民市場與美軍治理時期的混血搖滾現場</h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            安里站旁的 `榮町市場` 誕生於 1955 年，窄巷裡白天是賣島豆腐與蔬菜的傳統菜市場，但因為緊鄰老字號烘豆店 `COFFEE potohoto`，傍晚鐵捲門半開後，紅燈籠亮起，立刻變身為 `Refuge`、`Arakoya` 與 `べんり屋 玉玲瓏` 等新派小酒館與煎餃攤並存的夜生活聚落。
+          </p>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            若週六自駕往中部的北谷與沖繩市（舊稱コザ Koza，鄰近嘉手納空軍基地），則會看見 1945 至 1972 年美國民政府（USCAR）統治時期留下的美式文化切面：塔可飯（Taco Rice）、麥根沙士（A&W Root Beer）、美式牛排館（如那霸西町 1953 年開業、曾掛有美軍公認 A 級標章的 `傑克牛排館`），這座島嶼把戰火與基地的歷史重量，全轉化成了餐桌上的混血日常。
+          </p>
+        </div>
+      </div>
+
+      <!-- 4B: 風味品飲誌 (Tasting Notes) -->
+      <div id="cul-panel-tasting" class="hidden space-y-4">
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+          <h3 class="text-sm font-bold text-stone-900">新增一杯沖繩風味紀錄（咖啡・泡盛・精釀・自然酒）</h3>
+          <div class="grid grid-cols-2 gap-2">
+            <select id="taste-type" class="border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white">
+              <option value="泡盛 / 古酒">泡盛 / 古酒 (Awamori)</option>
+              <option value="精釀啤酒">精釀啤酒 (Craft Beer)</option>
+              <option value="自然酒 / 葡萄酒">自然酒 / 葡萄酒 (Wine)</option>
+              <option value="精品咖啡">精品咖啡 (Coffee)</option>
+              <option value="威士忌 / 調酒">威士忌 / 調酒</option>
+              <option value="島料理 / 甜點">島料理 / 甜點</option>
+            </select>
+            <select id="taste-rating" class="border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white font-mono">
+              <option value="5">5.0 分｜印象深刻</option>
+              <option value="4.5">4.5 分｜水準之上</option>
+              <option value="4">4.0 分｜值得一試</option>
+              <option value="3.5">3.5 分｜中規中矩</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="taste-name" placeholder="酒款 / 豆名 / 菜色名稱" class="border border-stone-300 rounded-lg px-3 py-2 text-xs">
+            <input type="text" id="taste-shop" placeholder="品飲店家（例：Oni no Ude）" class="border border-stone-300 rounded-lg px-3 py-2 text-xs">
+          </div>
+          <textarea id="taste-note" rows="2" placeholder="香氣、酸度、尾韻、搭配的器皿（如やちむん陶杯）或當下感受..." class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs"></textarea>
+          <button onclick="addTastingNote()" class="w-full bg-ryukyu-indigo text-white text-xs font-bold py-2.5 rounded-lg">儲存品飲筆記</button>
+        </div>
+
+        <div id="tasting-list" class="space-y-3"></div>
+      </div>
+
+      <!-- 4C: 情境手指日語卡 -->
+      <div id="cul-panel-phrase" class="hidden space-y-3">
+        <p class="text-xs text-stone-500 px-1">點選任一卡片即可放大全螢幕出示給店員看：</p>
+        <div id="phrases-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+      </div>
+    </section>
+
+    
+    <!-- ==================== TAB 6: 手指日語與單字卡專區 ==================== -->
+    <section id="tab-flashcards" class="hidden space-y-4">
+      <!-- 頂部搜尋與分類篩選 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3 sticky top-[88px] z-20">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-bold text-stone-900">手指日語 ＆ 沖繩旅遊單字卡專區</h2>
+            <p class="text-[11px] text-stone-500">點選「放大展示」可全螢幕給店員看；點選「發音」可聽日文語音與羅馬拼音</p>
+          </div>
+          <button onclick="toggleNewCardForm()" class="bg-ryukyu-indigo text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg shrink-0">+ 自訂字卡</button>
+        </div>
+
+        <!-- 關鍵字搜尋 -->
+        <div class="relative">
+          <input type="text" id="fc-search" oninput="renderFlashcards()" placeholder="搜尋中文、日文、羅馬拼音（例：泡盛、不要蔥、牛舌、停車、退稅、海藻）..." class="w-full border border-stone-300 rounded-lg pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-ryukyu-indigo">
+          <svg class="w-4 h-4 text-stone-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+
+        <!-- 六大情境與詞性分類按鈕 -->
+        <div class="flex space-x-1.5 overflow-x-auto hide-scrollbar pb-0.5">
+          <button onclick="setFcCategory('all')" id="fc-cat-all" class="fc-cat-btn pill-active text-xs border border-stone-300 px-3 py-1 rounded-full shrink-0">全部字卡</button>
+          <button onclick="setFcCategory('日常用語')" id="fc-cat-日常用語" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">日常用語・沖繩方言</button>
+          <button onclick="setFcCategory('點餐會話')" id="fc-cat-點餐會話" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">點餐・居酒屋・客製</button>
+          <button onclick="setFcCategory('食物飲品')" id="fc-cat-食物飲品" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">菜色・燒肉部位・酒水</button>
+          <button onclick="setFcCategory('購物商品')" id="fc-cat-購物商品" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">商品・陶器・藥妝退稅</button>
+          <button onclick="setFcCategory('單字詞庫')" id="fc-cat-單字詞庫" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">動詞・名詞・數量詞</button>
+          <button onclick="setFcCategory('交通自駕')" id="fc-cat-交通自駕" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">週六自駕・加油・交通</button>
+        </div>
+      </div>
+
+      <!-- 新增自訂字卡折疊表單 -->
+      <div id="new-fc-form" class="hidden bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2.5">
+        <h3 class="text-xs font-bold text-stone-800">新增一張個人專屬字卡（自動儲存於手機）</h3>
+        <div class="grid grid-cols-2 gap-2">
+          <select id="custom-fc-cat" class="border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white">
+            <option value="日常用語">日常用語</option>
+            <option value="點餐會話">點餐會話</option>
+            <option value="食物飲品">食物飲品</option>
+            <option value="購物商品">購物商品</option>
+            <option value="單字詞庫">單字詞庫</option>
+            <option value="交通自駕">交通自駕</option>
+          </select>
+          <input type="text" id="custom-fc-type" placeholder="小標籤（例：過敏提醒）" class="border border-stone-300 rounded-lg px-3 py-2 text-xs">
+        </div>
+        <input type="text" id="custom-fc-zh" placeholder="中文意思（例：我不吃生雞蛋）" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs">
+        <input type="text" id="custom-fc-jp" placeholder="日文漢字/假名（例：生卵は食べられません）" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs">
+        <div class="grid grid-cols-2 gap-2">
+          <input type="text" id="custom-fc-roma" placeholder="羅馬拼音（例：Namatamago wa...）" class="border border-stone-300 rounded-lg px-3 py-2 text-xs font-mono">
+          <input type="text" id="custom-fc-pron" placeholder="中文諧音助唸（選填）" class="border border-stone-300 rounded-lg px-3 py-2 text-xs">
+        </div>
+        <button onclick="addCustomFlashcard()" class="w-full bg-ryukyu-terracotta text-white text-xs font-bold py-2 rounded-lg">儲存這張字卡</button>
+      </div>
+
+      <!-- 數量統計列 -->
+      <div class="flex items-center justify-between px-1 text-xs text-stone-500">
+        <span id="fc-count-label">顯示 48 張字卡</span>
+        <span>點擊卡片右上角「發音」可朗讀日文</span>
+      </div>
+
+      <!-- 字卡網格容器 -->
+      <div id="flashcards-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+    </section>
+
+    <!-- ==================== TAB 5: 國泰產險保單與緊急應變中心 ==================== -->
+    <section id="tab-sos" class="hidden space-y-4">
+      <!-- 個人保單數位識別證 -->
+      <div class="bg-stone-900 text-white rounded-xl p-4 shadow-md border border-stone-700 space-y-3">
+        <div class="flex items-center justify-between border-b border-stone-700 pb-2.5">
+          <div>
+            <span class="text-[10px] font-mono uppercase tracking-widest bg-ryukyu-terracotta px-2 py-0.5 rounded">Cathay Century Insurance (U5 豪華享樂型)</span>
+            <h2 class="text-base font-bold mt-1">海外急難救助與保單識別卡</h2>
+          </div>
+          <a href="tel:+886227551258" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-2 rounded-lg shadow flex items-center space-x-1 shrink-0">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>撥打急難專線</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-xs font-mono">
+          <div><span class="text-stone-400 font-sans block text-[10px]">被保險人中英文姓名</span><b>徐子桓 / HSU, TZU-HUAN</b></div>
+          <div><span class="text-stone-400 font-sans block text-[10px]">保單號碼</span><b class="text-amber-300">150115TDK410705</b></div>
+          <div><span class="text-stone-400 font-sans block text-[10px]">護照號碼 (Passport No.)</span><b>361537836</b></div>
+          <div><span class="text-stone-400 font-sans block text-[10px]">身分證字號 / 出生日期</span><b>A128378959 (1993/06/15)</b></div>
+          <div class="col-span-2"><span class="text-stone-400 font-sans block text-[10px]">保險有效期間（返國班機延誤自動延長最高 72 小時）</span><b>2026/10/22 00:00 至 2026/10/26 00:00 (共 4 日)</b></div>
+          <div class="col-span-2"><span class="text-stone-400 font-sans block text-[10px]">登錄航班（適用班機延誤免檢附部分理賠文件條款）</span><b>去程 10/22 NU0302 ｜ 回程 10/25 NU0307</b></div>
+        </div>
+
+        <div class="pt-2 border-t border-stone-700 flex flex-wrap gap-2">
+          <button onclick="openHelpCardModal()" class="flex-1 bg-amber-500 text-stone-950 font-bold text-xs py-2 px-3 rounded-lg text-center">全螢幕出示：請日本人幫我打電話回台灣</button>
+        </div>
+      </div>
+
+      <!-- 沖繩當地緊急聯絡與醫療駐館座標 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <h3 class="text-sm font-bold text-stone-900">沖繩緊急電話與你地圖內的應變據點</h3>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <a href="tel:110" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
+            <div class="text-base font-bold font-mono text-ryukyu-indigo">110</div>
+            <div class="text-[11px] text-stone-600">日本報警（車禍/失竊）</div>
+          </a>
+          <a href="tel:119" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
+            <div class="text-base font-bold font-mono text-ryukyu-terracotta">119</div>
+            <div class="text-[11px] text-stone-600">救護車 / 火警</div>
+          </a>
+          <a href="tel:0988627008" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
+            <div class="text-xs font-bold font-mono text-ryukyu-teal pt-1">098-862-7008</div>
+            <div class="text-[11px] text-stone-600 mt-0.5">駐那霸辦事處</div>
+          </a>
+        </div>
+
+        <div class="divide-y divide-stone-100 text-xs">
+          <div class="py-2 flex items-center justify-between">
+            <div>
+              <div class="font-bold">台北駐日經濟文化代表處 那霸分處</div>
+              <div class="text-stone-500 font-mono text-[11px]">〒900-0015 沖縄県那覇市久茂地３丁目１５−9 アルテビル 6F (距飯店 690m)</div>
+              <div class="text-stone-500 text-[11px]">急難救助行動電話：090-1942-1107（護照遺失補發）</div>
+            </div>
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJTf695Xdp5TQRqorKlT30RRM" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
+          </div>
+          <div class="py-2 flex items-center justify-between">
+            <div>
+              <div class="font-bold">牧志派出所（牧志交番）</div>
+              <div class="text-stone-500 font-mono text-[11px]">〒900-0013 沖縄県那覇市牧志３丁目１１−4 (距飯店 560m)</div>
+              <div class="text-stone-500 text-[11px]">國際通屋台村旁，辦理遺失物與失竊報案證明最近據點</div>
+            </div>
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJm7wm4Hpp5TQRXclwFtWLXts" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
+          </div>
+          <div class="py-2 flex items-center justify-between">
+            <div>
+              <div class="font-bold">沖繩紅十字醫院（沖縄赤十字病院）</div>
+              <div class="text-stone-500 font-mono text-[11px]">〒902-8588 沖縄県那覇市与儀１丁目３−1 (距飯店 830m)</div>
+            </div>
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-aDRkW1p5TQRvwVUhm2Ya_0" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
+          </div>
+          <div class="py-2 flex items-center justify-between">
+            <div>
+              <div class="font-bold">沖繩縣立南部醫療中心・兒童醫療中心</div>
+              <div class="text-stone-500 font-mono text-[11px]">〒901-1105 沖縄県島尻郡南風原町新川 118-1 (距飯店 3.7km)</div>
+            </div>
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ0UojzVJp5TQRqBrVRwMu8Zk" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 國泰產險 U5 豪華享樂型：保額與現場採證檢核表 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <div>
+          <h3 class="text-sm font-bold text-stone-900">互動式理賠現場採證檢核表（依 U5 保單條款建置）</h3>
+          <p class="text-[11px] text-stone-500">萬一發生狀況，離開現場前請逐一勾選確認已取得下列正本文件：</p>
+        </div>
+
+        <div id="claims-checklist" class="space-y-3 text-xs"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 底部固定導覽列 (6 大模組) -->
+  <nav class="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-stone-200 shadow-lg">
+    <div class="max-w-3xl mx-auto grid grid-cols-6 text-center">
+      <button onclick="switchTab('itinerary')" id="nav-itinerary" class="nav-btn tab-active py-2 flex flex-col items-center justify-center text-stone-500">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span class="text-[10px]">行程交通</span>
+      </button>
+      <button onclick="switchTab('places')" id="nav-places" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span class="text-[10px]">地圖隨記</span>
+      </button>
+      <button onclick="switchTab('flashcards')" id="nav-flashcards" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
+        <span class="text-[10px]">手指字卡</span>
+      </button>
+      <button onclick="switchTab('split')" id="nav-split" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="text-[10px]">分帳退稅</span>
+      </button>
+      <button onclick="switchTab('culture')" id="nav-culture" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span class="text-[10px]">風土品飲</span>
+      </button>
+      <button onclick="switchTab('sos')" id="nav-sos" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span class="text-[10px]">保單急救</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 全螢幕彈出視窗 (司機指路卡 / 手指字卡 / 保單求助卡) -->
+  <div id="fullscreen-modal" class="fixed inset-0 z-50 hidden bg-stone-950/95 text-white p-6 flex flex-col justify-between">
+    <div class="flex justify-between items-center">
+      <span id="modal-badge" class="text-xs font-mono uppercase tracking-widest bg-ryukyu-terracotta px-2.5 py-1 rounded">TAXI / POINT & SPEAK</span>
+      <div class="flex items-center space-x-2">
+        <button id="modal-speak-btn" onclick="speakModalText()" class="hidden bg-ryukyu-teal hover:bg-teal-600 text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center space-x-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span>日文發音</span>
+        </button>
+        <button onclick="closeModal()" class="bg-white/15 text-white px-4 py-1.5 rounded-full text-xs font-bold">關閉視窗 ✕</button>
+      </div>
+    </div>
+    <div class="my-auto space-y-4 text-center px-2">
+      <p id="modal-sub" class="text-sm sm:text-base text-amber-300 font-bold"></p>
+      <h2 id="modal-main" class="text-2xl sm:text-4xl font-bold leading-snug tracking-wide break-words"></h2>
+      <p id="modal-kana" class="hidden text-sm sm:text-base text-teal-300 font-medium"></p>
+      <div id="modal-addr" class="text-sm sm:text-lg text-stone-200 font-mono bg-white/10 p-4 rounded-xl break-words space-y-1"></div>
+    </div>
+    <div class="text-center text-xs text-stone-400">請將此畫面直接出示給店員或司機，或點擊上方「日文發音」跟著唸</div>
+  </div>
+
+  <script>
+    // ==================== 1. 內建 199 個沖繩地點完整資料庫 ====================
+    // 欄位格式: [0:來源(1=重要精選, 2=好地點隨記), 1:名稱, 2:日文地址, 3:備註, 4:類別, 5:評分, 6:place_id, 7:lat, 8:lng, 9:距飯店km, 10:區域, 11:標籤]
+    const RAW_PLACES = [[1, "ORBIT RENT A CAR", "〒900-0014 沖縄県那覇市松尾２丁目１７−28", "", "租車公司", "5.0", "ChIJATMTpV5p5TQRCBUs2zd3-co", 26.21138, 127.68712, 0.15, "那霸（市區）", "交通與應變"], [1, "台北駐日経済文化代表処 那覇分処", "〒900-0015 沖縄県那覇市久茂地３丁目１５−9 アルテビルディング那覇 6階", "", "協會或機構 / 外國領事館", "4.3", "ChIJTf695Xdp5TQRqorKlT30RRM", 26.21619, 127.68182, 0.69, "那霸（市區）", "交通與應變"], [1, "Daikoku Drug Kokusai-dori Mutsumibashi", "〒900-0013 沖縄県那覇市牧志３丁目１−41 新城ビル", "", "藥妝店", "3.8", "ChIJBYOVbnpp5TQR03JYtJ9QUaY", 26.21594, 127.68827, 0.37, "那霸（市區）", "選物採買"], [1, "UCHINA CAFÉ BUKU-BUKU", "〒902-0065 沖縄県那覇市壺屋１丁目２２−35", "位於壺屋通上的 UCHINA CAFÉ BUKU-BUKU（うちなー茶屋ぶくぶく），以傳統琉球宮廷款待貴賓的「福福茶（ぶくぶく茶）」聞名。\n\n以炒米湯與山泉水打出如白雪般綿密厚實的高聳泡沫，覆蓋在茉莉香片（Sanpin 茶）上，上方點綴花生碎，入口輕盈甘香。\n\n店內同時陳列精緻的沖繩傳統陶器與紅型染織品，午後在此品茶能感受不同於一般咖啡館的靜謐步調。", "咖啡店 / 陶器專賣店", "4.6", "ChIJ770N529p5TQROBnFlRlFegc", 26.21275, 127.69231, 0.48, "那霸（市區）", "咖啡甜點,選物採買,風景名勝"], [1, "Oni no Ude", "〒902-0065 沖縄県那覇市壺屋１丁目７−13", "藏身在壺屋幽靜巷弄內的 Oni no Ude（オニノウデ），是一間極具個性的深宵泡盛酒吧。\n\n店主熱愛琉球陶藝與古酒，店內收藏了眾多稀有年份的陳年泡盛，皆以精選的やちむん（雅器睦）陶杯盛裝。\n\n燈光幽暗、空間安靜，適合在散步後的深夜，細細品味泡盛隨時間沉澱的圓潤熟成風味。", "酒吧", "4.5", "ChIJibDKt55p5TQRDQmhA4CNR8o", 26.21361, 127.69017, 0.29, "那霸（市區）", "微醺酒館,選物採買"], [1, "Ukishima Brewing", "〒900-0013 沖縄県那覇市牧志３丁目３−1 水上店舗第二街区3F", "隱身在水上店舗三樓的 Ukishima Brewing，是由在地社造工作者創立的沖繩自釀手工精釀啤酒吧。\n\n供應如加入久高島小麥的「久高島 Weizen」、沖繩柑橘風味的「White Flora」與招牌「浮島 IPA」。\n\n紅磚與挑高木質調空間，氣氛放鬆且充滿在地活力，是傍晚開胃或餐後小酌的絕佳秘密基地。", "酒廠酒吧", "4.4", "ChIJs43e5hpp5TQR_ZLpsAh3gbA", 26.21361, 127.68878, 0.17, "那霸（市區）", "微醺酒館,風景名勝"], [1, "Garb Domingo", "〒902-0065 沖縄県那覇市壺屋１丁目６−3", "那霸最具代表性的器物與工藝選物店，策展人精選現代陶藝家作品、琉球玻璃、木工與織物，將傳統沖繩手工藝轉化為俐落的現代生活器皿。\n\n空間極具美感，若想挑選兼具手感與設計感的原創陶器或伴手禮，這裡是首選。", "手工藝品 / 畫廊 / 生活用品店", "4.5", "ChIJHy0BXXBp5TQRq-f4EMISW28", 26.21325, 127.68972, 0.23, "那霸（市區）", "選物採買"], [1, "波上宮", "〒900-0031 沖縄県那覇市若狭１丁目２５−11", "波上宮 是琉球八社之首，也是那霸唯一座落於珊瑚礁斷崖上的神社，從住處搭計程車約 7 分鐘（步行約 20 分鐘）。\n\n神社下方即是「波之上沙灘」，能同時眺望蔚藍海景與懸崖紅瓦神社，極具琉球風情。\n\n許多旅人會在此求取獨特的「沖繩紅型」圖騰御守。", "神社 / 旅遊景點", "4.4", "ChIJdT8KUYVp5TQRrCRV4eFRanc", 26.22074, 127.6711, 1.86, "那霸（市區）", "風景名勝"], [1, "San-A Naha Main Place", "〒900-0006 沖縄県那覇市おもろまち４丁目４−9", "是那霸市區最受在地人喜愛的大型複合購物中心（位於新都心 Omoromachi 站，搭單軌數站即達）。\n\n一樓擁有面積龐大的大型在地超市，能以最平實的在地價格買到整瓶泡盛、辣油、沖繩限定調味料與零食。\n\n營業至晚間 22:00，退稅手續完善，適合安排一趟集中採購伴手禮。", "商場 / 電器行 / 嬰兒服裝店 / 童裝店 / 時裝店 / 化妝品店 / 超級市場 / 紀念品商店", "4.2", "ChIJFewVGNpr5TQRWa4uFVWLhxk", 26.2253, 127.69486, 1.59, "那霸（市區）", "微醺酒館,選物採買,交通與應變"], [1, "琉貿百貨", "〒900-8503 沖縄県那覇市久茂地１丁目１−1", "位於縣廳前站旁，步行約 12 分鐘。\n\n地下一樓超市品質極高，售有高級沖繩水果、熟食與日本酒；二樓設有大型「樂園百貨店」，精選沖繩頂級工藝、生活器皿與風土伴手禮。\n\n館內亦有無印良品及日系專櫃，適合講究質感的採買。", "百貨公司 / 化妝品店 / 和菓子餐廳 / 男裝裁縫師 / 甜點烘焙坊 / 女士服裝店", "4.0", "ChIJAU9dv51p5TQRY1OpPxIEG18", 26.2138, 127.6793, 0.83, "那霸（市區）", "微醺酒館,咖啡甜點,正餐美食,選物採買"], [1, "牧志", "〒900-0013 沖縄県那覇市牧志３丁目272", "", "單軌電車站", "4.1", "ChIJx6YcxmRp5TQRzDCiSlG0NUQ", 26.21731, 127.6925, 0.72, "那霸（市區）", "交通與應變"], [1, "美榮橋", "美栄橋駅", "", "單軌電車站", "4.2", "ChIJgSMBBXlp5TQRFOEu6ebNRwM", 26.21924, 127.6844, 0.79, "那霸（市區）", "交通與應變"], [1, "那霸機場", "〒901-0142 沖縄県那覇市鏡水150", "", "國際機場 / 機場 / 國內機場", "4.2", "ChIJjSyLjsRp5TQRkP5WN6rOTFA", 26.20013, 127.64665, 4.3, "那霸（市區）", "交通與應變"], [1, "沖繩紅十字醫院", "〒902-8588 沖縄県那覇市与儀１丁目３−1", "", "綜合醫院", "3.1", "ChIJ-aDRkW1p5TQRvwVUhm2Ya_0", 26.20689, 127.69273, 0.83, "那霸（市區）", "交通與應變"], [1, "Doragguirebun Kokusai Doriten", "〒900-0013 沖縄県那覇市牧志２丁目１−7", "", "藥妝店 / 化妝品店 / 健康食品店", "4.0", "ChIJfw0GR3pp5TQRLIt7efzFILA", 26.21687, 127.68802, 0.47, "那霸（市區）", "選物採買"], [1, "牧志派出所", "〒900-0013 沖縄県那覇市牧志３丁目１１−4", "", "派出所", "", "ChIJm7wm4Hpp5TQRXclwFtWLXts", 26.2169, 127.69043, 0.56, "那霸（市區）", "交通與應變"], [1, "全家便利商店 第一牧志公設市場前店", "〒900-0014 沖縄県那覇市松尾２丁目１０−10", "", "便利商店", "3.6", "ChIJIWdye7Vp5TQRZzTYe-La58s", 26.21435, 127.68855, 0.22, "那霸（市區）", "選物採買"], [1, "Refuge", "〒902-0067 沖縄県那覇市安里388-10 アパート 1F 浜千", "如其名「避難所」一般，是一家融合法式手法與在地食材的無國界小酒館。\n\n打破法餐的拘謹形式，主廚以精準的法式技法結合沖繩海陸物產，風味大膽而平衡。\n\n僅有約二十餘席，自然酒選酒精準，氣氛微醺而自在，極度適合在旅途夜晚小酌長談。", "小餐館 / 創意料理餐廳 / 法國餐廳 / 融合菜式餐廳 / 居酒屋 / 中菜館 / 現代法國餐廳 / 現代居酒屋 / 餐廳 / 西餐廳", "4.5", "ChIJm2TuJmRp5TQRxnbhqb3C3N8", 26.2159, 127.69645, 0.97, "那霸（市區）", "微醺酒館,正餐美食"], [1, "Urizun", "〒902-0067 沖縄県那覇市安里388-5", "琉球傳統宮廷與鄉土料理的殿堂，位於安里老街區。\n\n重現諸如東坡肉（ラフテー）、豆腐乳（とうふよう）與墨魚汁湯等講究工序的傳統琉球宮廷風味。\n\n店主致力於泡盛復興，自備甕藏熟成古酒，是感受沖繩歷史厚度與飲酒文化的不二之選。", "日本地方料理餐廳 / 餐廳", "4.0", "ChIJa68SBGRp5TQR2pFzeeeDH_0", 26.21733, 127.69649, 1.04, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [1, "Ma-chinu Ya", "〒900-0016 沖縄県那覇市前島２丁目７−14", "樸實卻驚豔的道地沖繩居酒屋。\n\n從開胃的胡麻拌鮮鮪、酥炸島蕎頭天婦羅，到火候正好的紅蘿蔔炒蛋與苦瓜雜炒，道道皆是踏實的家常功夫。\n\n木質空間溫暖親切，收費實在且海鮮鮮度極佳，每晚座無虛席，務必提前電話預約。", "居酒屋", "4.3", "ChIJC7DsMHlp5TQRWWDYGeGp3v4", 26.22061, 127.68478, 0.92, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [1, "Shokusai Shubo Matsumoto", "〒900-0032 沖縄県那覇市松山１丁目１０−8", "食彩酒房まつもと，是沖繩享負盛名的阿古豬涮涮鍋名店。\n\n選用接近原種血統的特選阿古豬，肉片擺盤如玫瑰盛開，油脂白皙透亮。\n\n滾湯輕涮後入口毫無腥臊，肉質純粹甘甜、油脂化為清爽肉香，沾特製水雲柑橘醋醬汁更是絕配。", "壽喜燒和日式火鍋餐廳", "4.4", "ChIJtRK75pxp5TQRty_qbX90rZg", 26.21695, 127.67833, 1.03, "那霸（市區）", "微醺酒館,正餐美食"], [1, "燕食堂", "〒900-0014 沖縄県那覇市松尾２丁目１０−1 2階", "燕食堂，是大眾食堂的指標老店。\n\n承接一樓鮮魚肉舖的代客料理，清蒸夜光貝、蒜蓉龍蝦或鹽烤石斑，鑊氣與手藝純熟。\n\n亦提供炒苦瓜、墨魚汁炒麵與沖繩排骨麵等經典家庭常備菜，充滿市場市井的生活熱度。", "海鮮餐廳", "3.6", "ChIJV9I5mnBp5TQR-mY4F5nX11k", 26.21451, 127.68818, 0.22, "那霸（市區）", "正餐美食,選物採買"], [1, "Shunsai-dokoro Biidoro", "〒900-0013 沖縄県那覇市牧志１丁目１１−1 丸仁アパート 2階", "是一間專注於季節創作料理與古酒的小巧酒場。\n\n菜單隨當日沖繩漁港進貨與時令島野菜每日手寫更換，工序講究且帶著職人對細節的偏執。\n\n店內琉球玻璃杯器皿典雅，泡盛收藏深厚，大將對於風味的平衡掌握極為精準。", "居酒屋", "4.6", "ChIJ1zTtL3hp5TQRKNm1zwCHdYM", 26.21714, 127.68328, 0.65, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [1, "Shima no Meshi Minamoto", "〒900-0013 沖縄県那覇市牧志２丁目１３−12 TKハイム", "將沖繩物產以割烹思維演繹，是預約難度頗高的精緻和食餐館。\n\n招牌套餐如同一場島嶼風土巡禮，白身魚刺身佐烤茄子海葡萄、阿古豬水雲高湯涮涮鍋皆極具層次，最後以甘鯛海菜土鍋飯收尾。\n\n酒水誠意十足，涵蓋精選日本酒、地產泡盛與新派精釀琴酒，餐酒搭配行雲流水。", "居酒屋", "4.6", "ChIJWZAamPFp5TQRjuNXvlhUQXs", 26.21844, 127.68884, 0.66, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [1, "肉屋 ししや", "〒900-0013 沖縄県那覇市牧志３丁目１−1", "肉食愛好者不能錯過的肉舖鐵板燒。\n\n冰櫃內陳列頂級石垣牛與黑毛和牛，可依油花、部位與厚度親自挑選，再由師傅在眼前現煎。\n\n鐵板高溫鎖住肉汁與牛脂甘甜，氛圍豪邁不拘小節，是極具在地生猛感的用餐體驗。", "葷食餐廳 / 肉鋪 / 壽司店 / 鐵板燒餐廳", "4.4", "ChIJsYRucXpp5TQRtxxLypc1iBA", 26.21534, 127.68836, 0.31, "那霸（市區）", "正餐美食"], [1, "Torijin Naha", "〒900-0014 沖縄県那覇市松尾２丁目１１−13-1 コーポうえず 1階", "松尾公設市場外圍的 Torijin Naha（炭火焼き鳥 鶏盡），以炭火直烤與嚴選自然酒（Natural Wine）聞名。\n\n主打嚴選雞肉的稀有部位串燒與大和肉雞刺身，炭火火候拿捏精準，肉汁豐盈。\n\n打破傳統串燒配生啤的公式，以清爽的自然酒引出炭烤香氣；招牌的「優格奶油烤飯糰」更是許多饕客必點的收尾。", "日式烤雞串餐廳", "4.2", "ChIJqTJpTYpp5TQRTnhRgbtP6M8", 26.21434, 127.68803, 0.2, "那霸（市區）", "微醺酒館,正餐美食,選物採買"], [1, "Tsuchi Kaoru", "〒900-0014 沖縄県那覇市松尾２丁目６−24 B1F", "松尾二丁目的 Tsuchi Kaoru（土香る），是一間將沖繩在地時令食材與現代和食手法細膩融合的地下隱密居酒屋。\n\n選用島野菜、本部牛與縣產鮮魚，調味純粹且重視風土本味。\n\n空間氛圍低調沉靜，酒單選品用心，非常適合想避開觀光喧鬧、靜下心品嚐精緻和食的夜晚。", "居酒屋 / 魚料理餐廳 / 日本地方料理餐廳 / 日本餐廳 / 日式牛排館", "4.5", "ChIJP2KNq2Np5TQROLZrP8MCCRk", 26.21513, 127.68611, 0.31, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [1, "COFFEE potohoto", "〒902-0067 沖縄県那覇市安里388-1 栄町市場内", "隱身於安里榮町市場攤販間的傳奇烘豆名店。昭和老市場生活感與純粹頂級手沖咖啡香交織，沖繩咖啡愛好者不可錯過", "咖啡店", "4.7", "ChIJ3VO1AGRp5TQRNw8qKTFgwJM", 26.21735, 127.69692, 1.08, "那霸（市區）", "咖啡甜點,選物採買"], [1, "喫茶喫酒もえぴ", "〒902-0065 沖縄県那覇市壺屋１丁目２−12 仲原ビル 2F", "白天為復古昭和喫茶店、入夜轉化為小酒館。氛圍低調溫暖，適合午後或散步後喝杯咖啡、手作甜點或特色調酒放鬆。", "咖啡店 / 酒吧", "4.8", "ChIJ_6lgKiNp5TQR_E7baDZjo1c", 26.21184, 127.69024, 0.29, "那霸（市區）", "微醺酒館,咖啡甜點"], [1, "Kokusai-dori", "国際通り", "土產店、居酒屋與泡盛專賣店；串連平和通、市場本通等老拱廊街，藏有許多昭和風情小店。", "著名街道", "4.4", "ChIJMS9BUXdp5TQRAl6RXvY5aY0", 26.21515, 127.68475, 0.39, "那霸（市區）", "微醺酒館,正餐美食,選物採買,風景名勝"], [1, "桜坂劇場", "〒900-0013 沖縄県那覇市牧志３丁目６−10", "那霸在地獨立藝術基地，館內附設「ふくら舎」選品店，販售沖繩陶藝、工藝書籍與黑膠唱片，文藝氣息濃厚。", "戲院", "4.2", "ChIJq9MNnHpp5TQRipNdjRAbPbk", 26.21493, 127.69014, 0.37, "那霸（市區）", "選物採買,風景名勝"], [1, "Pork Tamago Onigiri Makishi Market", "〒900-0014 沖縄県那覇市松尾２丁目８−35", "現點現做溫熱米飯海苔飯糰，推薦炸苦瓜天婦羅或島豆腐口味，適合外帶當早餐或隨手點心。", "早餐店 / 速食店 / 外帶餐廳", "4.3", "ChIJRX9edXpp5TQRRGYawVc2Jmk", 26.21518, 127.68797, 0.29, "那霸（市區）", "正餐美食,風景名勝"], [1, "C&C Breakfast", "〒900-0014 沖縄県那覇市松尾２丁目９−6 タカミネビル 1F", "市場巷弄內的夏威夷風早午餐，主打口感輕盈蓬鬆的招牌舒芙蕾鬆餅（Soufflé Pancake）與清爽巴西莓果碗。", "咖啡店 / 早餐店 / 外帶餐廳 / 鬆餅店 / 三明治店", "4.3", "ChIJZbS5n3Bp5TQRSvpeQ4AMABM", 26.21505, 127.68801, 0.27, "那霸（市區）", "咖啡甜點,正餐美食,選物採買"], [1, "那霸市第一牧志公設市場", "〒900-0014 沖縄県那覇市松尾２丁目１０−1", "一樓可挑選新鮮島野菜、海鮮與石垣牛並送至二樓代客料理，二樓亦有許多歷史悠久的大眾家庭料理食堂。", "市場", "4.1", "ChIJy1Zdsr9p5TQR2ET-2o69ZKg", 26.21459, 127.6883, 0.23, "那霸（市區）", "正餐美食,選物採買,風景名勝"], [1, "Tamagusuku Coffee Roasters", "〒900-0014 沖縄県那覇市松尾２丁目１９−39 グリーンハイツ那覇 202", "隱身二樓的自家烘焙精品咖啡。專注淺焙單品手沖，果酸明亮純淨；空間極小安靜，適合避開人群稍作沉澱。", "咖啡烘焙廠 / 咖啡店", "4.5", "ChIJq6q623Bp5TQRyBCEGsY59Cg", 26.21319, 127.68738, 0.06, "那霸（市區）", "咖啡甜點"], [1, "沖繩麵 EIBUN", "〒902-0065 沖縄県那覇市壺屋１丁目５−14 ボーボー屋ビル", "那霸超人氣新派沖繩麵代表店。炙燒軟骨豬肉香氣濃郁、自製生麵勁道，湯頭清甜有層次，提供香菜與特色香料油搭配。", "麵店 / 餐廳 / 蕎麥麵店", "4.3", "ChIJ_Ty9RXBp5TQRfJ_DPaea3TM", 26.21271, 127.69008, 0.26, "那霸（市區）", "正餐美食"], [1, "Tsuboya Yachimun Street", "〒902-0065 沖縄県那覇市壺屋１丁目１６", "百年石疊路陶藝老街，聚集眾多獨立陶器工坊與選物店，能挑選職人「雅器睦」陶皿與特色風獅爺，氛圍沉靜愜意。", "旅遊景點", "4.2", "ChIJq6pPF3Bp5TQRdYWzrypCCIA", 26.21309, 127.69128, 0.38, "那霸（市區）", "選物採買,風景名勝"], [1, "沖繩縣立南部醫療中心・兒童醫療中心", "〒901-1105 沖縄県島尻郡南風原町新川１１８−１", "", "公共醫療中心 / 兒童醫院 / 綜合醫院 / 醫院", "3.1", "ChIJ0UojzVJp5TQRqBrVRwMu8Zk", 26.20532, 127.7236, 3.7, "南部（南城・八重瀨）", "交通與應變"], [1, "ON THE SAME HOTEL", "〒900-0014 沖縄県那覇市松尾２丁目１９−28", "", "飯店", "4.9", "ChIJhwJPV4Jp5TQRLsNITjiDb_c", 26.21265, 127.68747, 0.0, "那霸（市區）", "正餐美食,交通與應變"], [1, "沖繩縣政府", "〒900-0021 沖縄県那覇市泉崎１丁目２−2", "", "日本縣政府", "3.7", "ChIJif13_p1p5TQRAXuBKJzrnOY", 26.21238, 127.68069, 0.68, "那霸（市區）", "交通與應變"], [2, "おやつとコーヒー、自然派ワイン papoter pepin", "〒903-0812 沖縄県那覇市首里当蔵町２丁目１４", "", "甜點烘焙坊 / 外帶咖啡專賣店 / 酒品專賣店", "4.8", "ChIJmRbt7Flr5TQRZNEI-BUpqGU", 26.22026, 127.7195, 3.31, "那霸（首里）", "微醺酒館,咖啡甜點"], [2, "Eichin", "〒903-0821 沖縄県那覇市首里儀保町１丁目36", "朝市期間有提供輕食", "糖果甜點烘焙坊", "4.5", "ChIJ2YZSl1tr5TQRf81WzD8gIIU", 26.2234, 127.71914, 3.38, "那霸（首里）", "咖啡甜點"], [2, "Kinjo Bakery", "〒903-0811 沖縄県那覇市首里赤平町２丁目51-3", "", "烘焙坊", "4.3", "ChIJ4WLsv_lr5TQRtj6WgoBHFyk", 26.2242, 127.71987, 3.48, "那霸（首里）", "咖啡甜點"], [2, "知念商店", "〒903-0821 沖縄県那覇市首里儀保町２丁目６−6 知念アパート", "首里朝市（株）桜杏：健康食品販売店", "商店", "5.0", "ChIJ6RIELfpr5TQRgq_2fY9W4O0", 26.22368, 127.71791, 3.27, "那霸（首里）", "選物採買"], [2, "Cafe Hidamari", "〒903-0816 沖縄県那覇市首里真和志町１丁目13", "", "咖啡店", "4.9", "ChIJZ4wg1XVr5TQRisH5Ks4NjLM", 26.21926, 127.71615, 2.95, "那霸（首里）", "咖啡甜點"], [2, "Wolfbrau", "〒903-0824 沖縄県那覇市首里池端町34", "", "啤酒廠 / 啤酒專賣店 / 酒廠酒吧 / 咖啡店", "4.6", "ChIJ-6P75q9r5TQRjWZjYEi0xgs", 26.22016, 127.71601, 2.97, "那霸（首里）", "微醺酒館,咖啡甜點"], [2, "首里茶房 美里うどぅん", "〒903-0812 沖縄県那覇市首里当蔵町２丁目13", "", "日本餐廳", "4.6", "ChIJE6IP2VBr5TQRC_yZGfb3teU", 26.2196, 127.71955, 3.29, "那霸（首里）", "正餐美食"], [2, "Nana-Musubi Onigiri Cafe", "〒903-0816 沖縄県那覇市首里真和志町２丁目1", "", "咖啡店 / 米食餐廳 / 輕食吧", "4.5", "ChIJs2Cf7BNr5TQRvQE5sE_pmHs", 26.21903, 127.7155, 2.88, "那霸（首里）", "咖啡甜點,正餐美食"], [2, "2-chōme-2 Shurimawashichō", "〒903-0816 沖縄県那覇市首里真和志町２丁目2", "", "複合大樓", "", "ChIJDXemAf1r5TQRhiMJzFsDoQE", 26.21916, 127.71561, 2.9, "那霸（首里）", "在地探索"], [2, "当蔵公民館 (当蔵空手道場)", "〒903-0812 沖縄県那覇市首里当蔵町２丁目４９", "", "社區中心", "5.0", "ChIJD2bVSflr5TQRJEWUjVr9YWk", 26.22093, 127.71978, 3.35, "那霸（首里）", "在地探索"], [2, "Yamashita Coffee", "〒903-0812 沖縄県那覇市首里当蔵町２丁目42 2F", "首里朝市\n有麵包店進駐", "咖啡店", "4.7", "ChIJd7UnJuhr5TQR2VOzFSOLGek", 26.22054, 127.71953, 3.32, "那霸（首里）", "咖啡甜點,正餐美食"], [2, "Snoopy's Surf Shop", "〒900-0014 沖縄県那覇市松尾２丁目３−13", "", "時裝店", "4.1", "ChIJT2KF0K1p5TQRYloWXw5NgQ4", 26.2142, 127.68582, 0.24, "那霸（市區）", "選物採買"], [2, "TOUCA BAKE SHOP", "〒903-0813 沖縄県那覇市首里赤田町１丁目6", "", "甜點烘焙坊 / 甜點餐廳", "4.7", "ChIJJ19goABs5TQRxZQOscjb5sM", 26.21786, 127.72292, 3.58, "那霸（首里）", "咖啡甜點,正餐美食"], [2, "農夫市集 糸滿 Umanchu 市場", "〒901-0306 沖縄県糸満市西崎町４丁目20", "", "農產品市場 / 旅遊景點", "4.2", "ChIJxSbvMMJn5TQRcVN-hKOaQ7A", 26.13841, 127.66206, 8.64, "南部（糸滿・豐見城）", "選物採買,風景名勝"], [2, "Jimmy's", "〒901-0302 沖縄県糸満市潮平724-1", "", "甜點烘焙坊 / 烘焙坊", "3.6", "ChIJa4jtrNdn5TQRwPSJ8GsErkM", 26.14713, 127.67313, 7.42, "南部（糸滿・豐見城）", "咖啡甜點"], [2, "Shimachan Shokudo", "〒902-0076 沖縄県那覇市与儀２丁目３−12", "", "豆腐餐廳", "4.5", "ChIJ1UyVMQ1p5TQR0ZOBT-_GUng", 26.20412, 127.69, 0.98, "那霸（市區）", "正餐美食"], [2, "Swan", "〒900-0013 沖縄県那覇市牧志３丁目５−1 ２F", "", "咖啡店", "4.6", "ChIJcWtNtqRp5TQRMuI83VKdVkE", 26.21415, 127.6892, 0.24, "那霸（市區）", "咖啡甜點"], [2, "茶屋首里とうふ", "〒903-0805 沖縄県那覇市首里鳥堀町１丁目11-5", "豆腐店，有賣豆腐甜點", "咖啡店", "4.6", "ChIJ_Sa-EUZr5TQRb9gfN2_f5n8", 26.21805, 127.72322, 3.62, "那霸（首里）", "咖啡甜點"], [2, "まぜ麺くろべぇ", "〒902-0075 沖縄県那覇市国場15 渡嘉敷アパート 一階", "", "拉麵店", "4.6", "ChIJe5pi-lFp5TQR_t0ZEQfiJcs", 26.19725, 127.70323, 2.32, "那霸（市區）", "正餐美食"], [2, "れもん海道 酒ワ（シュワ）", "〒900-0032 沖縄県那覇市松山２丁目２２−15 神谷ビル 102", "殻付き生牡蠣（3個）　2,300円\n* 焼き牡蠣（1個）　450円\n* 小鰯の刺身　780円\n* 小鰯の天ぷら　630円\n* 子持ち刺身こんにゃく　480円\n* 酒ワ自家製レモンサワー　700円\n* 黒糖レモンジンジャーエール　700円", "居酒屋", "4.9", "ChIJqz-HDWZr5TQRiFCdSmJCXRM", 26.22096, 127.68069, 1.15, "那霸（市區）", "微醺酒館,正餐美食"], [2, "タイラ製麺所 南風原新川店", "〒901-1105 沖縄県島尻郡南風原町新川588", "", "麵店", "3.9", "ChIJN7qIJwBt5TQRsRtJhloSbyc", 26.21386, 127.72886, 4.13, "南部（南城・八重瀨）", "正餐美食"], [2, "榮町市場", "〒902-0067 沖縄県那覇市安里３８１−379", "", "市場 / 旅遊景點", "4.1", "ChIJAQDsBmRp5TQR9e89nmOJv8g", 26.21727, 127.69675, 1.06, "那霸（市區）", "選物採買,風景名勝"], [2, "酵素浴・Hyper Knife 專業美容沙龍 Katorea", "〒900-0013 沖縄県那覇市牧志１丁目３−17", "", "美容院 / 水療中心", "4.8", "ChIJoWPxdaZp5TQR6nPxn8AgfhQ", 26.21639, 127.68626, 0.43, "那霸（市區）", "在地探索"], [2, "San-A V21 Nishizaki Shokuhinkan", "〒901-0305 沖縄県糸満市西崎１丁目１２−5", "", "超級市場 / 加工肉品店 / 魚販 / 鮮食市場 / 農產品市場", "3.8", "ChIJnfLwscNn5TQRNHBF9OUOFj8", 26.13912, 127.66297, 8.53, "南部（糸滿・豐見城）", "正餐美食,選物採買"], [2, "Itoman fishing cooperative Fish Center", "〒901-0306 沖縄県糸満市西崎町４丁目19", "", "市場 / 海鮮市場", "4.1", "ChIJnfH0IcJn5TQRFTMsWWcjFlg", 26.1381, 127.66138, 8.69, "南部（糸滿・豐見城）", "正餐美食,選物採買"], [2, "onnaton", "〒900-0037 沖縄県那覇市辻１丁目２−5", "", "涮涮鍋餐廳 / 日本餐廳 / 葷食餐廳 / 餐廳 / 壽喜燒和日式火鍋餐廳", "4.8", "ChIJLX8aW5IQ5TQRhvuyBwInKO8", 26.21629, 127.67122, 1.67, "那霸（市區）", "正餐美食"], [2, "燒肉神社 / 宮崎牛專賣", "〒900-0021 沖縄県那覇市泉崎１丁目１７−9", "", "日式燒肉餐廳", "4.8", "ChIJt_o9w_Np5TQR0cNXYDKBofo", 26.2116, 127.67817, 0.94, "那霸（市區）", "正餐美食,風景名勝"], [2, "Tonkatsu Taro", "〒901-0146 沖縄県那覇市具志３丁目２４−16", "", "日式炸豬排店", "4.1", "ChIJEbVEIDxo5TQRiIIjJ7rhdbI", 26.17876, 127.65452, 5.0, "那霸（市區）", "正餐美食"], [2, "Soytobio", "〒900-0014 沖縄県那覇市松尾２丁目１１−26", "", "烘焙坊", "4.7", "ChIJO4M1MUlp5TQRVG6pRDtArCI", 26.21392, 127.68776, 0.14, "那霸（市區）", "咖啡甜點"], [2, "STAND EIBUN", "〒902-0065 沖縄県那覇市壺屋１丁目１−18", "", "麵店", "4.4", "ChIJQajmS7Jp5TQRK--c1rGMOQE", 26.21198, 127.68964, 0.23, "那霸（市區）", "正餐美食"], [2, "とんかつ小やじ那覇店", "〒900-0014 沖縄県那覇市松尾２丁目８−34", "", "日式炸豬排店 / 餐廳", "4.7", "ChIJXZSYUXJp5TQRKHRayqxu2a4", 26.21528, 127.68794, 0.3, "那霸（市區）", "正餐美食"], [2, "rokkan COFFEE CREATORS", "〒900-0022 沖縄県那覇市樋川１丁目２９−9", "", "咖啡店", "4.7", "ChIJ1xMZ4tZp5TQRHkKLBBQOPys", 26.20754, 127.69045, 0.64, "那霸（市區）", "咖啡甜點"], [2, "沖縄居酒屋昭和村 むつみ橋通り店", "〒900-0013 沖縄県那覇市牧志３丁目１−19 2階", "民謠一個小時一場\n沒有禁煙", "居酒屋", "4.5", "ChIJfXz_QABp5TQRXiYAhI_QnsE", 26.21549, 127.68838, 0.33, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [2, "琉球醬烤肉/涮涮鍋 沖繩苑", "〒900-0013 沖縄県那覇市牧志１丁目３−58 タキオンビル 1F", "", "涮涮鍋餐廳 / 日本餐廳 / 葷食餐廳", "4.3", "ChIJNahzOa9p5TQReGgRVIcKLlw", 26.21615, 127.68718, 0.39, "那霸（市區）", "正餐美食"], [2, "Yakiniku Restaurant Roins Kumoji Branch", "〒900-0015 沖縄県那覇市久茂地２丁目６−16 リバーサイドテラス久茂地 1F", "", "日式燒肉餐廳 / 內臟燒肉餐廳 / 韓式燒烤餐廳 / 葷食餐廳 / 餐廳", "4.3", "ChIJ3blEV51p5TQRZuRAfvdy-P4", 26.21667, 127.68099, 0.79, "那霸（市區）", "正餐美食"], [2, "肉の変態集団 疾風ホルモン久茂地本店(石垣牛取扱店)", "〒900-0015 沖縄県那覇市久茂地２丁目６−2 久茂地ガーデンビル2F", "", "日式燒肉餐廳 / 內臟燒肉餐廳 / 葷食餐廳 / 日式牛舌餐廳", "4.7", "ChIJ9dJOQ51p5TQRnomb4eJaQi4", 26.21641, 127.68053, 0.81, "那霸（市區）", "正餐美食"], [2, "Yakiniku Horumon Nakama", "〒900-0014 沖縄県那覇市松尾２丁目１０−20", "", "日式燒肉餐廳 / 內臟燒肉餐廳 / 葷食餐廳", "4.2", "ChIJn5mzIPpp5TQROqZ2oPzZJFE", 26.21398, 127.68853, 0.18, "那霸（市區）", "正餐美食"], [2, "炭火焼肉ぶち 久茂地2号店", "〒900-0015 沖縄県那覇市久茂地３丁目９−12", "", "日式燒肉餐廳", "4.7", "ChIJsffg7I1p5TQRRM9X3jGYWxg", 26.21472, 127.6814, 0.65, "那霸（市區）", "正餐美食"], [2, "世豊商店", "〒902-0065 沖縄県那覇市壺屋１丁目７−15", "", "超級市場", "4.4", "ChIJ3QD5a3Bp5TQRFmJe6GL8_X0", 26.21339, 127.69015, 0.28, "那霸（市區）", "選物採買"], [2, "McDonald's Himeyuri-dori Tsuboya", "〒902-0065 沖縄県那覇市壺屋１丁目２８−18", "", "速食店 / 咖啡店 / 自助餐廳 / 親子餐廳 / 漢堡包餐廳 / 餐廳", "3.5", "ChIJB_UzEgBp5TQR9gyGZ_tKYS0", 26.2128, 127.6935, 0.6, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "T&M Coffee", "〒900-0013 沖縄県那覇市牧志１丁目２−6", "", "咖啡店", "4.5", "ChIJH4aSY3dp5TQRR0p8kN8KJeQ", 26.21583, 127.68479, 0.44, "那霸（市區）", "咖啡甜點"], [2, "Atelier Qucchane (Ceramic Workshop)", "〒900-0021 沖縄県那覇市泉崎２丁目14-11", "", "陶器專賣店", "4.9", "ChIJr-psVIhp5TQRnJ2sBTMfzXI", 26.20983, 127.68177, 0.65, "那霸（市區）", "選物採買"], [2, "Hama Cafe", "〒901-0306 沖縄県糸満市西崎町３丁目７５−75", "麥根沙士咖啡", "咖啡店", "4.8", "ChIJbQxNjeRn5TQRe-UrInGfBqo", 26.14747, 127.66433, 7.61, "南部（糸滿・豐見城）", "咖啡甜點"], [2, "Haruchii", "〒902-0067 沖縄県那覇市安里100 金城アパート", "沖縄県産黒毛和牛もとぶ牛（沖繩縣產黑毛和牛本部牛肉捲飯糰）¥800 \n・肉巻きむすめ（肉捲飯糰）¥500", "咖啡店 / 日本熟食店", "5.0", "ChIJ06SBEBFp5TQRmyPOtOD4KIs", 26.22028, 127.69189, 0.96, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "march", "〒902-0067 沖縄県那覇市安里82-1", "", "雜貨舖", "4.5", "ChIJY9-AlIZp5TQR_a6Bax6iUpI", 26.22115, 127.69317, 1.1, "那霸（市區）", "選物採買"], [2, "インシャラー", "〒900-0013 沖縄県那覇市牧志１丁目３−63", "只收現金", "咖啡店", "4.4", "ChIJt6Y9Anpp5TQRrpZHKPjlaLM", 26.21594, 127.68666, 0.37, "那霸（市區）", "咖啡甜點"], [2, "Genten", "〒904-0033 沖縄県沖縄市山里２丁目９−31", "", "咖啡店", "4.7", "ChIJ8QaMQ2YS5TQR6tEhekEYlrI", 26.32246, 127.79124, 16.0, "中部（北谷・沖繩市）", "咖啡甜點"], [2, "tituti OKINAWAN CRAFT ティトゥティ オキナワン クラフト", "〒900-0013 沖縄県那覇市牧志３丁目６−37 #102", "", "手工藝品 / 精品店", "4.5", "ChIJ9duLY3dp5TQRp2g-1yT9s5I", 26.21392, 127.69012, 0.3, "那霸（市區）", "選物採買"], [2, "Toy Roadworks", "〒900-0013 沖縄県那覇市牧志３丁目６−2", "", "玩具店", "4.2", "ChIJ224NfHBp5TQRI3lJ8UZCHgI", 26.21424, 127.6895, 0.27, "那霸（市區）", "在地探索"], [2, "HEMPY那覇 高濃度 CBD 専門店", "〒900-0013 沖縄県那覇市牧志３丁目３", "", "健康食品店", "4.6", "ChIJz0zi3rVp5TQRbBaeCHO3Sqk", 26.21419, 127.68873, 0.21, "那霸（市區）", "在地探索"], [2, "secondhand bookstore Urara", "〒900-0013 沖縄県那覇市牧志３丁目３−1", "", "二手書店", "4.6", "ChIJneMPhXBp5TQRNndEUEhCbH4", 26.21442, 127.68867, 0.23, "那霸（市區）", "在地探索"], [2, "Ayumi", "〒900-0014 沖縄県那覇市松尾２丁目１０−1 第一牧志公設市場 2階", "", "糖果甜點烘焙坊 / 市場", "4.2", "ChIJCYMZmnBp5TQRvPOA4FYw0aQ", 26.21453, 127.68815, 0.22, "那霸（市區）", "咖啡甜點,選物採買"], [2, "Antique Shop GABE", "〒900-0014 沖縄県那覇市松尾２丁目１９−1", "", "古董店", "5.0", "ChIJ_yJ0ZjRp5TQRKm_l1cWELGc", 26.21388, 127.68743, 0.14, "那霸（市區）", "在地探索"], [2, "Marutama味噌飯屋", "〒900-0021 沖縄県那覇市泉崎２丁目4-3 １F", "", "早餐店 / 早午餐餐廳 / 居酒屋 / 日本餐廳 / 餐廳", "4.4", "ChIJrcHTSZ5p5TQR10AUCEyRC9U", 26.21055, 127.67986, 0.79, "那霸（市區）", "微醺酒館,正餐美食"], [2, "傑克牛排館", "〒900-0036 沖縄県那覇市西１丁目７−3", "TENDERLOINSTEAK", "牛排館", "4.2", "ChIJ22ZssJlp5TQR9_xYHgr0hFo", 26.2129, 127.6725, 1.49, "那霸（市區）", "正餐美食"], [2, "Tsuji Super", "〒900-0037 沖縄県那覇市辻２丁目６−6", "", "超級市場", "4.1", "ChIJtzMOZZpp5TQRfUNK92K_G_M", 26.21735, 127.67177, 1.65, "那霸（市區）", "選物採買"], [2, "Aeon MaxValu Wakasa", "〒900-0031 沖縄県那覇市若狭１丁目１９−1", "", "超級市場", "4.0", "ChIJN6As5IRp5TQRSaKIWYxdHfA", 26.22103, 127.67364, 1.66, "那霸（市區）", "選物採買"], [2, "Agu Pork Shabu-shabu Miruku Naha", "〒900-0031 沖縄県那覇市若狭１丁目１４−10", "", "涮涮鍋餐廳", "4.3", "ChIJA_LNp4Rp5TQRyKow8e-gIiw", 26.22008, 127.67445, 1.54, "那霸（市區）", "正餐美食"], [2, "MORNING BOWLS NAMINOUE CAFE", "〒900-0031 沖縄県那覇市若狭１丁目２１−1", "", "咖啡店 / 夏威夷餐廳 / 鬆餅店 / 海鮮丼餐廳", "4.8", "ChIJhYRoQcRp5TQR8Z9qIOGdHrw", 26.22095, 127.67268, 1.74, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "Doucatty", "〒901-1412 沖縄県南城市佐敷新里740-1", "JAL 推薦\n\n「Doucatty」；在沖繩方言中是「我行我素」的意思。「以好的方面來說，就是隨心所欲地創作自己想做的東西。」說這句話的是工坊的主人、田原幸浩先生與琴子女士這對夫妻。\n被香蕉田所圍繞的店舖裡，陳列著色彩繽紛的手巾和T恤等作品，而店鋪最裡面就是工坊所在。將同時身為畫家的幸浩先生所繪製的原畫，透過費時費工的手工捺染與手繪等講究的染色技法，誕生出各式各樣的作品。在這些作品上所描繪的是月桃果實與鸚哥魚等沖繩在地元素。", "商店", "4.8", "ChIJq6q3WVpu5TQRBBqalDiisgc", 26.17036, 127.77414, 9.84, "南部（南城・八重瀨）", "選物採買"], [2, "屋宜家", "〒901-0502 沖縄県島尻郡八重瀬町大頓1172", "JAL推薦\n將指定登錄為有形文化財產的紅瓦屋頂古民宅所開設而成的沖繩麵店「屋宜家」；人氣招牌是將綠色海藻、石蓴（沖繩方言為Asa）揉入麵條中的海藻沖繩麵。", "日本地方料理餐廳 / 蕎麥麵店", "4.4", "ChIJg9-Sqvdl5TQR6xsCVPXIKyA", 26.12733, 127.73694, 10.69, "南部（南城・八重瀨）", "正餐美食"], [2, "山之茶屋・樂水", "〒901-0604 沖縄県南城市玉城 玉城 １９ １", "JAL推薦", "餐廳 / 郊外公園 / 純素餐廳 / 素食餐廳", "4.4", "ChIJ-_gJjpVv5TQRekSiCW78voc", 26.13487, 127.78386, 12.94, "南部（南城・八重瀨）", "咖啡甜點,正餐美食,風景名勝"], [2, "Karika", "〒901-0603 沖縄県南城市玉城百名1360", "JAL 推薦", "尼泊爾餐廳", "4.3", "ChIJCQIEpOpv5TQReYRSdYYJ9IM", 26.13384, 127.78852, 13.36, "南部（南城・八重瀨）", "正餐美食"], [2, "南城市地區物產館", "〒901-1511 沖縄県南城市知念久手堅539 1F", "", "紀念品商店", "3.9", "ChIJkxKaWOxx5TQRLksdtJv3J-c", 26.16912, 127.82728, 14.77, "南部（南城・八重瀨）", "選物採買,風景名勝"], [2, "知念岬公園", "〒901-1400 沖縄県南城市知念久手堅", "", "公園 / 旅遊景點", "4.4", "ChIJGRP4dcBx5TQR2fy_PziIymI", 26.16734, 127.82892, 14.99, "南部（南城・八重瀨）", "風景名勝"], [2, "Azama Sun Sun Beach", "〒901-1502 沖縄県南城市知念安座真1141 3", "", "沙灘", "4.1", "ChIJTw81vvRx5TQRe_2HHTy3oac", 26.17831, 127.82919, 14.65, "南部（南城・八重瀨）", "風景名勝"], [2, "星巴克 名護21世紀之森公園あけみおてらす店", "〒905-0011 沖縄県名護市宮里２丁目２−2 ２ 海の棟", "", "咖啡店", "4.6", "ChIJEwedMp7_5DQRd9_wa4F27iM", 26.59154, 127.97022, 50.68, "北部（恩納・名護）", "咖啡甜點,風景名勝"], [2, "Cream D Omoromachi", "〒900-0006 沖縄県那覇市おもろまち４丁目１９−1", "", "甜甜圈店", "3.2", "ChIJZacjWQBr5TQRkEpc-t2DFJc", 26.22458, 127.69822, 1.71, "那霸（市區）", "在地探索"], [2, "UNIQLO Ryubo Ameku Rakuichi", "〒900-0005 沖縄県那覇市天久１丁目１−1", "", "時裝店 / 男士服裝店 / 女士服裝店", "4.0", "ChIJrz3yttBr5TQRDCM_fuf9gFQ", 26.22974, 127.69067, 1.93, "那霸（市區）", "選物採買"], [2, "3COINS +plus 那霸Main Place店", "〒900-0006 沖縄県那覇市おもろまち４丁目４−9", "", "雜貨舖", "4.3", "ChIJB-qgsJBr5TQRwERhnCgUy9g", 26.22559, 127.69444, 1.6, "那霸（市區）", "選物採買"], [2, "ミレメーレ", "〒901-0142 沖縄県那覇市鏡水150", "", "甜點烘焙坊", "4.0", "ChIJSUotGABp5TQRk2fRiN98TKc", 26.20781, 127.65103, 3.67, "那霸（市區）", "咖啡甜點"], [2, "Jimmy’s 空港店", "〒901-0142 沖縄県那覇市鏡水150 国内線旅客ターミナルビル 2F Naha International Airport", "", "紀念品商店 / 烘焙坊 / 甜點店 / 精品店 / 外帶餐廳 / 甜點烘焙坊", "4.0", "ChIJEVW09M9p5TQRMx0DJ_lvnqE", 26.20725, 127.651, 3.69, "那霸（市區）", "咖啡甜點,正餐美食,選物採買"], [2, "Dear Okinawa,", "〒901-0142 沖縄県那覇市鏡水150 Naha International Airport, 際内連結ターミナル ２階 YUINICHI St", "", "手工藝品 / 精品店 / 紀念品商店", "4.7", "ChIJZYCLzlBp5TQRur8nKh8INwg", 26.20909, 127.6509, 3.67, "那霸（市區）", "選物採買"], [2, "琉球商店", "〒900-0013 沖縄県那覇市牧志３丁目２−50 第一丸南ビル", "", "精品店", "4.8", "ChIJC7OhgfgT5TQRP9kU34L6AYo", 26.21514, 127.68883, 0.31, "那霸（市區）", "選物採買"], [2, "RESORT DEPARTMENT STORE", "〒900-0015 沖縄県那覇市久茂地１丁目１−1 デパートリウボウ 2F", "", "紀念品商店 / 精品店 / 有機商店 / 雜貨舖", "4.2", "ChIJES8Dx51p5TQR6iSIQSyEXVQ", 26.21406, 127.67966, 0.79, "那霸（市區）", "選物採買"], [2, "新原沙灘", "〒901-0603 沖縄県南城市玉城百名1599-6", "JAL推薦", "旅遊景點 / 公共海灘", "4.2", "ChIJVXBnnepv5TQRdDAwNwK8kVg", 26.1345, 127.79134, 13.53, "南部（南城・八重瀨）", "風景名勝"], [2, "中本天婦羅店", "〒901-0614 沖縄県南城市玉城奥武9−9 2F", "JAL推薦", "天婦羅餐廳 / 速食店 / 餐廳", "4.1", "ChIJU-B5eJtv5TQR-7TL1E-Yfa0", 26.13155, 127.77213, 12.36, "南部（南城・八重瀨）", "正餐美食"], [2, "Town Plaza Kanehide Yogi Park Market", "〒902-0064 沖縄県那覇市寄宮１丁目８−45", "偏向在地居民日常會去的超市。\n\n最大特色就是生鮮商品豐富又價格親民，無論是蔬菜、肉類還是海鮮都很齊全，非常適合想省錢又想吃得道地的人。\n\n另外，這裡的熟食與便當選擇很多，像是沖繩風味便當、各種家常料理。", "超級市場", "3.7", "ChIJkyR_am5p5TQRvCO7HPyppuA", 26.20959, 127.69342, 0.68, "那霸（市區）", "正餐美食,選物採買"], [2, "Town Plaza Kanehide Tsubogawa", "〒900-0025 沖縄県那覇市壺川３丁目1-5", "", "超級市場", "3.8", "ChIJ5SGLgJ9p5TQRcnn2B8uNXF4", 26.20795, 127.67881, 1.01, "那霸（市區）", "選物採買"], [2, "中村麵店", "〒904-0404 沖縄県国頭郡恩納村瀬良垣1669-1", "", "麵店 / 日本餐廳 / 蕎麥麵店", "4.2", "ChIJy4yaM5ED5TQRrlNV7D9MVTY", 26.50671, 127.86533, 37.19, "北部（恩納・名護）", "正餐美食"], [2, "Palette Kumoji", "〒900-0015 沖縄県那覇市久茂地１丁目１−1", "房東推薦\n\nRyubo 是沖繩定位較高端的超市之一，整體商品質感與選品風格偏精緻，如果用台灣熟悉的概念來說，有點類似「高質感進口超市」的定位。除了基本食品之外，這裡也販售許多沖繩在地特產與適合當伴手禮的商品，因此深受觀光客喜愛。Ryubo 不只有超市，也經營大型百貨型設施，是沖繩少數具規模的百貨體系之一。其中位在國際通旁的「Palette Kumoji（パレットくもじ）」就是由 Ryubo 集團營運，地點非常方便。", "商場 / 百貨公司", "4.0", "ChIJRz9Dxp1p5TQRcv9e0MLxaV4", 26.21377, 127.6794, 0.81, "那霸（市區）", "選物採買"], [2, "UNION SUKARA Kokusai Street Store", "〒902-0067 沖縄県那覇市安里２丁目１−1 さいおんスクエア内 １階", "", "超級市場", "3.8", "ChIJ-ab7BgBp5TQRT9p9UY6x_0o", 26.21771, 127.69379, 0.85, "那霸（市區）", "選物採買"], [2, "Oniku no Isshin", "〒900-0015 沖縄県那覇市久茂地１丁目５−1", "", "壽喜燒和日式火鍋餐廳", "4.6", "ChIJLcZbI5xp5TQRtD4FrGpXwws", 26.21388, 127.67755, 1.0, "那霸（市區）", "正餐美食"], [2, "MUJI Palette Kumoji", "〒900-0015 沖縄県那覇市久茂地１丁目１−1 リウボウ ８Ｆ", "", "雜貨舖 / 包包店 / 床上用品店 / 童裝店 / 時裝店 / 糖果甜點烘焙坊 / 影印用品店 / 化妝品店 / 家具店 / 生活用品店", "4.1", "ChIJAU9dv51p5TQR-bamySrpPUw", 26.2138, 127.6793, 0.83, "那霸（市區）", "咖啡甜點,選物採買"], [2, "nan*ne pottery & lifestyle", "〒902-0065 沖縄県那覇市壺屋１丁目２２−37", "", "麵店 / 咖啡店 / 雜貨舖", "4.7", "ChIJV66SF65p5TQR0S0nag_pVoY", 26.213, 127.69221, 0.47, "那霸（市區）", "咖啡甜點,正餐美食,選物採買"], [2, "Jisakasu", "〒900-0013 沖縄県那覇市牧志３丁目４−6", "", "雜貨舖", "4.6", "ChIJaypx9nBp5TQR5ClzewSUSNs", 26.21337, 127.68917, 0.19, "那霸（市區）", "選物採買"], [2, "NÜCHI by WPÜ", "〒900-0013 沖縄県那覇市牧志３丁目３−4 SYMBA BASE 2階", "沖繩在地食材與烈酒相遇，誕生出 NÜCHI 的招牌調酒。島嶼蘊藏的甘甜、草本植物的力量，以及市集裡洋溢的豐盈活力，在杯中交融出千變萬化的風味。", "酒吧", "4.9", "ChIJtVDgWK5p5TQRBsKz6qWrJ_U", 26.21478, 127.68879, 0.27, "那霸（市區）", "微醺酒館,風景名勝"], [2, "焼肉ホルモン 萬たく", "〒900-0013 沖縄県那覇市牧志３丁目３−20", "房東推薦", "日式燒肉餐廳", "4.4", "ChIJCSQh4cVp5TQRitDuQRZawYk", 26.2135, 127.6891, 0.19, "那霸（市區）", "正餐美食"], [2, "Wayobu Yoshi", "〒902-0065 沖縄県那覇市壺屋１丁目１８−34", "房東推薦", "葡萄酒吧", "4.4", "ChIJqwnw8JNp5TQRm9u0EJ8SXQY", 26.2114, 127.69141, 0.42, "那霸（市區）", "微醺酒館"], [2, "Arakoya", "〒902-0067 沖縄県那覇市安里388-10", "房東推薦", "居酒屋 / 酒吧 / 酒吧牛排館 / 內臟燒肉餐廳 / 日式串燒餐廳", "4.2", "ChIJc8XjJmRp5TQRhPr3yg0EXKE", 26.21574, 127.69709, 1.02, "那霸（市區）", "微醺酒館,正餐美食"], [2, "Benriya Iurorin", "〒902-0067 沖縄県那覇市安里388-1", "房東推薦", "餃子店 / 日本地方料理餐廳", "4.2", "ChIJjfC4AWRp5TQRVIig3P2Dq_k", 26.21721, 127.69713, 1.09, "那霸（市區）", "正餐美食"], [2, "星巴克 那霸國際通牧志店", "〒900-0013 沖縄県那覇市牧志２丁目１−1 プランタビル", "", "咖啡店", "4.2", "ChIJTX8iQnpp5TQRNAcyW3-C2Xo", 26.21643, 127.68824, 0.43, "那霸（市區）", "咖啡甜點"], [2, "Good Day Coffee", "〒904-0112 沖縄県中頭郡北谷町浜川178-1 S-289", "房東推薦", "咖啡店 / 早餐店", "4.6", "ChIJGZ8k36AT5TQR2dM4RoWpl1g", 26.3294, 127.74928, 14.37, "中部（北谷・沖繩市）", "咖啡甜點"], [2, "Kaiyo Diner", "〒901-0235 沖縄県豊見城市名嘉地192-10", "房東推薦", "食堂與定食餐廳 / 日本地方料理餐廳 / 餐廳", "4.2", "ChIJzedZ_0No5TQRNNOFa04P7sg", 26.17667, 127.66556, 4.56, "南部（糸滿・豐見城）", "正餐美食"], [2, "パーラー小やじ", "〒900-0014 沖縄県那覇市松尾２丁目１１−8", "房東推薦", "居酒屋", "4.4", "ChIJLavxvXBp5TQRCIcrtH6CYI0", 26.21428, 127.68783, 0.18, "那霸（市區）", "微醺酒館,正餐美食"], [2, "Sennichi", "〒900-0033 沖縄県那覇市久米１丁目７−14", "房東推薦：「沖繩善哉」（沖縄ぜんざい）指的是一種鋪在剉冰底下的冰涼甜豆甜點", "咖啡店 / 甜點餐廳", "4.4", "ChIJi0BY_Zpp5TQRvUVAd8a6BK8", 26.2177, 127.67322, 1.53, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "イタリア食堂ha-na", "〒900-0014 沖縄県那覇市松尾２丁目６−12 大川ビル", "房東推薦", "意大利餐廳", "4.6", "ChIJEyO9s3Bp5TQRNyE0empaNMo", 26.21462, 127.68676, 0.23, "那霸（市區）", "正餐美食"], [2, "Ameiro Shokudo", "〒900-0022 沖縄県那覇市樋川１丁目３−7", "房東推薦：古宅食堂", "食堂與定食餐廳", "4.5", "ChIJkaqXXXFp5TQRT5oGdQmbem8", 26.2106, 127.6878, 0.23, "那霸（市區）", "正餐美食"], [2, "Yappari Steak Kosetsu Ichiba", "〒900-0014 沖縄県那覇市松尾２丁目８−46", "房東推薦：牛排", "牛排館", "4.2", "ChIJ4bVsrnBp5TQR7IapzdD90-w", 26.21492, 127.68694, 0.26, "那霸（市區）", "正餐美食"], [2, "chillri", "〒900-0013 沖縄県那覇市牧志３丁目３−14", "房東推薦：冷面", "居酒屋", "4.4", "ChIJ6am9iXBp5TQR7lgT48r67_E", 26.21395, 127.68909, 0.22, "那霸（市區）", "微醺酒館,正餐美食"], [2, "Aka Tonbo", "〒900-0014 沖縄県那覇市松尾２丁目２１−16", "房東推薦：塔可、塔可飯", "墨西哥夾餅餐廳", "4.3", "ChIJUcz4_HBp5TQRkrBqE1HL0hM", 26.21254, 127.68875, 0.13, "那霸（市區）", "正餐美食"], [2, "Inaka Kosetsuichiba Minami-ten", "〒900-0014 沖縄県那覇市松尾２丁目１０−20", "房東推薦：便宜的沖繩麵", "麵店", "4.4", "ChIJ-bB2knBp5TQRks8qgOY_VfE", 26.21399, 127.68846, 0.18, "那霸（市區）", "正餐美食"], [2, "Nuchigafu", "〒902-0065 沖縄県那覇市壺屋１丁目２８−3", "房東推薦，古民家食堂\n有沖繩麵", "日本地方料理餐廳", "4.5", "ChIJcSlg7G9p5TQR0kV9LiX1lOY", 26.21272, 127.69298, 0.55, "那霸（市區）", "正餐美食"], [2, "BACAR OKINAWA", "〒900-0015 沖縄県那覇市久茂地３丁目１６−15", "房東推薦pizza", "薄餅餐廳 / 意大利餐廳 / 餐廳 / 西班牙餐廳", "4.2", "ChIJtdXi5ndp5TQRuxFzvOjvZfc", 26.21598, 127.68168, 0.69, "那霸（市區）", "正餐美食"], [2, "Mazemen Mahoroba", "〒900-0013 沖縄県那覇市牧志１丁目３−34 シティーパル K", "房東推薦拌麵店", "拉麵店 / 麵店", "4.5", "ChIJKU4G4Xlp5TQR9Ajrrw9n3Ns", 26.21764, 127.68721, 0.56, "那霸（市區）", "正餐美食"], [2, "petite rue", "〒900-0014 沖縄県那覇市松尾２丁目１７−32 弥栄ビル１階", "房東推薦", "法國餐廳 / 餐廳", "4.7", "ChIJeyRtknBp5TQRMjhE1ztS38s", 26.21126, 127.68656, 0.18, "那霸（市區）", "正餐美食"], [2, "Faidama", "〒900-0014 沖縄県那覇市松尾２丁目１２−14", "房東推薦\n使用在地食材", "食堂與定食餐廳", "4.6", "ChIJq6o6z3Bp5TQRmELUw8ThAgo", 26.2137, 127.68724, 0.12, "那霸（市區）", "正餐美食"], [2, "Kotori Yakigashiten", "〒900-0022 沖縄県那覇市樋川１丁目２８−16", "", "甜點烘焙坊", "4.5", "ChIJVRd5QXJp5TQRDSru_Ivu750", 26.2078, 127.69043, 0.61, "那霸（市區）", "咖啡甜點"], [2, "國際通屋台村（夜市）", "〒900-0013 沖縄県那覇市牧志３丁目１１−17", "", "美食廣場 / 夜市 / 餐廳", "4.0", "ChIJp_frzRdp5TQRM21nQKlERjg", 26.2167, 127.69048, 0.54, "那霸（市區）", "正餐美食"], [2, "麥當勞 國際通牧志店", "〒900-0013 沖縄県那覇市牧志２丁目３−1", "", "速食店 / 咖啡店 / 自助餐廳 / 漢堡包餐廳 / 餐廳", "3.9", "ChIJb30iVnpp5TQRuLN8XIhsSP0", 26.21681, 127.68921, 0.49, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "MIMURI", "〒900-0014 沖縄県那覇市松尾２丁目１７−7", "", "雜貨舖 / 包包店", "4.4", "ChIJNRw7ynBp5TQRuoQVWuJMFns", 26.21208, 127.68721, 0.07, "那霸（市區）", "選物採買"], [2, "鮨沼", "〒900-0014 沖縄県那覇市松尾２丁目２３−7 神元ビル 1階", "", "壽司店", "3.8", "ChIJrQukOHFp5TQRcfv6yhDGkDg", 26.21214, 127.68859, 0.13, "那霸（市區）", "在地探索"], [2, "miyagiya ON THE CORNER", "〒900-0014 沖縄県那覇市松尾２丁目１９−39", "", "陶器專賣店 / 時裝店 / 商店", "4.0", "ChIJ--Op13Bp5TQRLo6JwaGSH2I", 26.21299, 127.68722, 0.05, "那霸（市區）", "選物採買"], [2, "波の上 あさとん食堂", "〒900-0036 沖縄県那覇市西３丁目１３−1 １F", "", "早餐店", "4.5", "ChIJ3TOR9ihp5TQRw2oUxY_Ba3w", 26.21809, 127.66827, 2.01, "那霸（市區）", "正餐美食"], [2, "デリカテッセントランク 小禄店", "〒901-0154 沖縄県那覇市赤嶺１丁目1-3 Mitano, 1F", "", "熟食店", "4.4", "ChIJC6vKfbtp5TQRNEIzby0KpKQ", 26.19417, 127.66467, 3.07, "那霸（市區）", "在地探索"], [2, "Delicatessen Trunq Appletown", "〒900-0006 沖縄県那覇市おもろまち３丁目３−1 1F", "", "熟食店", "4.0", "ChIJDSNc6lZr5TQRL0aE9JHg34w", 26.22831, 127.69195, 1.8, "那霸（市區）", "在地探索"], [2, "Men-dokoro Teianda", "〒900-0005 沖縄県那覇市天久１丁目６−10", "每日製作麵條", "麵店 / 日本餐廳", "4.3", "ChIJXSqsvtBr5TQRj3kXDX0HPdY", 26.23032, 127.69084, 1.99, "那霸（市區）", "正餐美食"], [2, "Okinawa Sona Nankuru", "〒904-0004 沖縄県沖縄市中央１丁目２−3 神里ビル", "", "麵店 / 日本地方料理餐廳 / 拉麵店 / 蕎麥麵店", "4.5", "ChIJH59KIw8T5TQRyjTohl0L1Uw", 26.33603, 127.80027, 17.74, "中部（北谷・沖繩市）", "正餐美食"], [2, "Ryukyu Obanzai Tsukaya", "〒900-0014 沖縄県那覇市松尾２丁目２４−8", "有中文菜單，小份九宮格", "京都料理餐廳 / 居酒屋 / 日本地方料理餐廳 / 餐廳", "4.8", "ChIJH4PoDG9p5TQR95cLRR7bl9U", 26.21235, 127.68895, 0.15, "那霸（市區）", "微醺酒館,正餐美食,風景名勝"], [2, "Mochi-no-mise Yamaya", "〒900-0013 沖縄県那覇市牧志３丁目１−1", "麻糬店", "日式糖果店", "4.6", "ChIJsYRucXpp5TQRDEsF0Iag3XA", 26.21536, 127.68829, 0.31, "那霸（市區）", "在地探索"], [2, "武村松月堂", "〒903-0805 沖縄県那覇市首里鳥堀町１丁目16", "", "日式糖果店", "4.8", "ChIJi9ncb_9r5TQRxZAzKzgLDUo", 26.21763, 127.72304, 3.59, "那霸（首里）", "在地探索"], [2, "Jimmy’s", "〒901-0155 沖縄県那覇市金城５丁目１０−2 イオン那覇ショッピングセンタ 1F", "", "甜點烘焙坊 / 烘焙坊", "4.2", "ChIJUWwn6jFp5TQRXHpjQlSQSWc", 26.19683, 127.66596, 2.77, "那霸（市區）", "咖啡甜點"], [2, "松原屋製菓", "〒900-0014 沖縄県那覇市松尾２丁目９−9", "老字號甜點店", "糖果甜點烘焙坊", "4.2", "ChIJb-gPdnpp5TQRRuDFTMcOBvo", 26.21511, 127.68825, 0.28, "那霸（市區）", "咖啡甜點"], [2, "福木屋", "〒900-0015 沖縄県那覇市久茂地３丁目２９−67", "年輪蛋糕", "甜點烘焙坊 / 糖果甜點烘焙坊 / 紀念品商店 / 婚禮紀念品店", "4.4", "ChIJXRK_Cndp5TQRvm2gsH-g5y0", 26.21505, 127.68397, 0.44, "那霸（市區）", "咖啡甜點,選物採買"], [2, "幸福鬆餅(沖繩店)", "〒901-0233 沖縄県豊見城市瀬長174-6 ウミカジテラス 32", "", "鬆餅店 / 咖啡店 / 甜點餐廳", "4.2", "ChIJu33UTx5o5TQRr_m1K0nL9LQ", 26.17652, 127.64057, 6.17, "南部（糸滿・豐見城）", "咖啡甜點,正餐美食"], [2, "ヴェントットフルッタ", "〒900-0015 沖縄県那覇市久茂地２丁目１６−8 VENTOTTO NAHA 8F", "桃子冰", "咖啡店 / 甜點餐廳 / 甜點店", "4.0", "ChIJU7b0KeVp5TQRxYltUv13-Qs", 26.21874, 127.68214, 0.86, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "HUU'S COFFEE", "〒900-0013 沖縄県那覇市牧志２丁目５−23", "", "咖啡店 / 早午餐餐廳 / 自助餐廳 / 餐廳 / 旅遊景點", "4.7", "ChIJQzicCutp5TQR-wawdeYJLW8", 26.2181, 127.68996, 0.65, "那霸（市區）", "咖啡甜點,正餐美食,風景名勝"], [2, "Lawson 那霸Harbour View通店", "〒900-0021 沖縄県那覇市泉崎１丁目３−1 シティハイツ泉崎", "", "便利商店 / 櫃員機", "3.8", "ChIJR0NgT55p5TQRFnTSLWWqsSw", 26.21078, 127.67945, 0.83, "那霸（市區）", "選物採買"], [2, "Lawson 國際通松尾店", "〒900-0014 沖縄県那覇市松尾２丁目５−1 松尾'124\"区Bld' 1階", "", "便利商店", "4.1", "ChIJgzQqCndp5TQR3ylA3xgBwig", 26.21495, 127.68508, 0.35, "那霸（市區）", "選物採買"], [2, "Ikutouen", "〒902-0065 沖縄県那覇市壺屋１丁目２２−33", "", "陶器專賣店 / 手工藝品 / 紀念品商店", "4.5", "ChIJIb6K529p5TQRvzDFkPYlLTg", 26.21253, 127.69244, 0.5, "那霸（市區）", "選物採買"], [2, "Tou Yokariyo", "〒902-0065 沖縄県那覇市壺屋１丁目４−4", "", "陶器專賣店", "4.4", "ChIJW1gcSXBp5TQRsQVtbkAN2Sw", 26.21238, 127.69032, 0.29, "那霸（市區）", "選物採買"], [2, "Natural food and snack mana", "〒902-0065 沖縄県那覇市壺屋１丁目６−9", "", "健康食品餐廳 / 咖啡店", "4.6", "ChIJ___bQnBp5TQR2GIEnfJEUTE", 26.21302, 127.68987, 0.24, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "La Boulangerie Le Prêt À Porter", "〒900-0022 沖縄県那覇市樋川２丁目２−5", "", "烘焙坊", "4.7", "ChIJWwh_3hZp5TQRfF9tHTRwNcI", 26.21148, 127.68941, 0.23, "那霸（市區）", "咖啡甜點"], [2, "modica", "〒901-1515 沖縄県南城市 沖縄県南城市知念山里137-3MSY102", "", "咖啡店", "4.7", "ChIJYbGb8vkP5TQR9nm96703Wyc", 26.15774, 127.80601, 13.31, "南部（南城・八重瀨）", "咖啡甜點"], [2, "cafe_lush〜海の家〜沖縄南城市店", "〒901-1515 沖縄県南城市知念山里137 3MSYビル 101", "", "咖啡店 / 輕食吧", "4.7", "ChIJe3KC_BNv5TQRvYqvCUyXcJY", 26.15773, 127.80615, 13.32, "南部（南城・八重瀨）", "咖啡甜點,風景名勝"], [2, "Not Only Cafe Okinawa", "〒901-0603 沖縄県南城市玉城百名963-3", "", "咖啡店", "4.9", "ChIJm6Fjxb1v5TQR2NRxLvBgXs0", 26.13811, 127.79191, 13.32, "南部（南城・八重瀨）", "咖啡甜點"], [2, "小さなキッチン Repos ルポ ( ポーポー屋 )", "〒901-0605 沖縄県南城市玉城中山157番地", "", "餐廳 / 甜點餐廳", "4.5", "ChIJsxj1Qelv5TQRHxVUIEH8RyU", 26.13981, 127.7772, 12.07, "南部（南城・八重瀨）", "咖啡甜點,正餐美食"], [2, "和美茶味 wabisabi", "〒903-0807 沖縄県那覇市首里久場川町２丁目149", "", "和菓子餐廳", "4.4", "ChIJB7qsZpdr5TQRb9GWuNt1HfQ", 26.22255, 127.72752, 4.14, "那霸（首里）", "正餐美食"], [2, "egg me time.", "〒901-0235 沖縄県豊見城市名嘉地169-1 上原ビル 101", "", "日式西餐廳 / 咖啡店 / 甜點店 / 親子餐廳 / 甜點烘焙坊 / 輕食吧 / 西餐廳", "4.5", "ChIJFcbvSklp5TQR-0DhonhZ2-E", 26.17628, 127.66571, 4.59, "南部（糸滿・豐見城）", "咖啡甜點,正餐美食"], [2, "Yakizen", "〒900-0013 沖縄県那覇市牧志１丁目１６−10", "", "日式烤雞串餐廳", "4.7", "ChIJ-x0Qrnlp5TQR27HtS-xbn98", 26.2182, 127.68425, 0.7, "那霸（市區）", "正餐美食"], [2, "Buchi Kumojiten", "〒900-0015 沖縄県那覇市久茂地３丁目１２−1", "", "日式燒肉餐廳 / 葷食餐廳", "4.6", "ChIJzcnA2ndp5TQRRkXi5c02uKk", 26.21513, 127.68159, 0.65, "那霸（市區）", "正餐美食"], [2, "OKINAWA VINTAGE", "〒900-0014 沖縄県那覇市松尾２丁目２２−20", "", "時裝店", "4.2", "ChIJO2NcuqJp5TQRuHqdsVoKobM", 26.21253, 127.68855, 0.11, "那霸（市區）", "選物採買"], [2, "New Local Convenience Store", "〒900-0014 沖縄県那覇市松尾２丁目１９−32", "", "便利商店 / 日本熟食店 / 紀念品商店 / 商店", "4.4", "ChIJM20U4eVp5TQRsQMuras92Qo", 26.21256, 127.68737, 0.01, "那霸（市區）", "選物採買"], [2, "牛そば焼肉しんちゃん", "〒902-0064 沖縄県那覇市寄宮155", "", "日式燒肉餐廳", "3.9", "ChIJ_Y0Djx9p5TQRo6sZJIVDb2I", 26.20561, 127.69819, 1.33, "那霸（市區）", "正餐美食"], [2, "沖繩縣立博物館・美術館", "〒900-0006 沖縄県那覇市おもろまち３丁目１−1", "", "博物館 / 畫廊 / 藝術博物館 / 會議中心 / 展品 / 展覽場地 / 旅遊景點", "4.3", "ChIJ-xOPl9lr5TQRH8VoYFpeKl4", 26.22731, 127.69385, 1.75, "那霸（市區）", "風景名勝"], [2, "Hawaiian Pancake Cafe KOA Itoman", "〒901-0364 沖縄県糸満市潮崎町４丁目28−20 ここパンチ 202", "", "鬆餅店 / 早餐店 / 早午餐餐廳 / 咖啡店 / 夏威夷餐廳 / 餐廳 / 海鮮餐廳 / 西餐廳", "4.4", "ChIJFfjbzqNn5TQRfVryJfQ2GJM", 26.11783, 127.66255, 10.83, "南部（糸滿・豐見城）", "咖啡甜點,正餐美食"], [2, "さしきそば", "〒901-1403 沖縄県南城市佐敷佐敷 42番地", "", "麵店", "4.5", "ChIJgT_ZAABv5TQRVGrCfjPSbEY", 26.1676, 127.78734, 11.15, "南部（南城・八重瀨）", "正餐美食"], [2, "Yuimaru Okinawa Store", "〒901-1104 沖縄県島尻郡南風原町宮平652", "", "手工藝品 / 陶瓷用品店 / 瓦斯店 / 雜貨舖", "4.2", "ChIJgxJjwrBu5TQRDuaVluhfJMI", 26.19765, 127.73256, 4.8, "南部（南城・八重瀨）", "選物採買"], [2, "Ryukyu Okinawa Honten", "〒902-0067 沖縄県那覇市安里388-5", "", "牛排館 / 肉檔 / 親子餐廳 / 居酒屋 / 日本餐廳 / 日式牛排館 / 葷食餐廳 / 現代居酒屋 / 餐廳 / 商店", "4.8", "ChIJ_VC3XgBp5TQR9I1CKznZN4o", 26.21711, 127.6969, 1.06, "那霸（市區）", "微醺酒館,正餐美食,選物採買"], [2, "Sumanumeh", "〒902-0075 沖縄県那覇市国場40-1", "", "麵店 / 日本餐廳", "4.3", "ChIJuazCHD5p5TQRSpe2KGqH5ug", 26.19626, 127.7027, 2.37, "那霸（市區）", "正餐美食"], [2, "南星莎布翁", "〒900-0013 沖縄県那覇市牧志１丁目３−50", "", "甜點餐廳", "4.2", "ChIJpWJ_Vidp5TQRcRKpc_2Z9iA", 26.21603, 127.68774, 0.38, "那霸（市區）", "咖啡甜點,正餐美食"], [2, "浜屋沖繩麵", "〒904-0113 沖縄県中頭郡北谷町宮城2-99", "愛紗推薦", "麵店", "4.4", "ChIJSU_M758T5TQRco9AYbl0Kac", 26.32931, 127.74432, 14.16, "中部（北谷・沖繩市）", "正餐美食"], [2, "山城用品 ※店頭での人間人形製作は現在やっておりません。今後の人間人形製作については、プリッキー山田 インスタグラムなどでお知らせします", "〒900-0013 沖縄県那覇市牧志３丁目５−11", "", "雜貨舖", "4.9", "ChIJv8GB50dp5TQRLF1GwsGsyZ4", 26.21356, 127.68935, 0.21, "那霸（市區）", "選物採買,風景名勝"], [2, "糸滿漁民食堂", "〒901-0306 沖縄県糸満市西崎町４丁目１７−7", "", "海鮮餐廳 / 食堂與定食餐廳 / 餐廳", "4.4", "ChIJUwQkx-ln5TQRQNaPMZS9J-c", 26.1393, 127.65991, 8.61, "南部（糸滿・豐見城）", "正餐美食"], [2, "福助玉子燒", "〒900-0014 沖縄県那覇市松尾２丁目９−11", "", "外帶餐廳 / 早餐店 / 早午餐餐廳 / 速食店 / 日本地方料理餐廳 / 輕食吧", "4.5", "ChIJBVNM3OVp5TQRvoIOwqaX8RU", 26.21503, 127.68831, 0.28, "那霸（市區）", "正餐美食"], [2, "yamayan TABLE", "〒904-0113 沖縄県中頭郡北谷町宮城2-82", "", "餐廳 / 咖啡店", "4.6", "ChIJR4kcKeIT5TQRKRIKXxm45Xg", 26.3296, 127.74489, 14.21, "中部（北谷・沖繩市）", "咖啡甜點,正餐美食"], [2, "Tonton Jacky Pork", "〒900-0033 沖縄県那覇市久米２丁目９−11 Abc久米ビル ２階", "", "日式炸豬排店", "4.3", "ChIJB0Zz8Ztp5TQRMAiMJxfkgaA", 26.21486, 127.67543, 1.23, "那霸（市區）", "正餐美食"], [2, "珀塔瑪 那霸機場國內線到達大廳店", "〒901-0142 沖縄県那覇市鏡水150 1F", "", "早餐店 / 速食店 / 外帶餐廳", "4.1", "ChIJxekpmbdp5TQRSqyFdGKMUJc", 26.20656, 127.6508, 3.72, "那霸（市區）", "正餐美食,交通與應變"], [2, "George Restaurant", "Matsufuji, ２丁目-１-9 辻 那覇市 沖縄県 900-0037", "", "美式餐廳 / 薄餅餐廳 / 餐廳 / 墨西哥夾餅餐廳", "4.3", "ChIJkxStYJpp5TQR4_kbVKBenc8", 26.21725, 127.67189, 1.64, "那霸（市區）", "正餐美食"]];
+
+    // ==================== 2. 狀態管理與預設資料 ====================
+    const STORAGE_KEY = 'okinawa_2026_tzh_v2';
+
+    const DEFAULT_BANNERS = {
+      1: '<b>10/22 (週四) 交通模式：單軌電車 (Yui Rail) ＋ 漫步</b><br>那霸機場國內線航廈 2F 連通道搭乘單軌電車至「牧志站」或「美榮橋站」（車程約 16 分鐘，可刷 Suica 或信用卡感應進站），步行約 8 分鐘抵達 ON THE SAME HOTEL。',
+      2: '<b>10/23 (週五) 交通模式：單軌電車 ＋ 公車 / 計程車</b><br>白天可從牧志站搭單軌電車直達「首里站」散步喝咖啡；傍晚返回「安里站」走進榮町市場與壺屋通小酌。',
+      3: '<b>10/24 (週六) 交通模式：ORBIT RENT A CAR 租車自駕日</b><br>住處步行 2 分鐘（140m）即達松尾二丁目的 ORBIT RENT A CAR 取車。請務必攜帶：<b>1. 台灣駕照正本、2. 日文譯本、3. 護照</b>。點選下方各景點的「車機導航卡」可查看電話與座標。',
+      4: '<b>10/25 (週日) 交通模式：單軌電車 ＋ 步行採買</b><br>把握最後半天在松尾、浮島通或新都心 San-A 採買伴手禮。NU0307 班機 17:55 起飛，建議 <b>15:15 前</b> 搭單軌電車返回那霸機場國際線航廈報到。'
+    };
+
+    const DEFAULT_ITINERARY = {
+      1: [
+        { time: '10:05', title: '搭乘 JTA 日本越洋航空 NU0302 起飛', cat: '航班交通', addr: '桃園國際機場 (TPE) → 那霸機場 (OKA) 12:40 抵達', pid: 'ChIJjSyLjsRp5TQRkP5WN6rOTFA', note: '預定 12:40 抵達那霸機場。入境後可搭乘單軌電車前往市區。' },
+        { time: '14:00', title: 'ON THE SAME HOTEL 寄放行李 / 入住', cat: '核心住宿', addr: '〒900-0014 沖縄県那覇市松尾２丁目１９−28', pid: 'ChIJhwJPV4Jp5TQRLsNITjiDb_c', note: '位於浮島通旁，下樓轉角就是咖啡館與選物小店。' },
+        { time: '14:30', title: '沖繩麵 EIBUN 或 第一牧志公設市場 燕食堂', cat: '在地午餐', addr: '〒902-0065 沖縄県那覇市壺屋１丁目５−14', pid: 'ChIJ_Ty9RXBp5TQRfJ_DPaea3TM', note: '距離住處僅 260m，品嚐炙燒軟骨豬肉新派沖繩麵（若人多可改去 230m 外的 STAND EIBUN 或公設市場二樓燕食堂）。' },
+        { time: '16:00', title: 'Tamagusuku Coffee Roasters 淺焙手沖', cat: '午後咖啡', addr: '〒900-0014 沖縄県那覇市松尾２丁目１９−39 202', pid: 'ChIJq6q623Bp5TQRyBCEGsY59Cg', note: '就在飯店隔壁 60m 二樓的自家烘焙咖啡館，果酸明亮乾淨。' },
+        { time: '17:30', title: 'Ukishima Brewing 浮島精釀啤酒吧', cat: '傍晚開胃', addr: '〒900-0013 沖縄県那覇市牧志３丁目３−1 水上店舗 3F', pid: 'ChIJs43e5hpp5TQR_ZLpsAh3gbA', note: '戰後水上店舖三樓，先點一杯久高島小麥啤酒或浮島 IPA 開啟假期。' },
+        { time: '19:30', title: '晚餐：食彩酒房 まつもと（阿古豬涮涮鍋）或 Torijin Naha', cat: '預約晚餐', addr: '〒900-0032 沖縄県那覇市松山１丁目１０−8', pid: 'ChIJtRK75pxp5TQRty_qbX90rZg', note: '品嚐特選阿古豬涮涮鍋，或留在松尾吃炭火燒鳥配自然酒（Torijin Naha 距飯店 200m）。' }
+      ],
+      2: [
+        { time: '09:00', title: 'C&C Breakfast 舒芙蕾鬆餅 或 豬肉蛋飯糰', cat: '晨間早餐', addr: '〒900-0014 沖縄県那覇市松尾２丁目９−6', pid: 'ChIJZbS5n3Bp5TQRSvpeQ4AMABM', note: '房東推薦 C&C 鬆餅（距住處 270m），或外帶牧志市場總店的炸苦瓜豬肉蛋飯糰。' },
+        { time: '10:30', title: '搭單軌前往首里：Yamashita Coffee / papoter pepin', cat: '首里散步', addr: '〒903-0812 沖縄県那覇市首里当蔵町２丁目14', pid: 'ChIJmRbt7Flr5TQRZNEI-BUpqGU', note: '漫步首里當藏町與赤田町，造訪自然酒咖啡烘焙坊 papoter pepin、TOUCA BAKE SHOP 與首里精釀 Wolfbrau。' },
+        { time: '13:00', title: '首里茶房 美里うどぅん 或 茶屋首里とうふ', cat: '首里午餐', addr: '〒903-0812 沖縄県那覇市首里当蔵町２丁目13', pid: 'ChIJE6IP2VBr5TQRC_yZGfb3teU', note: '在首里古宅空間裡享用島料理與手工豆腐甜點。' },
+        { time: '15:30', title: '壺屋やちむん通り ＆ Garb Domingo 選物', cat: '工藝散步', addr: '〒902-0065 沖縄県那覇市壺屋１丁目６−3', pid: 'ChIJHy0BXXBp5TQRq-f4EMISW28', note: '逛百年石疊路陶藝街，在 UCHINA CAFÉ BUKU-BUKU 喝碗琉球宮廷福福茶，到櫻坂劇場ふくら舎挑陶器。' },
+        { time: '19:00', title: '安里榮町市場夜遊：Refuge / Urizun（うりずん）', cat: '微醺之夜', addr: '〒902-0067 沖縄県那覇市安里388-10', pid: 'ChIJm2TuJmRp5TQRxnbhqb3C3N8', note: '在榮町市場感受昭和老街魅力，去 Refuge 喝自然酒配法式小菜，或到 Urizun 品嚐琉球宮廷料理與甕藏古酒。' },
+        { time: '22:00', title: 'Oni no Ude（オニノウデ）深夜古酒酒吧', cat: '深夜收尾', addr: '〒902-0065 沖縄県那覇市壺屋１丁目７−13', pid: 'ChIJibDKt55p5TQRDQmhA4CNR8o', note: '距離飯店僅 290m，以名家やちむん陶杯細品陳年泡盛，喝完散步 3 分鐘回房。' }
+      ],
+      4: [
+        { time: '09:30', title: 'Soytobio 烘焙坊 ＋ rokkan COFFEE CREATORS', cat: '晨間咖啡', addr: '〒900-0022 沖縄県那覇市樋川１丁目２９−9', pid: 'ChIJ1xMZ4tZp5TQRHkKLBBQOPys', note: '散步至樋川農連市場旁的 rokkan 喝杯精品手沖，順道去 Atelier Qucchane 看陶器。' },
+        { time: '11:30', title: '波上宮參拜 ＆ 樂園百貨店（琉貿百貨 2F）', cat: '名勝採買', addr: '〒900-8503 沖縄県那覇市久茂地１丁目１−1', pid: 'ChIJAU9dv51p5TQRY1OpPxIEG18', note: '前往斷崖上的波上宮求紅型御守，隨後至縣廳前琉貿百貨 B1 超市與 2F 樂園百貨店做最後伴手禮採買。' },
+        { time: '13:15', title: '午餐：肉屋 ししや 鐵板石垣牛 或 とんかつ小やじ', cat: '告別午餐', addr: '〒900-0013 沖縄県那覇市牧志３丁目１−1', pid: 'ChIJsYRucXpp5TQRtxxLypc1iBA', note: '回松尾拿行李前，在市場旁享用現煎石垣牛或炸豬排。' },
+        { time: '15:15', title: '搭單軌電車前往那霸機場國際線航廈', cat: '機場報到', addr: '〒901-0142 沖縄県那覇市鏡水150', pid: 'ChIJjSyLjsRp5TQRkP5WN6rOTFA', note: '辦理登機與託運，完成最後免稅品採購與旅伴分帳結算。' },
+        { time: '17:55', title: '搭乘 JTA 日本越洋航空 NU0307 返台', cat: '航班賦歸', addr: '那霸機場 (OKA) → 桃園國際機場 (TPE) 18:40 抵達', pid: 'ChIJjSyLjsRp5TQRkP5WN6rOTFA', note: '預計台灣時間 18:40 抵達桃園機場，平安返家。' }
+      ]
+    };
+
+    const SAT_ROUTES = {
+      south: [
+        { time: '09:00', title: 'ORBIT RENT A CAR 取車出發', cat: '租車自駕', addr: '〒900-0014 沖縄県那覇市松尾２丁目１７−28', pid: 'ChIJATMTpV5p5TQRCBUs2zd3-co', note: '檢查車況並拍下四面車身照片留存，設定車機導航往南城市出發。' },
+        { time: '10:00', title: 'Doucatty 手工染色工坊（JAL 推薦）', cat: '工藝選物', addr: '〒901-1412 沖縄県南城市佐敷新里740-1', pid: 'ChIJq6q3WVpu5TQRBBqalDiisgc', note: '香蕉田圍繞的夫妻染織工坊，挑選繪有月桃果實與鸚哥魚的手巾與織品。' },
+        { time: '11:30', title: '屋宜家（有形文化財紅瓦古民家沖繩麵）', cat: '古宅午餐', addr: '〒901-0502 沖縄県島尻郡八重瀬町大頓1172', pid: 'ChIJg9-Sqvdl5TQR6xsCVPXIKyA', note: 'JAL 推薦，在登錄有形文化財的百年紅瓦古宅內，品嚐揉入翠綠海藻（Asa）的招牌海藻沖繩麵。' },
+        { time: '13:30', title: '新原沙灘 ＆ 山之茶屋・樂水 / 中本天婦羅店', cat: '看海午茶', addr: '〒901-0603 沖縄県南城市玉城百名1599-6', pid: 'ChIJVXBnnepv5TQRdDAwNwK8kVg', note: '漫步新原沙灘看玻璃船，接著到懸崖木造茶屋「樂水」看海，或繞去奧武島吃中本天婦羅。' },
+        { time: '15:30', title: '知念岬公園 ＆ 南城市地域物產館', cat: '海岬風景', addr: '〒901-1511 沖縄県南城市知念久手堅', pid: 'ChIJGRP4dcBx5TQR2fy_PziIymI', note: '270 度太平洋與久高島海景視野，海風遼闊。' },
+        { time: '17:00', title: '糸滿漁民食堂 / 糸滿魚市場 ＋ Hama Cafe 麥根沙士咖啡', cat: '日落晚餐', addr: '〒901-0306 沖縄県糸満市西崎町４丁目17-7', pid: 'ChIJUwQkx-ln5TQRQNaPMZS9J-c', note: '返程順遊糸滿，品嚐招牌奶油烤魚定食，或去豐見城 Kaiyo Diner（房東推薦）。' },
+        { time: '19:30', title: '返回那霸 ORBIT 還車 ＋ 久茂地燒肉或まーちぬ家', cat: '還車小酌', addr: '〒900-0014 沖縄県那覇市松尾２丁目１７−28', pid: 'ChIJATMTpV5p5TQRCBUs2zd3-co', note: '還車前先在市區加油站加滿 Regular（紅色油槍）並保留收據。還車後可放心去喝一杯。' }
+      ],
+      central: [
+        { time: '09:00', title: 'ORBIT RENT A CAR 取車北上', cat: '租車自駕', addr: '〒900-0014 沖縄県那覇市松尾２丁目１７−28', pid: 'ChIJATMTpV5p5TQRCBUs2zd3-co', note: '沿國道 58 號往北谷町方向行駛（車程約 35 分鐘）。' },
+        { time: '10:00', title: 'Good Day Coffee（房東推薦）', cat: '海岸早午餐', addr: '〒904-0112 沖縄県中頭郡北谷町浜川178-1 S-289', pid: 'ChIJGZ8k36AT5TQR2dM4RoWpl1g', note: '位於北谷砂邊海岸旁的美式風格咖啡館，外國衝浪客聚集，氣氛悠閒。' },
+        { time: '12:00', title: '浜屋沖繩麵（愛紗推薦）或 Okinawa Sona Nankuru', cat: '名店午餐', addr: '〒904-0113 沖縄県中頭郡北谷町宮城2-99', pid: 'ChIJSU_M758T5TQRco9AYbl0Kac', note: '北谷宮城海岸旁的老店，軟骨豬肉入口即化，湯頭清爽甘醇。' },
+        { time: '14:30', title: 'Genten 咖啡館 ＆ 沖繩市（Koza）美軍基地街區探索', cat: '街區文化', addr: '〒904-0033 沖縄県沖縄市山里２丁目９−31', pid: 'ChIJ8QaMQ2YS5TQR6tEhekEYlrI', note: '走進舊稱コザ（Koza）的沖繩市一番街與 Gate 2 街，感受美軍治理時期留下的搖滾樂與混血街區地景。' },
+        { time: '17:00', title: '瀬長島 幸福鬆餅 / 看飛機起降與海景日落', cat: '日落看海', addr: '〒901-0233 沖縄県豊見城市瀬長174-6', pid: 'ChIJu33UTx5o5TQRr_m1K0nL9LQ', note: '10 月下旬日落約 17:48，在瀬長島西海岸看夕陽與那霸機場班機低空掠過海面。' },
+        { time: '19:30', title: '返回那霸還車 ＋ 久茂地燒肉（疾風ホルモン / ぶち）', cat: '燒肉晚餐', addr: '〒900-0015 沖縄県那覇市久茂地２丁目６−2', pid: 'ChIJ9dJOQ51p5TQRnomb4eJaQi4', note: '加滿油還車後，步行至久茂地享用石垣牛燒肉配 Orion 生啤。' }
+      ],
+      north: [
+        { time: '08:45', title: 'ORBIT RENT A CAR 取車出發（走沖繩自動車道）', cat: '租車自駕', addr: '〒900-0014 沖縄県那覇市松尾２丁目１７−28', pid: 'ChIJATMTpV5p5TQRCBUs2zd3-co', note: '上高速公路（準備現金或 ETC）直奔恩納村與名護。' },
+        { time: '11:00', title: '恩納村：中村麵店（なかむらそば）', cat: '海景沖繩麵', addr: '〒904-0404 沖縄県国頭郡恩納村瀬良垣1669-1', pid: 'ChIJy4yaM5ED5TQRrlNV7D9MVTY', note: '清單裡北部的經典名店，面對恩納海景品嚐鋪滿翠綠海藻的招牌アーサそば。' },
+        { time: '14:00', title: '名護 21 世紀之森公園 ＆ 星巴克 あけみおてらす店', cat: '北部巡禮', addr: '〒905-0011 沖縄県名護市宮里2-2-2', pid: 'ChIJEwedMp7_5DQRd9_wa4F27iM', note: '在名護灣海風中散步喝杯咖啡，亦可順遊許田休息站買伴手禮。' },
+        { time: '16:30', title: '返程經北谷海岸看夕陽（yamayan TABLE）', cat: '海岸黃昏', addr: '〒904-0113 沖縄県中頭郡北谷町宮城2-82', pid: 'ChIJR4kcKeIT5TQRKRIKXxm45Xg', note: '沿西海岸南下，捕捉 17:48 落日餘暉。' },
+        { time: '19:30', title: '返回那霸加油還車 ＋ 島之飯 皆源（Shima no Meshi Minamoto）', cat: '割烹晚餐', addr: '〒900-0013 沖縄県那覇市牧志２丁目１３−12', pid: 'ChIJWZAamPFp5TQRjuNXvlhUQXs', note: '以沖繩割烹土鍋飯與地產精釀琴酒為自駕日收尾。' }
+      ]
+    };
+
+    const PHRASES_DATA = [
+      { cat: '點酒與飲品', zh: '請給我這家店推薦的泡盛（古酒）', jp: 'おすすめの泡盛（古酒）をください。', roma: 'Osusume no Awamori (Kusu) wo kudasai.' },
+      { cat: '點酒與飲品', zh: '請用加冰塊 / 兌水 / 純飲的方式', jp: 'ロック ／ 水割り ／ ストレート でお願いします。', roma: 'Rokku / Mizuwari / Sutore-to de onegaishimasu.' },
+      { cat: '點酒與飲品', zh: '請給我當地精釀啤酒或自然酒酒單', jp: 'クラフトビールかナチュラルワインのメニューはありますか？', roma: 'Kurafuto bi-ru ka nachuraru wain no menyu- wa arimasu ka?' },
+      { cat: '餐廳用餐', zh: '我們有 2 位（3 位），請問現在有位子嗎？', jp: '2人（3人）ですが、今入れますか？', roma: 'Futari (Sannin) desu ga, ima hairemasu ka?' },
+      { cat: '餐廳用餐', zh: '請給我日文菜單（我想看當地限定菜色）', jp: '日本語のメニューも見せていただけますか？', roma: 'Nihongo no menyu- mo misete itadakemasu ka?' },
+      { cat: '餐廳用餐', zh: '不好意思，我要結帳（請問可以刷卡嗎？）', jp: 'お会計をお願いします。（カードは使えますか？）', roma: 'Okaikei wo onegaishimasu. (Ka-do wa tsukaemasu ka?)' },
+      { cat: '週六自駕與停車', zh: '請幫我加滿 Regular（一般無鉛汽油，紅油槍）', jp: 'レギュラー満タンでお願いします。', roma: 'Regyura- mantan de onegaishimasu.' },
+      { cat: '週六自駕與停車', zh: '請問這家店有專用停車場嗎？可以停哪裡？', jp: '専用駐車場はありますか？どこに停めればいいですか？', roma: 'Senyou chuushajou wa arimasu ka?' },
+      { cat: '購物與退稅', zh: '請問這家店可以辦理免稅嗎？', jp: '免税（Tax-Free）はできますか？', roma: 'Menzei wa dekimasu ka?' },
+      { cat: '購物與退稅', zh: '這是易碎的陶器，請幫我包厚一點，謝謝', jp: '割れ物（やちむん）なので、緩衝材を多めにお願いします。', roma: 'Waremono nanode, kanshouzai wo oome ni onegaishimasu.' }
+    ];
+
+    const CLAIMS_DATA = [
+      {
+        id: 'flight',
+        title: '1. 班機延誤保險（NU0302 / NU0307）',
+        badge: '定額給付：每滿 4 小時 NT$ 6,000（單次最高 NT$ 12,000，限 2 次）',
+        desc: '預定出發時間延誤達 4 小時以上即啟動。你的保單已登錄 NU0302 與 NU0307 航班，附加「免檢附部分理賠文件條款」。',
+        items: [
+          '保留去回程「登機證正本」或電子登機證截圖（含實際搭乘班機資訊）',
+          '向航空公司櫃檯索取或於官網下載「班機延誤期間證明」（載明原定與實際起飛時間）',
+          '若因班機取消改搭替代航班，務必搭乘航空公司安排之「第一班替代交通工具」'
+        ]
+      },
+      {
+        id: 'luggage',
+        title: '2. 行李延誤 ／ 行李損失保險',
+        badge: '定額給付：抵達沖繩滿 6 小時未領得 NT$ 6,000 ／ 遺失或遭竊 NT$ 6,000',
+        desc: '注意：返回台灣機場的行李延誤不在承保範圍；單純行李箱外殼刮傷損壞不賠，需託運遺失或遭竊盜搶奪。',
+        items: [
+          '在機場行李轉盤旁向航空公司地勤申報，取得「行李延誤達 6 小時以上證明」或「PIR 行李事故報告書」',
+          '保留「託運行李領取單（行李條貼紙）」正本',
+          '若為旅途中行李遭竊或搶奪，必須在「24 小時內」向日本警察局（交番）報案並取得「報案證明」'
+        ]
+      },
+      {
+        id: 'medical',
+        title: '3. 海外突發疾病（乙型，含法定傳染病）＆ 意外傷害醫療',
+        badge: '實支實付：住院最高 NT$ 50 萬 ／ 急診 NT$ 5,000 ／ 門診 NT$ 2,500 ／ 食品中毒慰問 NT$ 6,000',
+        desc: '在沖繩因意外受傷或突發疾病就醫（不需先回台灣用健保核退，國泰按海外實際醫療費實支實付限額理賠）。',
+        items: [
+          '離開日本醫院前，務必請醫師開立「醫療診斷證明書（診断書）」正本',
+          '取得醫院開立之「醫療費用收據正本」與「費用明細表（領収書・明細書）」',
+          '若是與旅伴吃壞肚子引發腸胃炎，請醫師於診斷書註明「食品中毒（食中毒）」，可額外請領定額 NT$ 6,000 慰問金'
+        ]
+      },
+      {
+        id: 'car',
+        title: '4. 週六租車自駕：租車事故慰問 ＆ 第三人責任險',
+        badge: '定額慰問：NT$ 3,000（限 1 次）｜ 第三人體傷 120 萬 / 財損 30 萬（自負額 2,500 元）',
+        desc: '週六向 ORBIT 租車自駕時，萬一發生任何擦撞（連撞到路邊石頭或後照鏡刮傷都算），不能私下和解或直接開走。',
+        items: [
+          '第一時間撥打「110」通知日本警察到場處理，取得「交通事故證明文件」',
+          '立刻致電 ORBIT RENT A CAR 租車公司通報事故',
+          '妥善保存「租車契約書（紙本或電子）」，上面須有租車公司名、租期、車牌、車型、租車地點',
+          '拍下駕駛人「台灣駕照正本＋日文譯本」與現場車損照片'
+        ]
+      },
+      {
+        id: 'theft',
+        title: '5. 護照遺失 ／ 現金遭竊 ／ 手機被偷（24 小時報案鐵則）',
+        badge: '定額給付：旅行文件損失 NT$ 3,000 ／ 現金竊盜 NT$ 3,000 ／ 手機被竊 NT$ 3,000',
+        desc: '保單規定：護照或財物遺失遭竊，未於事故發生後「24 小時內」向日本警方報案者不予理賠；單純自己弄丟手機不賠（須為竊盜強奪）。',
+        items: [
+          '24 小時內前往最近派出所（如國際通旁的牧志交番）報案，取得載明報案日期與發生地點的「警方報案證明（受理番号）」',
+          '護照遺失：攜帶報案證明與 2 張大頭照，前往久茂地「台北駐日經濟文化代表處那霸分處」補辦入國證明書，並保留規費收據',
+          '手機被偷：除日本警方刑事報案證明外，需向台灣電信商申請「停用紀錄或掛失證明」',
+          '信用卡遭盜刷（限額 NT$ 6 萬）：立即通知發卡銀行掛失止付（承保掛失前 36 小時內盜刷損失），取得掛失證明與帳單'
+        ]
+      }
+    ];
+
+    let state = {
+      currentDay: 1,
+      satRoute: 'south',
+      customItinerary: null,
+      favorites: ['ChIJhwJPV4Jp5TQRLsNITjiDb_c', 'ChIJq6q623Bp5TQRyBCEGsY59Cg', 'ChIJs43e5hpp5TQR_ZLpsAh3gbA', 'ChIJibDKt55p5TQRDQmhA4CNR8o'],
+      sourceFilter: 'all',
+      regionFilter: 'all',
+      tagFilter: 'all',
+      fxRate: 0.215,
+      taxBasket: [],
+      members: ['子桓', '旅伴 A'],
+      expenses: [
+        { id: 1, title: 'ORBIT 週六租車預估', amount: 8500, currency: 'JPY', payer: '子桓', method: '信用卡', splitters: ['子桓', '旅伴 A'], time: '10/24 預設' }
+      ],
+      tastingNotes: [
+        { id: 1, type: '泡盛 / 古酒', rating: '5', name: '甕藏古酒 43度（範例）', shop: 'Oni no Ude / Urizun', note: '以壺屋燒陶杯品飲，初入口有黑麴特有的甘潤米香與微酸，尾韻帶有類似香草與木質的深邃甜感。', time: '行前預設筆記' }
+      ],
+      checkedClaims: {}
+    };
+
+    function escStr(s) {
+      return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ');
+    }
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state = { ...state, ...parsed };
+        }
+      } catch (e) {
+        console.warn('LocalStorage 讀取略過', e);
+      }
+      const fxInput = document.getElementById('fx-rate');
+      if (fxInput) fxInput.value = state.fxRate || 0.215;
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.warn('LocalStorage 儲存略過', e);
+      }
+    }
+
+    // ==================== 3. 頁籤與導覽控制 ====================
+    function switchTab(tabName) {
+      ['itinerary', 'places', 'flashcards', 'split', 'culture', 'sos'].forEach(t => {
+        const sec = document.getElementById('tab-' + t);
+        const nav = document.getElementById('nav-' + t);
+        if (sec) sec.classList.add('hidden');
+        if (nav) nav.classList.remove('tab-active');
+      });
+      const targetSec = document.getElementById('tab-' + tabName);
+      const targetNav = document.getElementById('nav-' + tabName);
+      if (targetSec) targetSec.classList.remove('hidden');
+      if (targetNav) targetNav.classList.add('tab-active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ==================== 4. TAB 1: 行程與交通中樞 ====================
+    function getActiveItineraryForDay(day) {
+      if (state.customItinerary && state.customItinerary[day]) {
+        return state.customItinerary[day];
+      }
+      if (day === 3) {
+        return SAT_ROUTES[state.satRoute] || SAT_ROUTES.south;
+      }
+      return DEFAULT_ITINERARY[day] || [];
+    }
+
+    function selectDay(day) {
+      state.currentDay = day;
+      saveState();
+      [1, 2, 3, 4].forEach(d => {
+        const btn = document.getElementById('day-btn-' + d);
+        if (btn) {
+          if (d === day) btn.classList.add('pill-active');
+          else btn.classList.remove('pill-active');
+        }
+      });
+
+      const satSelector = document.getElementById('sat-route-selector');
+      if (satSelector) {
+        if (day === 3) satSelector.classList.remove('hidden');
+        else satSelector.classList.add('hidden');
+      }
+
+      const banner = document.getElementById('day-transport-banner');
+      if (banner) banner.innerHTML = DEFAULT_BANNERS[day];
+      renderItinerary();
+    }
+
+    function selectSatRoute(routeKey) {
+      state.satRoute = routeKey;
+      if (state.customItinerary && state.customItinerary[3]) {
+        delete state.customItinerary[3];
+      }
+      saveState();
+      ['south', 'central', 'north'].forEach(k => {
+        const btn = document.getElementById('sat-btn-' + k);
+        if (btn) {
+          if (k === routeKey) btn.classList.add('subpill-active');
+          else btn.classList.remove('subpill-active');
+        }
+      });
+      renderItinerary();
+    }
+
+    function renderItinerary() {
+      const list = getActiveItineraryForDay(state.currentDay);
+      const container = document.getElementById('itinerary-list');
+      if (!container) return;
+      container.innerHTML = list.map((item, idx) => {
+        const gmapUrl = item.pid
+          ? 'https://www.google.com/maps/place/?q=place_id:' + item.pid
+          : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.title + ' 沖縄');
+        const safeTitle = escStr(item.title);
+        const safeAddr = escStr(item.addr);
+        return `
+          <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 relative">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center space-x-2">
+                <span class="bg-ryukyu-indigo text-white font-mono text-xs font-bold px-2.5 py-1 rounded">${item.time}</span>
+                <span class="text-[11px] font-bold text-ryukyu-terracotta bg-orange-50 px-2 py-0.5 rounded">${item.cat || '行程節點'}</span>
+              </div>
+              <button onclick="removeItineraryItem(${idx})" class="text-stone-300 hover:text-stone-500 text-xs px-1" title="刪除此節點">✕</button>
+            </div>
+            <h3 class="text-sm font-bold text-stone-900 mt-2">${item.title}</h3>
+            ${item.addr ? `<p class="text-[11px] text-stone-500 font-mono mt-0.5">${item.addr}</p>` : ''}
+            ${item.note ? `<p class="text-xs text-stone-600 mt-1.5 leading-relaxed bg-stone-50 p-2.5 rounded-lg border border-stone-100">${item.note}</p>` : ''}
+            <div class="flex flex-wrap gap-2 mt-3 pt-2 border-t border-stone-100">
+              <a href="${gmapUrl}" target="_blank" class="bg-stone-900 text-white text-[11px] font-medium px-3 py-1.5 rounded-lg">Google 導航</a>
+              <button onclick="openTaxiModal('${safeTitle}', '${safeAddr}', 'ここまでお願いします。（請載我到這個地點）')" class="border border-stone-300 text-stone-700 text-[11px] font-medium px-3 py-1.5 rounded-lg">${state.currentDay === 3 ? '車機導航 / 地址卡' : '給司機看地址卡'}</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addCustomItineraryItem() {
+      const time = document.getElementById('new-item-time').value.trim() || '12:00';
+      const title = document.getElementById('new-item-title').value.trim();
+      const note = document.getElementById('new-item-note').value.trim();
+      if (!title) return alert('請輸入地點或活動名稱');
+
+      if (!state.customItinerary) state.customItinerary = {};
+      const currentList = [...getActiveItineraryForDay(state.currentDay)];
+      currentList.push({ time, title, cat: '自訂行程', addr: '', pid: '', note });
+      currentList.sort((a, b) => a.time.localeCompare(b.time));
+      state.customItinerary[state.currentDay] = currentList;
+      saveState();
+
+      document.getElementById('new-item-time').value = '';
+      document.getElementById('new-item-title').value = '';
+      document.getElementById('new-item-note').value = '';
+      renderItinerary();
+    }
+
+    function removeItineraryItem(idx) {
+      if (!state.customItinerary) state.customItinerary = {};
+      const currentList = [...getActiveItineraryForDay(state.currentDay)];
+      currentList.splice(idx, 1);
+      state.customItinerary[state.currentDay] = currentList;
+      saveState();
+      renderItinerary();
+    }
+
+    function resetDefaultItinerary() {
+      if (confirm('確定要將本日行程還原為系統預設排程嗎？')) {
+        if (state.customItinerary) {
+          delete state.customItinerary[state.currentDay];
+        }
+        saveState();
+        renderItinerary();
+      }
+    }
+
+    function sendPlaceToItinerary(name, addr, pid, cat) {
+      const dayStr = prompt('要將「' + name + '」加入哪一天的行程？請輸入數字 1 ~ 4：\n1 = 10/22 (四)\n2 = 10/23 (五)\n3 = 10/24 (六 自駕日)\n4 = 10/25 (日)', state.currentDay);
+      const day = parseInt(dayStr, 10);
+      if (![1, 2, 3, 4].includes(day)) return;
+      const time = prompt('請輸入預計造訪時間（例如 15:30）：', '15:00') || '15:00';
+
+      if (!state.customItinerary) state.customItinerary = {};
+      const currentList = [...getActiveItineraryForDay(day)];
+      currentList.push({ time, title: name, cat: cat || '地圖隨記', addr, pid, note: '從 199 點隨記資料庫加入' });
+      currentList.sort((a, b) => a.time.localeCompare(b.time));
+      state.customItinerary[day] = currentList;
+      saveState();
+      selectDay(day);
+      switchTab('itinerary');
+    }
+
+    // ==================== 5. TAB 2: 雙地圖引擎與 199 點篩選 ====================
+    function toggleIframeMap() {
+      const box = document.getElementById('iframe-map-container');
+      const btn = document.getElementById('toggle-map-btn');
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        btn.textContent = '收合地圖';
+      } else {
+        box.classList.add('hidden');
+        btn.textContent = '展開地圖';
+      }
+    }
+
+    function setSourceFilter(val) {
+      state.sourceFilter = val;
+      ['all', 1, 2, 'fav'].forEach(k => {
+        const el = document.getElementById('src-' + k);
+        if (el) {
+          if (k === val) el.classList.add('pill-active');
+          else el.classList.remove('pill-active');
+        }
+      });
+      renderPlaces();
+    }
+
+    function setRegionFilter(val) {
+      state.regionFilter = val;
+      document.querySelectorAll('.reg-btn').forEach(btn => btn.classList.remove('subpill-active'));
+      const activeBtn = document.getElementById('reg-' + val);
+      if (activeBtn) activeBtn.classList.add('subpill-active');
+      renderPlaces();
+    }
+
+    function setTagFilter(val) {
+      state.tagFilter = val;
+      document.querySelectorAll('.tag-btn').forEach(btn => btn.classList.remove('pill-active'));
+      const activeBtn = document.getElementById('tag-' + val);
+      if (activeBtn) activeBtn.classList.add('pill-active');
+      renderPlaces();
+    }
+
+    function toggleFav(pid) {
+      const idx = state.favorites.indexOf(pid);
+      if (idx > -1) state.favorites.splice(idx, 1);
+      else state.favorites.push(pid);
+      saveState();
+      renderPlaces();
+    }
+
+    function getFilteredPlaces() {
+      const q = (document.getElementById('place-search').value || '').trim().toLowerCase();
+      const sortBy = document.getElementById('place-sort').value;
+
+      let filtered = RAW_PLACES.filter(p => {
+        const [src, name, jaddr, note, cat, rating, pid, lat, lng, dist, region, tags] = p;
+        if (state.sourceFilter === 1 && src !== 1) return false;
+        if (state.sourceFilter === 2 && src !== 2) return false;
+        if (state.sourceFilter === 'fav' && !state.favorites.includes(pid)) return false;
+
+        if (state.regionFilter === 'walk10') {
+          if (dist > 0.85) return false;
+        } else if (state.regionFilter !== 'all' && region !== state.regionFilter) {
+          return false;
+        }
+
+        if (state.tagFilter !== 'all' && !tags.includes(state.tagFilter)) {
+          return false;
+        }
+
+        if (q) {
+          const hay = (name + ' ' + jaddr + ' ' + note + ' ' + cat + ' ' + region + ' ' + tags).toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortBy === 'dist') return a[9] - b[9];
+        if (sortBy === 'rating') {
+          const ra = parseFloat(a[5]) || 0;
+          const rb = parseFloat(b[5]) || 0;
+          return rb - ra || (a[9] - b[9]);
+        }
+        if (sortBy === 'source') {
+          return a[0] - b[0] || (a[9] - b[9]);
+        }
+        return 0;
+      });
+
+      return filtered;
+    }
+
+    function renderPlaces() {
+      const filtered = getFilteredPlaces();
+      document.getElementById('places-count-label').textContent = '符合條件共 ' + filtered.length + ' 個地點（總庫 199 點）';
+
+      const container = document.getElementById('places-container');
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="bg-white rounded-xl p-8 text-center text-xs text-stone-400 border border-stone-200">找不到符合篩選條件的地點，請嘗試切換上方篩選按鈕或清空關鍵字。</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => {
+        const [src, name, jaddr, note, cat, rating, pid, lat, lng, dist, region, tags] = p;
+        const isFav = state.favorites.includes(pid);
+        const gmapUrl = pid
+          ? 'https://www.google.com/maps/place/?q=place_id:' + pid
+          : 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng;
+        const safeName = escStr(name);
+        const safeAddr = escStr(jaddr);
+        const safeCat = escStr((cat || '').split('/')[0].trim());
+        const walkMins = Math.max(1, Math.round(dist * 13));
+
+        return `
+          <div class="bg-white rounded-xl p-4 shadow-sm border ${src === 1 ? 'border-l-4 border-l-ryukyu-terracotta border-stone-200' : 'border-stone-200'} space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded ${src === 1 ? 'bg-ryukyu-terracotta text-white' : 'bg-stone-100 text-stone-600'}">${src === 1 ? '重要精選' : '好地點隨記'}</span>
+                <span class="text-[10px] font-medium bg-blue-50 text-ryukyu-indigo px-2 py-0.5 rounded">${region}</span>
+                <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">距飯店 ${dist} km ${dist <= 1.2 ? `(步行約 ${walkMins} 分)` : ''}</span>
+                ${rating ? `<span class="text-[10px] font-mono font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded">Google ${rating}</span>` : ''}
+              </div>
+              <button onclick="toggleFav('${escStr(pid)}')" class="text-xs px-2 py-0.5 rounded border ${isFav ? 'bg-amber-400 border-amber-400 text-stone-950 font-bold' : 'border-stone-200 text-stone-400'} shrink-0">
+                ${isFav ? '已收藏' : '+ 收藏'}
+              </button>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-bold text-stone-900">${name}</h3>
+              <p class="text-[11px] text-stone-500 mt-0.5">${cat}</p>
+              <p class="text-[11px] text-stone-400 font-mono mt-0.5">${jaddr}</p>
+            </div>
+
+            ${note ? `<div class="text-xs text-stone-700 bg-stone-50 p-2.5 rounded-lg border border-stone-100 leading-relaxed whitespace-pre-line">${note}</div>` : ''}
+
+            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-100">
+              <a href="${gmapUrl}" target="_blank" class="bg-ryukyu-indigo text-white text-[11px] font-medium px-3 py-1.5 rounded-lg">開啟 Google Maps</a>
+              <button onclick="openTaxiModal('${safeName}', '${safeAddr}', '緯度 ${lat}, 經度 ${lng} ／ ここまでお願いします。')" class="border border-stone-300 text-stone-700 text-[11px] font-medium px-2.5 py-1.5 rounded-lg">司機指路 / 座標卡</button>
+              <button onclick="sendPlaceToItinerary('${safeName}', '${safeAddr}', '${escStr(pid)}', '${safeCat}')" class="border border-ryukyu-teal text-ryukyu-teal text-[11px] font-bold px-2.5 py-1.5 rounded-lg ml-auto">+ 排入行程表</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function pickRandomPlace() {
+      const filtered = getFilteredPlaces();
+      if (filtered.length === 0) return alert('目前篩選條件下沒有地點可供隨機抽選，請先放寬篩選條件。');
+      const pick = filtered[Math.floor(Math.random() * filtered.length)];
+      const [src, name, jaddr, note, cat, rating, pid, lat, lng, dist, region] = pick;
+      openTaxiModal(
+        '隨機靈感推薦：' + name,
+        jaddr + ' （距飯店 ' + dist + ' km｜' + cat + '）',
+        note || ('位於' + region + '，Google 評分 ' + (rating || '未標示') + '，現在就出發去看看吧。')
+      );
+    }
+
+    // ==================== 6. TAB 3: 分帳與退稅計算器 ====================
+    function updateFxRate() {
+      const val = parseFloat(document.getElementById('fx-rate').value);
+      if (val > 0) {
+        state.fxRate = val;
+        saveState();
+        calcFromJpy();
+        renderSplitSection();
+      }
+    }
+
+    function calcFromJpy() {
+      const jpy = parseFloat(document.getElementById('calc-jpy').value) || 0;
+      const twd = Math.round(jpy * state.fxRate);
+      const taxInc = Math.round(jpy * 1.1);
+      document.getElementById('calc-twd').value = 'NT$ ' + twd.toLocaleString();
+      document.getElementById('calc-tax-inc').textContent = '¥' + taxInc.toLocaleString();
+    }
+
+    function addToTaxFreeBasket() {
+      const jpy = parseFloat(document.getElementById('calc-jpy').value) || 0;
+      if (jpy <= 0) return alert('請先在上方輸入商品未稅日圓金額');
+      state.taxBasket.push(jpy);
+      saveState();
+      document.getElementById('calc-jpy').value = '';
+      calcFromJpy();
+      renderTaxBasket();
+    }
+
+    function clearTaxBasket() {
+      state.taxBasket = [];
+      saveState();
+      renderTaxBasket();
+    }
+
+    function renderTaxBasket() {
+      const total = state.taxBasket.reduce((acc, v) => acc + v, 0);
+      const pct = Math.min(100, Math.round((total / 5000) * 100));
+      document.getElementById('tax-basket-total').textContent = '¥' + total.toLocaleString() + ' (約 NT$ ' + Math.round(total * state.fxRate).toLocaleString() + ')';
+      document.getElementById('tax-progress-bar').style.width = pct + '%';
+
+      const statusEl = document.getElementById('tax-basket-status');
+      if (total >= 5000) {
+        statusEl.textContent = '已達 ¥5,000 免稅門檻，可省稅金約 ¥' + Math.round(total * 0.1).toLocaleString();
+        statusEl.className = 'font-bold text-emerald-600';
+      } else {
+        statusEl.textContent = '還差 ¥' + (5000 - total).toLocaleString() + ' 達標';
+        statusEl.className = 'font-bold text-ryukyu-terracotta';
+      }
+
+      document.getElementById('tax-basket-items').textContent = state.taxBasket.length
+        ? '已加入 ' + state.taxBasket.length + ' 件：' + state.taxBasket.map(v => '¥' + v).join(' + ')
+        : '尚未加入商品';
+    }
+
+    function addMember() {
+      const input = document.getElementById('new-member-name');
+      const name = input.value.trim();
+      if (!name) return;
+      if (!state.members.includes(name)) {
+        state.members.push(name);
+        saveState();
+        input.value = '';
+        renderSplitSection();
+      }
+    }
+
+    function removeMember(name) {
+      if (state.members.length <= 1) return alert('至少需保留一位成員');
+      state.members = state.members.filter(m => m !== name);
+      saveState();
+      renderSplitSection();
+    }
+
+    function addExpense() {
+      const title = document.getElementById('exp-title').value.trim();
+      const amount = parseFloat(document.getElementById('exp-amount').value);
+      const currency = document.getElementById('exp-currency').value;
+      const payer = document.getElementById('exp-payer').value;
+      const method = document.getElementById('exp-method').value;
+      const checkedBoxes = Array.from(document.querySelectorAll('.splitter-checkbox:checked')).map(cb => cb.value);
+
+      if (!title || isNaN(amount) || amount <= 0) return alert('請輸入消費項目名稱與有效金額');
+      if (checkedBoxes.length === 0) return alert('請至少勾選一位分攤成員');
+
+      const now = new Date();
+      const timeStr = (now.getMonth() + 1) + '/' + now.getDate() + ' ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+
+      state.expenses.unshift({
+        id: Date.now(),
+        title,
+        amount,
+        currency,
+        payer,
+        method,
+        splitters: checkedBoxes,
+        time: timeStr
+      });
+      saveState();
+
+      document.getElementById('exp-title').value = '';
+      document.getElementById('exp-amount').value = '';
+      renderSplitSection();
+    }
+
+    function deleteExpense(id) {
+      state.expenses = state.expenses.filter(e => e.id !== id);
+      saveState();
+      renderSplitSection();
+    }
+
+    function renderSplitSection() {
+      renderTaxBasket();
+
+      document.getElementById('members-list').innerHTML = state.members.map(m => `
+        <span class="bg-stone-100 border border-stone-300 text-stone-800 text-xs px-2.5 py-1 rounded-full flex items-center space-x-1.5">
+          <span>${m}</span>
+          <button onclick="removeMember('${escStr(m)}')" class="text-stone-400 hover:text-red-600 font-bold">✕</button>
+        </span>
+      `).join('');
+
+      const payerSelect = document.getElementById('exp-payer');
+      const currentPayer = payerSelect.value || state.members[0];
+      payerSelect.innerHTML = state.members.map(m => `<option value="${m}" ${m === currentPayer ? 'selected' : ''}>${m}</option>`).join('');
+
+      document.getElementById('exp-splitters').innerHTML = state.members.map(m => `
+        <label class="flex items-center space-x-1.5 bg-stone-50 border border-stone-200 px-2.5 py-1.5 rounded-lg text-xs cursor-pointer">
+          <input type="checkbox" value="${m}" checked class="splitter-checkbox accent-ryukyu-indigo">
+          <span>${m}</span>
+        </label>
+      `).join('');
+
+      const balancesTwd = {};
+      state.members.forEach(m => balancesTwd[m] = 0);
+      let totalTwd = 0;
+
+      state.expenses.forEach(e => {
+        const amtTwd = e.currency === 'JPY' ? e.amount * state.fxRate : e.amount;
+        totalTwd += amtTwd;
+        if (balancesTwd[e.payer] === undefined) balancesTwd[e.payer] = 0;
+        balancesTwd[e.payer] += amtTwd;
+
+        const share = amtTwd / e.splitters.length;
+        e.splitters.forEach(s => {
+          if (balancesTwd[s] === undefined) balancesTwd[s] = 0;
+          balancesTwd[s] -= share;
+        });
+      });
+
+      const totalJpyApprox = Math.round(totalTwd / state.fxRate);
+      document.getElementById('total-trip-spend').textContent = '總支出：約 NT$ ' + Math.round(totalTwd).toLocaleString() + ' (¥' + totalJpyApprox.toLocaleString() + ')';
+
+      const debtors = [];
+      const creditors = [];
+      Object.entries(balancesTwd).forEach(([person, bal]) => {
+        if (bal < -1) debtors.push({ person, amt: -bal });
+        else if (bal > 1) creditors.push({ person, amt: bal });
+      });
+
+      const settlements = [];
+      let i = 0, j = 0;
+      while (i < debtors.length && j < creditors.length) {
+        const pay = Math.min(debtors[i].amt, creditors[j].amt);
+        settlements.push({
+          from: debtors[i].person,
+          to: creditors[j].person,
+          twd: Math.round(pay),
+          jpy: Math.round(pay / state.fxRate)
+        });
+        debtors[i].amt -= pay;
+        creditors[j].amt -= pay;
+        if (debtors[i].amt < 1) i++;
+        if (creditors[j].amt < 1) j++;
+      }
+
+      const settleContainer = document.getElementById('settlement-list');
+      if (settlements.length === 0) {
+        settleContainer.innerHTML = '<div class="text-slate-300 py-1">目前所有成員帳目已平衡，無須轉帳。</div>';
+      } else {
+        settleContainer.innerHTML = settlements.map(s => `
+          <div class="bg-white/10 rounded-lg p-2.5 flex items-center justify-between">
+            <span><b>${s.from}</b> 應付給 <b>${s.to}</b></span>
+            <span class="font-mono font-bold text-amber-300">NT$ ${s.twd.toLocaleString()} <span class="text-[11px] text-slate-300 font-normal">(或 ¥${s.jpy.toLocaleString()})</span></span>
+          </div>
+        `).join('');
+      }
+
+      const expContainer = document.getElementById('expense-list');
+      if (state.expenses.length === 0) {
+        expContainer.innerHTML = '<div class="py-4 text-center text-stone-400">尚無消費紀錄</div>';
+      } else {
+        expContainer.innerHTML = state.expenses.map(e => {
+          const twdEq = e.currency === 'JPY' ? Math.round(e.amount * state.fxRate) : Math.round(e.amount);
+          return `
+            <div class="py-2.5 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-stone-900">${e.title} <span class="text-[10px] font-normal text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded ml-1">${e.method}</span></div>
+                <div class="text-[11px] text-stone-500 mt-0.5">${e.payer} 先墊 ｜ 分攤：${e.splitters.join('、')} ｜ ${e.time}</div>
+              </div>
+              <div class="text-right flex items-center space-x-2">
+                <div>
+                  <div class="font-mono font-bold text-stone-900">${e.currency === 'JPY' ? '¥' : 'NT$ '}${e.amount.toLocaleString()}</div>
+                  ${e.currency === 'JPY' ? `<div class="text-[10px] font-mono text-stone-400">≈ NT$ ${twdEq.toLocaleString()}</div>` : ''}
+                </div>
+                <button onclick="deleteExpense(${e.id})" class="text-stone-300 hover:text-red-500 px-1">✕</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function exportExpensesText() {
+      const lines = ['【2026 沖繩旅行分帳明細】'];
+      state.expenses.forEach(e => {
+        lines.push('- ' + e.title + ': ' + e.currency + ' ' + e.amount + ' (' + e.payer + '先墊，分攤: ' + e.splitters.join('/') + ')');
+      });
+      const textOut = lines.join('\n');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textOut).then(() => {
+          alert('已將帳目明細複製到剪貼簿，可直接貼到 LINE 群組。');
+        }).catch(() => {
+          alert(textOut);
+        });
+      } else {
+        alert(textOut);
+      }
+    }
+
+    // ==================== 7. TAB 4: 風土遊覽・品飲筆記・手指日語 ====================
+    function switchCultureSub(panel) {
+      ['story', 'tasting', 'phrase'].forEach(p => {
+        document.getElementById('cul-panel-' + p).classList.add('hidden');
+        document.getElementById('cul-btn-' + p).classList.remove('pill-active');
+      });
+      document.getElementById('cul-panel-' + panel).classList.remove('hidden');
+      document.getElementById('cul-btn-' + panel).classList.add('pill-active');
+    }
+
+    function addTastingNote() {
+      const type = document.getElementById('taste-type').value;
+      const rating = document.getElementById('taste-rating').value;
+      const name = document.getElementById('taste-name').value.trim();
+      const shop = document.getElementById('taste-shop').value.trim();
+      const note = document.getElementById('taste-note').value.trim();
+      if (!name) return alert('請輸入酒款、咖啡豆或菜色名稱');
+
+      const now = new Date();
+      const timeStr = '2026/' + (now.getMonth() + 1) + '/' + now.getDate();
+      state.tastingNotes.unshift({ id: Date.now(), type, rating, name, shop, note, time: timeStr });
+      saveState();
+
+      document.getElementById('taste-name').value = '';
+      document.getElementById('taste-shop').value = '';
+      document.getElementById('taste-note').value = '';
+      renderTastingNotes();
+    }
+
+    function deleteTastingNote(id) {
+      state.tastingNotes = state.tastingNotes.filter(t => t.id !== id);
+      saveState();
+      renderTastingNotes();
+    }
+
+    function renderTastingNotes() {
+      const container = document.getElementById('tasting-list');
+      container.innerHTML = state.tastingNotes.map(t => `
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold bg-ryukyu-indigo text-white px-2 py-0.5 rounded">${t.type}</span>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-mono font-bold text-amber-600">評分 ${t.rating} / 5.0</span>
+              <button onclick="deleteTastingNote(${t.id})" class="text-stone-300 hover:text-stone-500 text-xs">✕</button>
+            </div>
+          </div>
+          <h4 class="text-sm font-bold text-stone-900">${t.name}</h4>
+          ${t.shop ? `<p class="text-xs text-ryukyu-terracotta font-medium">@ ${t.shop} <span class="text-stone-400 font-normal ml-1">(${t.time})</span></p>` : ''}
+          ${t.note ? `<p class="text-xs text-stone-600 leading-relaxed bg-stone-50 p-2.5 rounded-lg border border-stone-100">${t.note}</p>` : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderPhrases() {
+      const container = document.getElementById('phrases-container');
+      container.innerHTML = PHRASES_DATA.map(p => {
+        const safeZh = escStr(p.zh);
+        const safeJp = escStr(p.jp);
+        const safeRoma = escStr(p.roma);
+        return `
+          <button onclick="openTaxiModal('${safeZh}', '${safeRoma}', '${safeJp}')" class="bg-white text-left rounded-xl p-3.5 shadow-sm border border-stone-200 hover:border-ryukyu-indigo transition space-y-1">
+            <span class="text-[10px] font-bold text-ryukyu-teal bg-teal-50 px-2 py-0.5 rounded">${p.cat}</span>
+            <div class="text-xs font-bold text-stone-800 pt-1">${p.zh}</div>
+            <div class="text-sm font-bold text-ryukyu-indigo">${p.jp}</div>
+            <div class="text-[10px] font-mono text-stone-400">${p.roma}</div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // ==================== 8. TAB 5: 國泰產險保單與互動式採證檢核表 ====================
+    function toggleClaimCheck(key) {
+      state.checkedClaims[key] = !state.checkedClaims[key];
+      saveState();
+      renderClaimsChecklist();
+    }
+
+    function renderClaimsChecklist() {
+      const container = document.getElementById('claims-checklist');
+      container.innerHTML = CLAIMS_DATA.map(sec => `
+        <div class="border border-stone-200 rounded-xl p-3.5 bg-stone-50/60 space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-1">
+            <h4 class="font-bold text-stone-900 text-xs">${sec.title}</h4>
+            <span class="text-[10px] font-mono font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded">${sec.badge}</span>
+          </div>
+          <p class="text-[11px] text-stone-600 leading-relaxed">${sec.desc}</p>
+          <div class="space-y-1.5 pt-1">
+            ${sec.items.map((itemText, idx) => {
+              const key = sec.id + '_' + idx;
+              const checked = !!state.checkedClaims[key];
+              return `
+                <label onclick="toggleClaimCheck('${key}')" class="flex items-start space-x-2 bg-white p-2 rounded-lg border ${checked ? 'border-emerald-500 bg-emerald-50/30' : 'border-stone-200'} cursor-pointer">
+                  <input type="checkbox" ${checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleClaimCheck('${key}')" class="mt-0.5 accent-emerald-600">
+                  <span class="text-[11px] ${checked ? 'line-through text-stone-400' : 'text-stone-800 font-medium'}">${itemText}</span>
+                </label>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== 9. 全螢幕放大卡片 (司機指路 / 手指日語 / 保單求助) ====================
+
+    // ==================== 7B. TAB 6: 手指日語與單字卡專區 ====================
+    const DEFAULT_FLASHCARDS = [{"cat": "日常用語", "type": "招呼・沖繩方言", "zh": "你好（沖繩方言：ハイサイ）", "jp": "ハイサイ ／ こんにちは", "kana": "はいさい ／ こんにちは", "roma": "Haisai / Konnichiwa", "pron": "嗨賽 ／ 空尼奇哇", "note": "在沖繩進小店或居酒屋說聲 Haisai，店員會非常親切"}, {"cat": "日常用語", "type": "感謝・沖繩方言", "zh": "謝謝（沖繩方言：にふぇーでーびる）", "jp": "にふぇーでーびる ／ ありがとうございます", "kana": "にふぇーでーびる ／ ありがとうございます", "roma": "Nife-de-biru / Arigatou gozaimasu", "pron": "尼非得比魯 ／ 阿哩嘎多ご宰媽思", "note": "結帳或離開酒館時說出沖繩方言的謝謝，很有在地共鳴"}, {"cat": "日常用語", "type": "乾杯・沖繩方言", "zh": "乾杯！（沖繩方言：カリー）", "jp": "カリー（嘉例）！ ／ 乾杯！", "kana": "かりー ／ かんぱい", "roma": "Kari-! / Kanpai!", "pron": "卡哩— ／ 砍拍", "note": "沖繩舉杯常喊「カリー（Kari）」，意指吉祥好兆頭"}, {"cat": "日常用語", "type": "日常萬用", "zh": "不好意思 / 請問一下（叫店員或問路）", "jp": "すみません", "kana": "すみません", "roma": "Sumimasen", "pron": "思咪媽線", "note": "點餐、借過、問問題的第一句話"}, {"cat": "日常用語", "type": "日常萬用", "zh": "請給我這個（手指菜單或商品時用）", "jp": "これをください", "kana": "これをください", "roma": "Kore wo kudasai", "pron": "口勒 喔 苦搭賽", "note": "最實用的手指萬用句"}, {"cat": "日常用語", "type": "日常萬用", "zh": "沒問題 / 不用，謝謝（婉拒加購或袋子）", "jp": "大丈夫です", "kana": "だいじょうぶです", "roma": "Daijoubu desu", "pron": "呆揪布 得思", "note": "超商問要不要加熱、要不要集點卡時皆可用"}, {"cat": "日常用語", "type": "日常萬用", "zh": "請問洗手間在哪裡？", "jp": "お手洗いはどこですか？", "kana": "おてあらいはどこですか？", "roma": "Otearai wa doko desu ka?", "pron": "喔鐵阿賴 哇 都口 得思卡", "note": ""}, {"cat": "日常用語", "type": "日常萬用", "zh": "非常好吃！多謝款待", "jp": "とても美味しかったです。ごちそうさまでした！", "kana": "とてもおいしかったです。ごちそうさまでした", "roma": "Totemo oishikatta desu. Gochisousama deshita!", "pron": "偷鐵摸 喔伊希卡塔 得思。勾奇搜撒媽 得希塔", "note": "離開食堂或小酒館時跟老闆說"}, {"cat": "點餐會話", "type": "入座", "zh": "我們有 2 位（3 位），沒有預約，請問現在有位子嗎？", "jp": "予約していないのですが、2人（3人）入れますか？", "kana": "よやくしていないのですが、ふたり（さんにん）はいれますか？", "roma": "Yoyaku shite inai no desu ga, futari (sannin) hairemasu ka?", "pron": "優壓苦 希鐵以奈 諾得思嘎，虎踏哩（三寧）嗨勒媽思卡", "note": "去榮町市場、壺屋小酒館時必備"}, {"cat": "點餐會話", "type": "入座", "zh": "請問可以坐吧台嗎？", "jp": "カウンター席でもいいですか？", "kana": "かうんたーせきでもいいですか？", "roma": "Kaunta- seki demo ii desu ka?", "pron": "卡溫塔 誰ki 得摸 伊得思卡", "note": ""}, {"cat": "點餐會話", "type": "菜單", "zh": "請給我日文菜單（我想看手寫今日推薦）", "jp": "日本語のメニュー（本日のおすすめ）も見せていただけますか？", "kana": "にほんごのめにゅー（ほんじつのおすすめ）もみせていただけますか？", "roma": "Nihongo no menyu- (honjitsu no osusume) mo misete itadakemasu ka?", "pron": "尼轟勾 諾 美女（轟幾資 諾 喔思思美）摸 咪誰鐵 以塔搭給媽思卡", "note": "像 Biidoro 或 Ma-chinu Ya 常有日文手寫當日漁獲"}, {"cat": "點餐會話", "type": "點酒", "zh": "請給我這家店推薦的泡盛（古酒）", "jp": "おすすめの泡盛（古酒・クース）をください", "kana": "おすすめのあわもり（くーす）をください", "roma": "Osusume no Awamori (Kusu) wo kudasai", "pron": "喔思思美 諾 阿哇摸哩（苦—思）喔 苦搭賽", "note": "在 Oni no Ude 或 Urizun 點酒用"}, {"cat": "點餐會話", "type": "點酒", "zh": "請用：加冰塊 ／ 兌水 ／ 純飲 ／ 加氣泡水", "jp": "ロック ／ 水割り ／ ストレート ／ ソーダ割り でお願いします", "kana": "ろっく ／ みずわり ／ すとれーと ／ そーだわり でおねがいします", "roma": "Rokku / Mizuwari / Sutore-to / So-da wari de onegaishimasu", "pron": "摟苦 ／ 咪茲哇哩 ／ 思偷勒投 ／ 搜搭哇哩 得 喔內嘎以希媽思", "note": "泡盛古酒推薦先試純飲（ストレート）或加冰塊（ロック）"}, {"cat": "點餐會話", "type": "點酒", "zh": "請給我精釀啤酒 ／ 自然酒（紅、白酒）", "jp": "クラフトビール ／ ナチュラルワイン（赤・白）をください", "kana": "くらふとびーる ／ なちゅらるわいん（あか・しろ）をください", "roma": "Kurafuto bi-ru / Nachuraru wain (aka / shiro) wo kudasai", "pron": "苦拉夫偷畢魯 ／ 拿秋拉魯哇因（阿卡／希摟）喔 苦搭賽", "note": "在 Ukishima Brewing、Refuge、Torijin 必用"}, {"cat": "點餐會話", "type": "點餐客製", "zh": "請不要加蔥 ／ 不要加香菜 ／ 少冰", "jp": "ネギ抜き ／ パクチー抜き ／ 氷少なめ でお願いします", "kana": "ねぎぬき ／ ぱくちーぬき ／ こおりすくなめ でおねがいします", "roma": "Negi nuki / Pakuchi- nuki / Koori sukuname de onegaishimasu", "pron": "內gi 奴ki ／ 怕苦奇 奴ki ／ 口喔哩 思苦拿美", "note": ""}, {"cat": "點餐會話", "type": "牧志市場代客料理", "zh": "這是在一樓買的海鮮，請幫我們做成生魚片、清蒸與蒜蓉奶油燒", "jp": "1階で買った魚です。お刺身と、マース煮（塩煮）、ガーリックバター焼きでお願いします", "kana": "いっかいでかったさかなです。おさしみと、まーすに、がーりっくばたーやきでおねがいします", "roma": "Ikkai de katta sakana desu. Osashimi to, ma-su ni, ga-rikku bata- yaki de onegaishimasu", "pron": "以開 得 卡塔 撒卡拿 得思。喔撒希咪、媽思尼、嘎哩苦巴塔壓ki 得 喔內嘎以希媽思", "note": "第一牧志公設市場二樓「燕食堂」代客熱炒專用（「マース煮」是沖繩傳統海鹽清煮魚）"}, {"cat": "點餐會話", "type": "結帳", "zh": "不好意思，請幫我結帳（請問可以刷卡嗎？）", "jp": "お会計をお願いします。カードは使えますか？", "kana": "おかいけいをおねがいします。かーどはつかえますか？", "roma": "Okaikei wo onegaishimasu. Ka-do wa tsukaemasu ka?", "pron": "喔開K 喔 喔內嘎以希媽思。卡豆 哇 茲卡欸媽思卡", "note": ""}, {"cat": "點餐會話", "type": "結帳", "zh": "請幫我們分開結帳（或開成一張收據）", "jp": "別々で払えますか？（一緒の会計でお願いします）", "kana": "べつべつではらえますか？（いっしょのかいけいでおねがいします）", "roma": "Betsubetsu de haraemasu ka? (Issho no kaikei de onegaishimasu)", "pron": "杯茲杯茲 得 哈拉欸媽思卡？（以休 諾 開K 得 喔內嘎以希媽思）", "note": ""}, {"cat": "食物飲品", "type": "沖繩麵與主食", "zh": "沖繩麵 ／ 軟骨豬肉麵 ／ 三層肉麵", "jp": "沖縄そば ／ ソーキそば ／ 三枚肉そば", "kana": "おきなわそば ／ そーきそば ／ さんまいにくそば", "roma": "Okinawa soba / So-ki soba / Sanmainiku soba", "pron": "喔ki拿哇 搜吧 ／ 搜—ki 搜吧 ／ 三麥尼苦 搜吧", "note": "本ソーキ是帶骨排骨，軟骨ソーキ是燉到化開的軟骨豬肉（EIBUN、浜屋招牌）"}, {"cat": "食物飲品", "type": "沖繩麵與主食", "zh": "海藻沖繩麵（石蓴海菜麵）", "jp": "アーサそば", "kana": "あーさそば", "roma": "A-sa soba", "pron": "阿—撒 搜吧", "note": "南城「屋宜家」與恩納「中村麵店」必點招牌"}, {"cat": "食物飲品", "type": "沖繩麵與主食", "zh": "沖繩炊飯（點沖繩麵必配的小碗什錦炊飯）", "jp": "ジューシー", "kana": "じゅーしー", "roma": "Ju-shi-", "pron": "啾—希—", "note": "以豬高湯、昆布與香菇炊煮的沖繩傳統米飯"}, {"cat": "食物飲品", "type": "島料理名物", "zh": "山苦瓜雜炒 ／ 島豆腐雜炒", "jp": "ゴーヤーチャンプルー ／ 豆腐チャンプルー", "kana": "ごーやーちゃんぷるー ／ とうふちゃんぷるー", "roma": "Go-ya- chanpuru- / Toufu chanpuru-", "pron": "勾壓 槍普魯 ／ 偷虎 槍普魯", "note": "チャンプルー（Chanpuru）是沖繩方言「混炒」之意"}, {"cat": "食物飲品", "type": "島料理名物", "zh": "海葡萄 ／ 沖繩水雲（醋漬海蘊）", "jp": "海ぶどう ／ もずく酢", "kana": "うみぶどう ／ もずくす", "roma": "Umibudou / Mozuku su", "pron": "烏咪不都 ／ 摸茲苦 思", "note": "居酒屋開胃必點，涮阿古豬也常配水雲"}, {"cat": "食物飲品", "type": "島料理名物", "zh": "花生豆腐 ／ 炸島蕎頭天婦羅", "jp": "ジーマーミ豆腐 ／ 島らっきょうの天ぷら", "kana": "じーまーみどうふ ／ しまらっきょうのてんぷら", "roma": "Ji-ma-mi doufu / Shima rakkyou no tenpura", "pron": "幾媽咪 偷虎 ／ 希媽 拉k्यो 諾 天普拉", "note": "島らっきょう（島蕎頭）微辛脆口，配啤酒與泡盛極搭"}, {"cat": "食物飲品", "type": "島料理名物", "zh": "琉球東坡肉 ／ 豆腐乳（紅麴泡盛發酵豆腐）", "jp": "ラフテー ／ 豆腐よう（とうふよう）", "kana": "らふてー ／ とうふよう", "roma": "Rafute- / Toufuyou", "pron": "拉虎鐵 ／ 偷虎優", "note": "豆腐よう口感近似起司，是琉球王朝宮廷下酒珍味（Urizun 必嚐）"}, {"cat": "食物飲品", "type": "燒肉與牛排部位", "zh": "石垣牛 ／ 阿古豬 ／ 本部牛", "jp": "石垣牛 ／ アグー豚 ／ もとぶ牛", "kana": "いしがきぎゅう ／ あぐーぶた ／ もとぶぎゅう", "roma": "Ishigaki gyuu / Agu- buta / Motobu gyuu", "pron": "以希嘎ki gyu ／ 阿古 不塔 ／ 摸偷不 gyu", "note": "沖繩三大頂級肉品"}, {"cat": "食物飲品", "type": "燒肉與牛排部位", "zh": "牛舌 ／ 橫膈膜 ／ 牛五花 ／ 里肌（菲力）", "jp": "タン（牛タン） ／ ハラミ ／ カルビ ／ ヒレ（テンダーロイン）", "kana": "たん ／ はらみ ／ かるび ／ ひれ", "roma": "Tan / Harami / Karubi / Hire (Tenda-roin)", "pron": "湯 ／ 哈拉咪 ／ 卡魯比 ／ 希勒", "note": "傑克牛排館招牌是菲力（Tenderloin Steak，三分或五分熟）"}, {"cat": "食物飲品", "type": "燒肉與內臟部位", "zh": "內臟綜合 ／ 大腸 ／ 牛小腸 ／ 雞肉刺身", "jp": "ホルモン盛り合わせ ／ シマチョウ ／ マルチョウ ／ 鳥刺し", "kana": "ほるもんもりあわせ ／ しまちょう ／ まるちょう ／ とりさし", "roma": "Horumon moriawase / Shimachou / Maruchou / Torisashi", "pron": "吼魯夢 摸哩阿哇誰 ／ 希媽秋 ／ 媽魯秋 ／ 偷哩撒希", "note": "久茂地「疾風ホルモン」、「ぶち」與「鶏盡」點餐必對照"}, {"cat": "食物飲品", "type": "咖啡與茶飲", "zh": "手沖單品咖啡 ／ 淺焙 ／ 深焙 ／ 冰美式", "jp": "ハンドドリップ ／ 浅煎り ／ 深煎り ／ アイスアメリカーノ", "kana": "はんどどりっぷ ／ あさいり ／ ふかいり ／ あいすあめりかーの", "roma": "Hando dorippu / Asairi / Fukairi / Aisu amerika-no", "pron": "憨豆抖哩普 ／ 阿撒以哩 ／ 虎卡以哩 ／ 阿以思 阿美哩卡諾", "note": "在 Tamagusuku、potohoto、rokkan 點精品咖啡專用"}, {"cat": "食物飲品", "type": "咖啡與茶飲", "zh": "沖繩香片茶（茉莉花茶） ／ 福福茶 ／ 麥根沙士", "jp": "さんぴん茶 ／ ぶくぶく茶 ／ ルートビア（A&W）", "kana": "さんぴんちゃ ／ ぶくぶくちゃ ／ るーとびあ", "roma": "Sanpin cha / Bukubuku cha / Ru-to bia", "pron": "三拼洽 ／ 不苦不苦洽 ／ 魯—偷畢阿", "note": "さんぴん茶源自中文「香片」發音"}, {"cat": "購物商品", "type": "工藝與選物", "zh": "沖繩陶器（壺屋燒） ／ 琉球玻璃 ／ 紅型染織", "jp": "やちむん（壺屋焼） ／ 琉球ガラス ／ 紅型（びんがた）", "kana": "やちむん ／ りゅうきゅうがらす ／ びんがた", "roma": "Yachimun / Ryuukyuu garasu / Bingata", "pron": "壓奇悶 ／ 溜Q 嘎拉思 ／ 冰嘎塔", "note": "逛壺屋通、Garb Domingo、Doucatty 必認識的三大工藝詞"}, {"cat": "購物商品", "type": "工藝與選物", "zh": "泡盛古酒杯（抱瓶・嘉瓶・唐草紋皿）", "jp": "カラカラ（酒器） ／ 抱瓶（だちびん） ／ 唐草模様のお皿", "kana": "からから ／ だちびん ／ からくさもようのおさら", "roma": "Karakara / Dachibin / Karakusa moyou no osara", "pron": "卡拉卡拉 ／ 搭奇冰 ／ 卡拉苦撒 摸優 諾 喔撒拉", "note": "カラカラ是裝泡盛的小陶壺，搖晃時裡面的陶珠會發出聲響"}, {"cat": "購物商品", "type": "工藝與包裝", "zh": "這是要帶上飛機的易碎陶器，請幫我包厚一點", "jp": "飛行機に持ち込む割れ物なので、緩衝材を多めに包んでいただけますか？", "kana": "ひこうきにもちこむわれものなので、かんしょうざいをおおめにつつんでいただけますか？", "roma": "Hikouki ni mochikomu waremono nanode, kanshouzai wo oome ni tsutsunde itadakemasu ka?", "pron": "希口ki 尼 摸奇口母 哇勒摸諾 拿諾得，砍休災 喔 喔美尼 茲茲得 以塔搭給媽思卡", "note": "在壺屋買陶器必備出示卡"}, {"cat": "購物商品", "type": "超市與伴手禮", "zh": "石垣島辣油 ／ 沖繩海鹽（雪鹽） ／ 純黑糖", "jp": "石垣島ラー油 ／ 沖縄の塩（ぬちまーす・雪塩） ／ 純黒糖", "kana": "いしがきじまらーゆ ／ おきなわのしお ／ じゅんこくとう", "roma": "Ishigakijima ra-yu / Okinawa no shio / Jun kokutou", "pron": "以希嘎ki幾媽 拉油 ／ 喔ki拿哇 諾 希喔 ／ 窘 口苦偷", "note": "在 San-A Main Place 或琉貿超市採買時可直接給店員看"}, {"cat": "購物商品", "type": "藥妝與日用品", "zh": "腸胃藥 ／ 止痛藥 ／ 解酒薑黃飲 ／ OK繃", "jp": "胃腸薬 ／ 痛み止め ／ ウコンの力（二日酔い対策） ／ 絆創膏", "kana": "いちょうやく ／ いたみどめ ／ うこんのちから ／ ばんそうこう", "roma": "Ichouyaku / Itamidome / Ukon no chikara / Bansoukou", "pron": "以秋壓苦 ／ 以塔咪抖美 ／ 烏空諾奇卡拉 ／ 班搜口", "note": "晚上去小酌前可在全家或大國藥妝買瓶「ウコン（薑黃）」"}, {"cat": "購物商品", "type": "結帳與退稅", "zh": "請問可以免稅嗎？（我有帶護照）", "jp": "免税（Tax-Free）はできますか？パスポートを持っています", "kana": "めんぜいはできますか？ぱすぽーとをもっています", "roma": "Menzei wa dekimasu ka? Pasupo-to wo motte imasu", "pron": "免賊 哇 得ki媽思卡？怕思波偷 喔 摸鐵以媽思", "note": ""}, {"cat": "購物商品", "type": "結帳與退稅", "zh": "請給我一個購物袋（小 ／ 中 ／ 大）", "jp": "レジ袋を1枚ください（小 ／ 中 ／ 大）", "kana": "れじぶくろをいちまいください", "roma": "Rejibukuro wo ichimai kudasai (Shou / Chuu / Dai)", "pron": "勒幾不苦摟 喔 以奇麥 苦搭賽", "note": ""}, {"cat": "單字詞庫", "type": "高頻動詞", "zh": "吃 ／ 喝 ／ 買 ／ 看 ／ 去", "jp": "食べる ／ 飲む ／ 買う ／ 見る ／ 行く", "kana": "たべる ／ のむ ／ かう ／ みる ／ いく", "roma": "Taberu / Nomu / Kau / Miru / Iku", "pron": "塔杯魯 ／ 諾母 ／ 卡烏 ／ 咪魯 ／ 以苦", "note": "加上「～たいです (tai desu)」就變成「我想吃／想喝／想買」"}, {"cat": "單字詞庫", "type": "高頻動詞", "zh": "外帶 ／ 內用 ／ 預約 ／ 寄放（行李）", "jp": "お持ち帰り（テイクアウト） ／ 店内 ／ 予約 ／ 預ける", "kana": "おもちかえり ／ てんない ／ よやく ／ あずける", "roma": "Omochikaeri / Tennai / Yoyaku / Azukeru", "pron": "喔摸奇卡欸哩 ／ 天奈 ／ 優壓苦 ／ 阿茲給魯", "note": "買豬肉蛋飯糰或咖啡時常被問「店内ですか？お持ち帰りですか？」"}, {"cat": "單字詞庫", "type": "高頻動詞", "zh": "推薦 ／ 拍照 ／ 充電 ／ 找零換錢", "jp": "おすすめ ／ 写真を撮る ／ 充電する ／ 両替（崩す）", "kana": "おすすめ ／ しゃしんをとる ／ じゅうでんする ／ りょうがえ", "roma": "Osusume / Shashin wo toru / Juuden suru / Ryougae", "pron": "喔思思美 ／ 蝦新 喔 偷魯 ／ 揪電 思魯 ／ 溜嘎欸", "note": "可以拍張照嗎？＝「写真を撮ってもいいですか？ (Shashin wo tottemo ii desu ka?)」"}, {"cat": "單字詞庫", "type": "人數與數量詞", "zh": "1 人 ／ 2 人 ／ 3 人 ／ 4 人", "jp": "1人（ひとり） ／ 2人（ふたり） ／ 3人（さんにん） ／ 4人（よにん）", "kana": "ひとり ／ ふたり ／ さんにん ／ よにん", "roma": "Hitori / Futari / Sannin / Yonin", "pron": "希偷哩 ／ 虎踏哩 ／ 三寧 ／ 優寧", "note": "進餐廳時比手指搭配這個發音最清楚"}, {"cat": "單字詞庫", "type": "人數與數量詞", "zh": "1 個 ／ 2 個 ／ 3 個 ／ 1 杯（再來一杯）", "jp": "ひとつ ／ ふたつ ／ みっつ ／ 1杯（もう1杯）", "kana": "ひとつ ／ ふたつ ／ みっつ ／ いっぱい（もういっぱい）", "roma": "Hitotsu / Futatsu / Mittsu / Ippai (Mou ippai)", "pron": "希偷茲 ／ 虎踏茲 ／ 咪茲 ／ 以拍（摸 以拍）", "note": "酒很好喝想續杯時，舉起杯子說「もう一杯！（Mou ippai!）」"}, {"cat": "單字詞庫", "type": "空間與時間名詞", "zh": "今天 ／ 明天 ／ 現在 ／ 幾點打烊？", "jp": "今日 ／ 明日 ／ 今 ／ 何時までですか？", "kana": "きょう ／ あした ／ いま ／ なんじまでですか？", "roma": "Kyou / Ashita / Ima / Nanji made desu ka?", "pron": "k्यो ／ 阿希塔 ／ 以媽 ／ 南幾 媽得 得思卡", "note": "ラストオーダー（Last Order，最後加點時間）"}, {"cat": "單字詞庫", "type": "付款名詞", "zh": "現金 ／ 信用卡 ／ 交通卡（Suica） ／ 收據", "jp": "現金 ／ クレジットカード ／ 交通系IC（Suica） ／ 領収書（レシート）", "kana": "げんきん ／ くれじっとかーど ／ すいか ／ りょうしゅうしょ", "roma": "Genkin / Kurejitto ka-do / Suica / Ryoushuusho (Reshi-to)", "pron": "給恩kin ／ 苦勒幾偷卡豆 ／ 思以卡 ／ 溜修休（勒希偷）", "note": "需要報帳或保險理賠時請索取「領収書（Ryoushuusho）」"}, {"cat": "交通自駕", "type": "週六自駕必備", "zh": "請幫我加滿一般無鉛汽油（紅色油槍 Regular），付現／刷卡", "jp": "レギュラー満タンでお願いします（現金 ／ カードで）", "kana": "れぎゅらーまんたんでおねがいします", "roma": "Regyura- mantan de onegaishimasu (Genkin / Ka-do de)", "pron": "勒gyu拉 滿湯 得 喔內嘎以希媽思", "note": "週六還車給 ORBIT 前，在那霸市區加油站必用"}, {"cat": "交通自駕", "type": "週六自駕必備", "zh": "請問這家店有專用停車場嗎？可以停哪裡？", "jp": "専用駐車場はありますか？どこに停めればいいですか？", "kana": "せんようちゅうしゃじょうはありますか？どこにとめればいいですか？", "roma": "Senyou chuushajou wa arimasu ka? Doko ni tomereba ii desu ka?", "pron": "先優 秋蝦揪 哇 阿哩媽思卡？都口尼 偷美勒吧 伊得思卡", "note": "在南城古民家或北谷小店停車時詢問店員"}, {"cat": "交通自駕", "type": "單軌與公車", "zh": "請問這班公車有到「〇〇」嗎？", "jp": "このバスは「〇〇」に行きますか？", "kana": "このばすは「〇〇」にいきますか？", "roma": "Kono basu wa [OO] ni ikimasu ka?", "pron": "口諾 巴思 哇 〇〇 尼 以ki媽思卡", "note": "沖繩公車多為「後門上車抽整理券（或刷卡）、前門下車付費」"}, {"cat": "交通自駕", "type": "計程車與飯店", "zh": "請幫我叫一輛計程車 ／ 請幫我寄放行李", "jp": "タクシーを呼んでいただけますか？ ／ 荷物を預かってもらえますか？", "kana": "たくしーをよんでいただけますか？ ／ にもつをあずかってもらえますか？", "roma": "Takushi- wo yonde itadakemasu ka? / Nimotsu wo azukatte moraemasu ka?", "pron": "塔苦希 喔 庸得 以塔搭給媽思卡 ／ 尼摸茲 喔 阿茲卡鐵 摸拉欸媽思卡", "note": "週四抵達或週日退房時在 ON THE SAME HOTEL 可用"}];
+    let fcCategory = 'all';
+    let currentModalSpeechText = '';
+
+    function getAllFlashcards() {
+      const custom = (state.customFlashcards && Array.isArray(state.customFlashcards)) ? state.customFlashcards : [];
+      return [...custom, ...DEFAULT_FLASHCARDS];
+    }
+
+    function setFcCategory(cat) {
+      fcCategory = cat;
+      document.querySelectorAll('.fc-cat-btn').forEach(btn => btn.classList.remove('pill-active'));
+      const activeBtn = document.getElementById('fc-cat-' + cat);
+      if (activeBtn) activeBtn.classList.add('pill-active');
+      renderFlashcards();
+    }
+
+    function toggleNewCardForm() {
+      const form = document.getElementById('new-fc-form');
+      if (form) form.classList.toggle('hidden');
+    }
+
+    function addCustomFlashcard() {
+      const cat = document.getElementById('custom-fc-cat').value;
+      const type = document.getElementById('custom-fc-type').value.trim() || '自訂字卡';
+      const zh = document.getElementById('custom-fc-zh').value.trim();
+      const jp = document.getElementById('custom-fc-jp').value.trim();
+      const roma = document.getElementById('custom-fc-roma').value.trim();
+      const pron = document.getElementById('custom-fc-pron').value.trim();
+
+      if (!zh || !jp) return alert('請至少輸入中文意思與日文內容');
+      if (!state.customFlashcards) state.customFlashcards = [];
+      state.customFlashcards.unshift({
+        id: Date.now(),
+        cat,
+        type,
+        zh,
+        jp,
+        kana: '',
+        roma,
+        pron,
+        note: '個人自訂字卡',
+        isCustom: true
+      });
+      saveState();
+
+      document.getElementById('custom-fc-type').value = '';
+      document.getElementById('custom-fc-zh').value = '';
+      document.getElementById('custom-fc-jp').value = '';
+      document.getElementById('custom-fc-roma').value = '';
+      document.getElementById('custom-fc-pron').value = '';
+      document.getElementById('new-fc-form').classList.add('hidden');
+      renderFlashcards();
+    }
+
+    function deleteCustomFlashcard(id) {
+      if (!state.customFlashcards) return;
+      state.customFlashcards = state.customFlashcards.filter(c => c.id !== id);
+      saveState();
+      renderFlashcards();
+    }
+
+    function speakJapanese(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的瀏覽器目前不支援語音合成，請參考卡片上的羅馬拼音與中文助唸。');
+        return;
+      }
+      try {
+        window.speechSynthesis.cancel();
+        // 清理括號內註解，讓日文語音引擎讀起來更自然
+        const cleanText = String(text).replace(/（.*?）/g, '').replace(/\(.*?\)/g, '').split('／')[0].trim();
+        const utter = new SpeechSynthesisUtterance(cleanText);
+        utter.lang = 'ja-JP';
+        utter.rate = 0.9;
+        window.speechSynthesis.speak(utter);
+      } catch (e) {
+        console.warn('語音播放略過', e);
+      }
+    }
+
+    function speakModalText() {
+      if (currentModalSpeechText) {
+        speakJapanese(currentModalSpeechText);
+      }
+    }
+
+    function openFlashcardModal(zh, jp, kana, roma, pron, type) {
+      currentModalSpeechText = kana || jp;
+      document.getElementById('modal-badge').textContent = 'FLASHCARD / ' + (type || '手指日語展示卡');
+      document.getElementById('modal-sub').textContent = zh;
+      document.getElementById('modal-main').textContent = jp;
+
+      const kanaEl = document.getElementById('modal-kana');
+      if (kana) {
+        kanaEl.textContent = '假名：' + kana;
+        kanaEl.classList.remove('hidden');
+      } else {
+        kanaEl.classList.add('hidden');
+      }
+
+      const speakBtn = document.getElementById('modal-speak-btn');
+      if (speakBtn) speakBtn.classList.remove('hidden');
+
+      let romaHtml = '';
+      if (roma) romaHtml += '<div><span class="text-xs text-stone-400">羅馬拼音：</span><b class="text-amber-300">' + roma + '</b></div>';
+      if (pron) romaHtml += '<div class="pt-1"><span class="text-xs text-stone-400">助唸諧音：</span><span class="text-white font-sans">' + pron + '</span></div>';
+      document.getElementById('modal-addr').innerHTML = romaHtml || '請直接指給店員或對方看';
+      document.getElementById('fullscreen-modal').classList.remove('hidden');
+    }
+
+    function renderFlashcards() {
+      const container = document.getElementById('flashcards-grid');
+      if (!container) return;
+      const q = (document.getElementById('fc-search').value || '').trim().toLowerCase();
+      const allCards = getAllFlashcards();
+
+      const filtered = allCards.filter(c => {
+        if (fcCategory !== 'all' && c.cat !== fcCategory) return false;
+        if (q) {
+          const hay = (c.cat + ' ' + c.type + ' ' + c.zh + ' ' + c.jp + ' ' + (c.kana || '') + ' ' + (c.roma || '') + ' ' + (c.pron || '') + ' ' + (c.note || '')).toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      const countEl = document.getElementById('fc-count-label');
+      if (countEl) countEl.textContent = '符合條件共 ' + filtered.length + ' 張字卡（總庫 ' + allCards.length + ' 張）';
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="col-span-2 bg-white rounded-xl p-8 text-center text-xs text-stone-400 border border-stone-200">找不到符合關鍵字的字卡，可點選右上角「+ 自訂字卡」直接新增。</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => {
+        const sZh = escStr(c.zh);
+        const sJp = escStr(c.jp);
+        const sKana = escStr(c.kana || '');
+        const sRoma = escStr(c.roma || '');
+        const sPron = escStr(c.pron || '');
+        const sType = escStr(c.type || c.cat);
+        const speakTarget = escStr(c.kana || c.jp);
+
+        return `
+          <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 flex flex-col justify-between space-y-2.5 hover:border-ryukyu-indigo transition">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-1">
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-[10px] font-bold bg-ryukyu-indigo text-white px-2 py-0.5 rounded">${c.cat}</span>
+                  <span class="text-[10px] font-bold text-ryukyu-teal bg-teal-50 px-2 py-0.5 rounded">${c.type}</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <button onclick="speakJapanese('${speakTarget}')" class="bg-stone-100 hover:bg-stone-200 text-stone-700 text-[11px] font-bold px-2 py-1 rounded flex items-center space-x-1" title="播放日文發音">
+                    <svg class="w-3 h-3 text-ryukyu-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                    <span>發音</span>
+                  </button>
+                  ${c.isCustom ? `<button onclick="deleteCustomFlashcard(${c.id})" class="text-stone-300 hover:text-red-500 text-xs px-1">✕</button>` : ''}
+                </div>
+              </div>
+
+              <div class="text-xs font-bold text-stone-700 pt-0.5">${c.zh}</div>
+              <div class="text-base font-bold text-stone-950 leading-snug tracking-wide">${c.jp}</div>
+              ${c.kana ? `<div class="text-[11px] text-stone-500">${c.kana}</div>` : ''}
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <div class="bg-stone-50 border border-stone-100 rounded-lg p-2 space-y-0.5">
+                ${c.roma ? `<div class="text-[11px] font-mono font-bold text-ryukyu-ocean">${c.roma}</div>` : ''}
+                ${c.pron ? `<div class="text-[11px] text-stone-600">助唸：<b>${c.pron}</b></div>` : ''}
+                ${c.note ? `<div class="text-[10px] text-stone-400 pt-0.5">${c.note}</div>` : ''}
+              </div>
+
+              <button onclick="openFlashcardModal('${sZh}', '${sJp}', '${sKana}', '${sRoma}', '${sPron}', '${sType}')" class="w-full bg-stone-900 hover:bg-ryukyu-indigo text-white text-[11px] font-bold py-2 rounded-lg transition">
+                全螢幕放大展示（手指給店員看）
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openTaxiModal(subTitle, addrOrRoma, mainLargeText) {
+      currentModalSpeechText = '';
+      document.getElementById('modal-badge').textContent = 'POINT & SPEAK / 全螢幕出示卡';
+      document.getElementById('modal-sub').textContent = subTitle;
+      document.getElementById('modal-main').textContent = mainLargeText;
+      document.getElementById('modal-kana').classList.add('hidden');
+      document.getElementById('modal-speak-btn').classList.add('hidden');
+      document.getElementById('modal-addr').textContent = addrOrRoma;
+      document.getElementById('fullscreen-modal').classList.remove('hidden');
+    }
+
+    function openHelpCardModal() {
+      currentModalSpeechText = '恐れ入りますが、台湾の保険会社へ電話をかけるのを手伝っていただけませんか？';
+      document.getElementById('modal-badge').textContent = 'EMERGENCY ASSISTANCE / 保單急難求助卡';
+      document.getElementById('modal-sub').textContent = '請出示給日本飯店櫃檯人員或警察，協助撥打國泰產險台灣海外急難救助專線：';
+      document.getElementById('modal-main').textContent = '恐れ入りますが、台湾の保険会社（+886-2-2755-1258）へ電話をかけるのを手伝っていただけませんか？';
+      document.getElementById('modal-kana').classList.add('hidden');
+      document.getElementById('modal-speak-btn').classList.remove('hidden');
+      document.getElementById('modal-addr').textContent = 'PLEASE HELP ME! Would you please assist me in making a call to Taiwan? The phone number is [+886-2-2755-1258]. The person I would like to talk to is the operation staff at the service center of Cathay Century Insurance Company in Taiwan. Many thanks for your help. (Insured: HSU, TZU-HUAN / Policy No: 150115TDK410705)';
+      document.getElementById('fullscreen-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('fullscreen-modal').classList.add('hidden');
+    }
+
+    // ==================== 10. 啟動初始化 ====================
+    function initApp() {
+      loadState();
+      selectDay(state.currentDay || 1);
+      renderPlaces();
+      renderSplitSection();
+      renderTastingNotes();
+      renderPhrases();
+      renderFlashcards();
+      renderClaimsChecklist();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+</html>
