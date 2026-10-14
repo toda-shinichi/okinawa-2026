@@ -38,6 +38,8 @@
       padding-bottom: 84px;
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
     }
     .hidden { display: none !important; }
     * { box-sizing: border-box; }
@@ -70,24 +72,24 @@
     <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
       <div>
         <div class="flex items-center space-x-2">
-          <span class="text-xs tracking-widest uppercase bg-ryukyu-terracotta px-2 py-0.5 rounded font-mono">2026.10.22 - 10.25</span>
+          <span class="text-xs tracking-widest uppercase bg-ryukyu-terracotta px-2.5 py-1 rounded font-mono font-bold">2026.10.22 - 10.25</span>
           <span class="text-xs text-slate-300 font-mono">4D3N NAHA</span>
         </div>
-        <h1 class="text-lg font-bold tracking-tight mt-0.5">沖繩旅行隨身助理</h1>
+        <h1 class="text-xl sm:text-2xl font-bold tracking-tight mt-0.5">沖繩旅行隨身助理</h1>
       </div>
       <div class="flex items-center space-x-2">
-        <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '松尾二丁目（浮島通り・公設市場近く）')" class="bg-white/10 hover:bg-white/20 border border-white/20 text-xs px-2.5 py-1.5 rounded flex items-center space-x-1 transition">
+        <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '松尾二丁目（浮島通り・公設市場近く）')" class="bg-white/15 hover:bg-white/25 border border-white/20 text-xs sm:text-sm px-3 py-1.5 rounded flex items-center space-x-1 transition">
           <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           <span>回飯店卡</span>
         </button>
-        <button onclick="switchTab('sos')" class="bg-ryukyu-terracotta hover:bg-red-700 text-white text-xs font-bold px-2.5 py-1.5 rounded flex items-center space-x-1 shadow-sm transition">
+        <button onclick="switchTab('sos')" class="bg-ryukyu-terracotta hover:bg-red-700 text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded flex items-center space-x-1 shadow-sm transition">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           <span>保單急救</span>
         </button>
       </div>
     </div>
     <!-- 快速資訊副欄 -->
-    <div class="bg-slate-900/60 border-t border-white/10 text-[11px] text-slate-300 px-4 py-1.5">
+    <div class="bg-slate-900/70 border-t border-white/10 text-xs text-slate-200 px-4 py-2">
       <div class="max-w-3xl mx-auto flex items-center justify-between overflow-x-auto hide-scrollbar whitespace-nowrap space-x-4">
         <span>去程 10/22 <b>NU0302</b> (10:05 TPE → 12:40 OKA)</span>
         <span>|</span>
@@ -107,14 +109,14 @@
       <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200">
         <div class="flex items-start justify-between">
           <div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-ryukyu-teal bg-teal-50 px-2 py-0.5 rounded">Basecamp 住處基準點</span>
-            <h2 class="text-base font-bold text-stone-900 mt-1">ON THE SAME HOTEL</h2>
-            <p class="text-xs text-stone-600 font-mono mt-0.5">〒900-0014 沖縄県那覇市松尾２丁目１９−28</p>
+            <span class="text-xs font-bold uppercase tracking-wider text-ryukyu-teal bg-teal-50 px-2.5 py-1 rounded">Basecamp 住處基準點</span>
+            <h2 class="text-lg sm:text-xl font-bold text-stone-900 mt-1">ON THE SAME HOTEL</h2>
+            <p class="text-xs sm:text-sm text-stone-600 font-mono mt-0.5">〒900-0014 沖縄県那覇市松尾２丁目１９−28</p>
             <p class="text-xs text-stone-500 mt-1">位於浮島通與松尾交界，步行 2 分鐘即達 `ORBIT RENT A CAR`（140m）、`Tamagusuku Coffee`（60m）、`第一牧志公設市場`（230m）。</p>
           </div>
           <div class="flex flex-col space-y-1.5 shrink-0 ml-2">
-            <a href="https://www.google.com/maps/place/?q=place_id:ChIJhwJPV4Jp5TQRLsNITjiDb_c" target="_blank" class="bg-ryukyu-indigo text-white text-xs px-3 py-1.5 rounded text-center font-medium">開啟地圖</a>
-            <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '国際通りの浮島通り近く、松尾2丁目19-28までお願いします。')" class="border border-stone-300 text-stone-700 text-xs px-3 py-1.5 rounded text-center font-medium">司機指路卡</button>
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJhwJPV4Jp5TQRLsNITjiDb_c" target="_blank" class="bg-ryukyu-indigo text-white text-xs sm:text-sm px-3.5 py-2 rounded text-center font-medium">開啟地圖</a>
+            <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '国際通りの浮島通り近く、松尾2丁目19-28までお願いします。')" class="border border-stone-300 text-stone-700 text-xs sm:text-sm px-3.5 py-2 rounded text-center font-medium">司機指路卡</button>
           </div>
         </div>
       </div>
@@ -122,45 +124,45 @@
       <!-- 日期切換器 -->
       <div class="grid grid-cols-4 gap-2">
         <button onclick="selectDay(1)" id="day-btn-1" class="day-btn pill-active bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
-          <div class="text-[11px] opacity-80">10/22 (四)</div>
+          <div class="text-xs opacity-90">10/22 (四)</div>
           <div class="text-sm font-bold">Day 1</div>
-          <div class="text-[10px] mt-0.5 opacity-90">單軌＋老街</div>
+          <div class="text-xs mt-0.5 opacity-95">單軌＋老街</div>
         </button>
         <button onclick="selectDay(2)" id="day-btn-2" class="day-btn bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
-          <div class="text-[11px] opacity-80">10/23 (五)</div>
+          <div class="text-xs opacity-90">10/23 (五)</div>
           <div class="text-sm font-bold">Day 2</div>
-          <div class="text-[10px] mt-0.5 opacity-90">首里＋榮町</div>
+          <div class="text-xs mt-0.5 opacity-95">首里＋榮町</div>
         </button>
         <button onclick="selectDay(3)" id="day-btn-3" class="day-btn bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
-          <div class="text-[11px] opacity-80">10/24 (六)</div>
+          <div class="text-xs opacity-90">10/24 (六)</div>
           <div class="text-sm font-bold">Day 3</div>
-          <div class="text-[10px] mt-0.5 opacity-90">租車自駕日</div>
+          <div class="text-xs mt-0.5 opacity-95">租車自駕日</div>
         </button>
         <button onclick="selectDay(4)" id="day-btn-4" class="day-btn bg-white border border-stone-200 rounded-xl p-2.5 text-center transition shadow-sm">
-          <div class="text-[11px] opacity-80">10/25 (日)</div>
+          <div class="text-xs opacity-90">10/25 (日)</div>
           <div class="text-sm font-bold">Day 4</div>
-          <div class="text-[10px] mt-0.5 opacity-90">採買＋賦歸</div>
+          <div class="text-xs mt-0.5 opacity-95">採買＋賦歸</div>
         </button>
       </div>
 
       <!-- 當日交通模式提示橫幅 -->
-      <div id="day-transport-banner" class="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-stone-800 space-y-1"></div>
+      <div id="day-transport-banner" class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm sm:text-base text-stone-800 leading-relaxed space-y-1.5"></div>
 
       <!-- 週六自駕路線切換器 (僅在 Day 3 顯示) -->
       <div id="sat-route-selector" class="hidden bg-white border border-stone-200 rounded-xl p-3.5 shadow-sm space-y-2.5">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold text-ryukyu-indigo">週六自駕路線提案（可依當日天氣與心情切換）</span>
-          <span class="text-[11px] text-stone-500">取還車：ORBIT RENT A CAR</span>
+          <span class="text-sm font-bold text-ryukyu-indigo">週六自駕路線提案（可依當日天氣與心情切換）：</span>
+          <span class="text-xs text-stone-500 font-mono">取還車：ORBIT RENT A CAR (松尾)</span>
         </div>
         <div class="grid grid-cols-3 gap-2">
-          <button onclick="selectSatRoute('south')" id="sat-btn-south" class="sat-route-btn subpill-active border border-stone-200 rounded-lg py-2 px-2 text-xs font-medium text-center transition">
-            A. 南部海景與古民家<br><span class="text-[10px] opacity-80">南城・知念岬・糸滿</span>
+          <button onclick="selectSatRoute('south')" id="sat-btn-south" class="sat-route-btn subpill-active border border-stone-200 rounded-lg py-2.5 px-2 text-xs sm:text-sm font-medium text-center transition">
+            A. 南部海景與古民家<br><span class="text-xs opacity-90">南城・知念岬・糸滿</span>
           </button>
-          <button onclick="selectSatRoute('central')" id="sat-btn-central" class="sat-route-btn border border-stone-200 rounded-lg py-2 px-2 text-xs font-medium text-center transition">
-            B. 中部海岸與コザ<br><span class="text-[10px] opacity-80">北谷・沖繩市・瀬長島</span>
+          <button onclick="selectSatRoute('central')" id="sat-btn-central" class="sat-route-btn border border-stone-200 rounded-lg py-2.5 px-2 text-xs sm:text-sm font-medium text-center transition">
+            B. 中部海岸與コザ<br><span class="text-xs opacity-90">北谷・沖繩市・瀬長島</span>
           </button>
-          <button onclick="selectSatRoute('north')" id="sat-btn-north" class="sat-route-btn border border-stone-200 rounded-lg py-2 px-2 text-xs font-medium text-center transition">
-            C. 中北部經典巡禮<br><span class="text-[10px] opacity-80">恩納中村麵・名護</span>
+          <button onclick="selectSatRoute('north')" id="sat-btn-north" class="sat-route-btn border border-stone-200 rounded-lg py-2.5 px-2 text-xs sm:text-sm font-medium text-center transition">
+            C. 中北部經典巡禮<br><span class="text-xs opacity-90">恩納中村麵・名護</span>
           </button>
         </div>
       </div>
@@ -172,7 +174,7 @@
       <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
         <h3 class="text-sm font-bold text-stone-800 flex items-center justify-between">
           <span>手動新增行程節點至本日</span>
-          <button onclick="resetDefaultItinerary()" class="text-[11px] font-normal text-stone-400 underline">還原預設行程</button>
+          <button onclick="resetDefaultItinerary()" class="text-xs text-stone-400 hover:text-stone-600 underline">還原預設行程</button>
         </h3>
         <div class="grid grid-cols-3 gap-2">
           <input type="text" id="new-item-time" placeholder="時間 (例 15:30)" class="border border-stone-300 rounded-lg px-3 py-2 text-xs font-mono">
@@ -190,7 +192,7 @@
         <div class="p-3.5 flex items-center justify-between bg-stone-50 border-b border-stone-200">
           <div>
             <h2 class="text-sm font-bold text-stone-900">重要地點地圖（Icon 分類互動版）</h2>
-            <p class="text-[11px] text-stone-500">子桓自建 Google My Maps 圖層（連線時可縮放點擊）</p>
+            <p class="text-xs text-stone-500">子桓自建 Google My Maps 圖層（連線時可縮放點擊）</p>
           </div>
           <button onclick="toggleIframeMap()" id="toggle-map-btn" class="text-xs bg-ryukyu-indigo text-white px-3 py-1.5 rounded font-medium">收合地圖</button>
         </div>
@@ -212,12 +214,12 @@
         <!-- 資料來源與排序切換 -->
         <div class="flex items-center justify-between gap-2 overflow-x-auto hide-scrollbar pb-1">
           <div class="flex space-x-1.5 shrink-0">
-            <button onclick="setSourceFilter('all')" id="src-all" class="src-btn pill-active text-xs border border-stone-300 px-2.5 py-1 rounded-full">全部 (199)</button>
-            <button onclick="setSourceFilter(1)" id="src-1" class="src-btn text-xs border border-stone-300 px-2.5 py-1 rounded-full bg-stone-50">重要精選 (40)</button>
-            <button onclick="setSourceFilter(2)" id="src-2" class="src-btn text-xs border border-stone-300 px-2.5 py-1 rounded-full bg-stone-50">好地點隨記 (159)</button>
-            <button onclick="setSourceFilter('fav')" id="src-fav" class="src-btn text-xs border border-stone-300 px-2.5 py-1 rounded-full bg-stone-50">已星號收藏</button>
+            <button onclick="setSourceFilter('all')" id="src-all" class="src-btn pill-active text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full">全部 (199)</button>
+            <button onclick="setSourceFilter(1)" id="src-1" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">重要精選 (40)</button>
+            <button onclick="setSourceFilter(2)" id="src-2" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">好地點隨記 (159)</button>
+            <button onclick="setSourceFilter('fav')" id="src-fav" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">已星號收藏</button>
           </div>
-          <select id="place-sort" onchange="renderPlaces()" class="text-xs border border-stone-300 rounded-lg px-2 py-1 bg-white shrink-0">
+          <select id="place-sort" onchange="renderPlaces()" class="text-xs sm:text-sm border border-stone-300 rounded-lg px-2.5 py-1.5 bg-white shrink-0">
             <option value="dist">依距離飯店（近→遠）</option>
             <option value="rating">依 Google 評分（高→低）</option>
             <option value="source">重要精選優先</option>
@@ -226,25 +228,25 @@
 
         <!-- 地區篩選 -->
         <div class="flex space-x-1.5 overflow-x-auto hide-scrollbar pb-1">
-          <button onclick="setRegionFilter('all')" id="reg-all" class="reg-btn subpill-active text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0">全沖繩</button>
-          <button onclick="setRegionFilter('walk10')" id="reg-walk10" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">飯店步行 800m 內</button>
-          <button onclick="setRegionFilter('那霸（市區）')" id="reg-那霸（市區）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">那霸市區</button>
-          <button onclick="setRegionFilter('那霸（首里）')" id="reg-那霸（首里）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">那霸首里</button>
-          <button onclick="setRegionFilter('南部（南城・八重瀨）')" id="reg-南部（南城・八重瀨）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">南城・八重瀨</button>
-          <button onclick="setRegionFilter('南部（糸滿・豐見城）')" id="reg-南部（糸滿・豐見城）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">糸滿・豐見城</button>
-          <button onclick="setRegionFilter('中部（北谷・沖繩市）')" id="reg-中部（北谷・沖繩市）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">北谷・沖繩市</button>
-          <button onclick="setRegionFilter('北部（恩納・名護）')" id="reg-北部（恩納・名護）" class="reg-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">恩納・名護</button>
+          <button onclick="setRegionFilter('all')" id="reg-all" class="reg-btn subpill-active text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0">全沖繩</button>
+          <button onclick="setRegionFilter('walk10')" id="reg-walk10" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">飯店步行 800m 內</button>
+          <button onclick="setRegionFilter('那霸（市區）')" id="reg-那霸（市區）" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">那霸市區</button>
+          <button onclick="setRegionFilter('那霸（首里）')" id="reg-那霸（首里）" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">那霸首里</button>
+          <button onclick="setRegionFilter('南部（南城・八重瀨）')" id="reg-南部（南城・八重瀨）" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">南城・八重瀨</button>
+          <button onclick="setRegionFilter('南部（糸滿・豐見城）')" id="reg-南部（糸滿・豐見城）" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">糸滿・豐見城</button>
+          <button onclick="setRegionFilter('中部（北谷・沖繩市）')" id="reg-中部（北谷・沖繩市）" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">北谷・沖繩市</button>
+          <button onclick="setRegionFilter('北部（恩納・名護）')" id="reg-北部（恩納・名護）" class="reg-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">恩納・名護</button>
         </div>
 
         <!-- 情境與分類標籤 -->
         <div class="flex space-x-1.5 overflow-x-auto hide-scrollbar">
-          <button onclick="setTagFilter('all')" id="tag-all" class="tag-btn pill-active text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0">所有類型</button>
-          <button onclick="setTagFilter('微醺酒館')" id="tag-微醺酒館" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">微醺酒館・居酒屋</button>
-          <button onclick="setTagFilter('咖啡甜點')" id="tag-咖啡甜點" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">咖啡・烘焙・甜點</button>
-          <button onclick="setTagFilter('正餐美食')" id="tag-正餐美食" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">沖繩麵・燒肉・食堂</button>
-          <button onclick="setTagFilter('選物採買')" id="tag-選物採買" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">陶藝・選物・超市</button>
-          <button onclick="setTagFilter('風景名勝')" id="tag-風景名勝" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">海灘・神社・美術館</button>
-          <button onclick="setTagFilter('交通與應變')" id="tag-交通與應變" class="tag-btn text-[11px] border border-stone-200 px-2.5 py-1 rounded-md shrink-0 bg-stone-50">租車・醫院・車站</button>
+          <button onclick="setTagFilter('all')" id="tag-all" class="tag-btn pill-active text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0">所有類型</button>
+          <button onclick="setTagFilter('微醺酒館')" id="tag-微醺酒館" class="tag-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">微醺酒館・居酒屋</button>
+          <button onclick="setTagFilter('咖啡甜點')" id="tag-咖啡甜點" class="tag-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">咖啡・烘焙・甜點</button>
+          <button onclick="setTagFilter('正餐美食')" id="tag-正餐美食" class="tag-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">沖繩麵・燒肉・食堂</button>
+          <button onclick="setTagFilter('選物採買')" id="tag-選物採買" class="tag-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">陶藝・選物・超市</button>
+          <button onclick="setTagFilter('風景名勝')" id="tag-風景名勝" class="tag-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">海灘・神社・美術館</button>
+          <button onclick="setTagFilter('交通與應變')" id="tag-交通與應變" class="tag-btn text-xs sm:text-sm border border-stone-200 px-3 py-1.5 rounded-md shrink-0 bg-stone-50">租車・醫院・車站</button>
         </div>
       </div>
 
@@ -265,7 +267,7 @@
         <div class="flex items-center justify-between border-b border-stone-100 pb-2.5">
           <div>
             <h2 class="text-sm font-bold text-stone-900">即時匯率換算 ＆ 單店 ¥5,000 免稅湊單器</h2>
-            <p class="text-[11px] text-stone-500">日本退稅門檻為同一店家當日未稅滿 ¥5,000（含稅 ¥5,500）</p>
+            <p class="text-xs sm:text-sm text-stone-500">日本退稅門檻為同一店家當日未稅滿 ¥5,000（含稅 ¥5,500）</p>
           </div>
           <div class="flex items-center space-x-1 text-xs">
             <span class="text-stone-500">匯率:</span>
@@ -276,31 +278,31 @@
         <!-- 快速換算器 -->
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="text-[11px] text-stone-500 block mb-1">輸入日圓 (JPY)</label>
-            <input type="number" id="calc-jpy" oninput="calcFromJpy()" placeholder="例: 3500" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm font-mono">
+            <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">輸入日圓 (JPY)</label>
+            <input type="number" id="calc-jpy" oninput="calcFromJpy()" placeholder="例: 3500" class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-base font-mono">
           </div>
           <div>
-            <label class="text-[11px] text-stone-500 block mb-1">折合新台幣 (TWD)</label>
-            <input type="text" id="calc-twd" readonly class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm font-mono font-bold text-ryukyu-indigo" value="NT$ 0">
+            <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">折合新台幣 (TWD)</label>
+            <input type="text" id="calc-twd" readonly class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3.5 py-2.5 text-base font-mono font-bold text-ryukyu-indigo" value="NT$ 0">
           </div>
         </div>
-        <div class="flex items-center justify-between text-xs text-stone-600 bg-stone-50 px-3 py-2 rounded-lg font-mono">
+        <div class="flex items-center justify-between text-xs sm:text-sm text-stone-700 bg-stone-50 px-3.5 py-2.5 rounded-lg font-mono">
           <span>若為未稅價，加 10% 含稅：<b id="calc-tax-inc">¥0</b></span>
-          <button onclick="addToTaxFreeBasket()" class="bg-ryukyu-teal text-white px-2.5 py-1 rounded text-[11px] font-sans font-bold">+ 加入湊免稅籃</button>
+          <button onclick="addToTaxFreeBasket()" class="bg-ryukyu-teal text-white px-3 py-1.5 rounded-lg text-xs sm:text-sm font-sans font-bold">+ 加入湊免稅籃</button>
         </div>
 
         <!-- 免稅進度條 -->
         <div class="space-y-1.5 pt-1">
-          <div class="flex justify-between text-xs">
-            <span class="font-medium text-stone-700">目前免稅籃累計（未稅）：<b id="tax-basket-total" class="font-mono text-ryukyu-indigo">¥0</b></span>
+          <div class="flex justify-between text-xs sm:text-sm">
+            <span class="font-medium text-stone-700">目前免稅籃累計（未稅）：<b id="tax-basket-total" class="font-mono text-base text-ryukyu-indigo">¥0</b></span>
             <span id="tax-basket-status" class="font-bold text-ryukyu-terracotta">還差 ¥5,000 達標</span>
           </div>
           <div class="w-full bg-stone-200 h-2.5 rounded-full overflow-hidden">
             <div id="tax-progress-bar" class="bg-ryukyu-teal h-full transition-all duration-300" style="width: 0%"></div>
           </div>
           <div class="flex justify-between items-center pt-1">
-            <span id="tax-basket-items" class="text-[11px] text-stone-400 font-mono">尚未加入商品</span>
-            <button onclick="clearTaxBasket()" class="text-[11px] text-stone-400 underline">清空免稅籃</button>
+            <span id="tax-basket-items" class="text-xs text-stone-500 font-mono">尚未加入商品</span>
+            <button onclick="clearTaxBasket()" class="text-xs text-stone-400 hover:text-stone-600 underline">清空免稅籃</button>
           </div>
         </div>
       </div>
@@ -309,7 +311,7 @@
       <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
         <div class="flex items-center justify-between">
           <h3 class="text-sm font-bold text-stone-900">同行旅伴設定（分帳成員）</h3>
-          <span class="text-[11px] text-stone-400">點選可新增或移除</span>
+          <span class="text-xs text-stone-400">點選可新增或移除</span>
         </div>
         <div id="members-list" class="flex flex-wrap gap-2"></div>
         <div class="flex space-x-2">
@@ -323,16 +325,16 @@
         <h3 class="text-sm font-bold text-stone-900">記一筆開銷</h3>
         <div class="grid grid-cols-2 gap-2.5">
           <div class="col-span-2 sm:col-span-1">
-            <label class="text-[11px] text-stone-500 block mb-1">消費項目 / 店名</label>
+            <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">消費項目 / 店名</label>
             <input type="text" id="exp-title" placeholder="例：ORBIT 租車費、燕食堂午餐" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs">
           </div>
           <div class="grid grid-cols-2 gap-2 col-span-2 sm:col-span-1">
             <div>
-              <label class="text-[11px] text-stone-500 block mb-1">金額</label>
+              <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">金額</label>
               <input type="number" id="exp-amount" placeholder="金額" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-xs font-mono">
             </div>
             <div>
-              <label class="text-[11px] text-stone-500 block mb-1">幣別</label>
+              <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">幣別</label>
               <select id="exp-currency" class="w-full border border-stone-300 rounded-lg px-2 py-2 text-xs bg-white font-mono">
                 <option value="JPY">JPY (日圓)</option>
                 <option value="TWD">TWD (台幣)</option>
@@ -343,11 +345,11 @@
 
         <div class="grid grid-cols-2 gap-2.5">
           <div>
-            <label class="text-[11px] text-stone-500 block mb-1">誰先墊錢？</label>
+            <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">誰先墊錢？</label>
             <select id="exp-payer" class="w-full border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white"></select>
           </div>
           <div>
-            <label class="text-[11px] text-stone-500 block mb-1">付款方式</label>
+            <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">付款方式</label>
             <select id="exp-method" class="w-full border border-stone-300 rounded-lg px-2.5 py-2 text-xs bg-white">
               <option value="現金">日幣現金</option>
               <option value="信用卡">信用卡</option>
@@ -358,7 +360,7 @@
         </div>
 
         <div>
-          <label class="text-[11px] text-stone-500 block mb-1">參與分攤的人（預設全選平分）</label>
+          <label class="text-xs sm:text-sm font-medium text-stone-600 block mb-1">參與分攤的人（預設全選平分）</label>
           <div id="exp-splitters" class="flex flex-wrap gap-2 pt-1"></div>
         </div>
 
@@ -388,52 +390,52 @@
     <section id="tab-culture" class="hidden space-y-4">
       <!-- 區塊切換：風土讀本 vs 品飲筆記 -->
       <div class="grid grid-cols-2 gap-2">
-        <button onclick="switchCultureSub('story')" id="cul-btn-story" class="cul-btn pill-active bg-white border border-stone-200 rounded-xl py-2.5 text-xs font-bold text-center">風土歷史讀本</button>
-        <button onclick="switchCultureSub('tasting')" id="cul-btn-tasting" class="cul-btn bg-white border border-stone-200 rounded-xl py-2.5 text-xs font-bold text-center">風味品飲誌</button>
+        <button onclick="switchCultureSub('story')" id="cul-btn-story" class="cul-btn pill-active bg-white border border-stone-200 rounded-xl py-2.5 text-xs sm:text-sm font-bold text-center">風土歷史讀本</button>
+        <button onclick="switchCultureSub('tasting')" id="cul-btn-tasting" class="cul-btn bg-white border border-stone-200 rounded-xl py-2.5 text-xs sm:text-sm font-bold text-center">風味品飲誌</button>
       </div>
 
       <!-- 4A: 沖繩歷史與街區脈絡讀本 -->
       <div id="cul-panel-story" class="space-y-3">
         <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
-          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 01 | 住處周邊：松尾・浮島通・第一牧志公設市場</div>
-          <h3 class="text-base font-bold text-stone-900">戰後黑市長出來的「那霸廚房」與迷宮商店街</h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <div class="text-xs font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 01 | 住處周邊：松尾・浮島通・第一牧志公設市場</div>
+          <h3 class="text-base sm:text-lg font-bold text-stone-900">戰後黑市長出來的「那霸廚房」與迷宮商店街</h3>
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             你下榻的 `ON THE SAME HOTEL` 位於松尾二丁目，正好卡在國際通、浮島通與第一牧志公設市場的交會點。1945 年沖繩島戰役後，那霸市中心被劃為美軍基地與物資集散區，居民被迫遷往壺屋與牧志一帶的沼澤地（當時稱為ガーブ川，Gabu 川）。最初是由女性攤販在河岸搭起棚架交換美軍流出物資與農漁產，逐漸演變成「牧志公設市場」。
           </p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             走進市場本通與平和通的拱廊，抬頭還能看見戰後水上店舖（水上店舗）留下的建築結構——例如你清單裡的精釀啤酒吧 `Ukishima Brewing` 就設在老水上店舖第二街區三樓；而市場二樓的 `燕食堂` 則是延續了戰後「一樓買魚、二樓代客熱炒（持ち上げ）」的庶民飲食傳統。
           </p>
         </div>
 
         <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
-          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 02 | 壺屋やちむん通り（Yachimun Street）與福福茶</div>
-          <h3 class="text-base font-bold text-stone-900">琉球王國的工藝集中營與奇蹟躲過轟炸的石疊路</h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <div class="text-xs font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 02 | 壺屋やちむん通り（Yachimun Street）與福福茶</div>
+          <h3 class="text-base sm:text-lg font-bold text-stone-900">琉球王國的工藝集中營與奇蹟躲過轟炸的石疊路</h3>
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             「やちむん（Yachimun）」是沖繩方言的「陶器」。西元 1682 年，琉球王國尚貞王為了統一管理並提升製陶技術，將原本分散在首里（寶口窯）、美里（知花窯）與那霸（湧田窯）的三座窯場全部遷聚到「壺屋」。這裡融合了中國閩南傳入的龍窯與施釉技術、朝鮮陶工的技法，以及日本薩摩藩的器型需求。
           </p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             二戰期間那霸幾乎被夷為平地，唯獨壺屋一帶幸運避開猛烈砲火，保留了蜿蜒的琉球石灰岩鋪面與百年「南窯（フェーヌカマ）」。你在壺屋通喝到的 `UCHINA CAFÉ BUKU-BUKU`（福福茶），源自琉球王國冊封使來訪時的宮廷茶道，利用含鈣量高的沖繩硬水與炒米打出綿密氣泡，寓意「福氣高漲、航海平安」。
           </p>
         </div>
 
         <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
-          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 03 | 泡盛（Awamori）與古酒（クース）的身世</div>
-          <h3 class="text-base font-bold text-stone-900">比日本燒酎更古老的東南亞黑麴蒸餾酒</h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <div class="text-xs font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 03 | 泡盛（Awamori）與古酒（クース）的身世</div>
+          <h3 class="text-base sm:text-lg font-bold text-stone-900">比日本燒酎更古老的東南亞黑麴蒸餾酒</h3>
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             泡盛是日本列島現存歷史最悠久的蒸餾酒。15 世紀大航海時代，琉球王國與暹羅（今泰國）貿易頻繁，引進了泰國香米（秈米）與蒸餾技術，並結合沖繩特有的「黑麴菌（黒麹菌）」釀造。因為黑麴在發酵時會產生大量檸檬酸，能抑制亞熱帶高溫下的雜菌腐敗。
           </p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             泡盛經過三年以上陶甕熟成即稱為「古酒（Kusu，クース）」。二戰前首里城周邊酒造存有大量百年古酒，幾乎在戰火中全毀。你在清單裡標記的安里老店 `Urizun（うりずん）` 與壺屋深夜酒吧 `Oni no Ude（オニノウデ）`，正是戰後致力於復興古酒文化與傳統琉球陶杯品飲的代表酒場。
           </p>
         </div>
 
         <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
-          <div class="text-[11px] font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 04 | 安里榮町市場 ＆ 沖繩市（Koza）的戰後地景</div>
-          <h3 class="text-base font-bold text-stone-900">昭和庶民市場與美軍治理時期的混血搖滾現場</h3>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <div class="text-xs font-bold text-ryukyu-terracotta uppercase tracking-wider">Context 04 | 安里榮町市場 ＆ 沖繩市（Koza）的戰後地景</div>
+          <h3 class="text-base sm:text-lg font-bold text-stone-900">昭和庶民市場與美軍治理時期的混血搖滾現場</h3>
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             安里站旁的 `榮町市場` 誕生於 1955 年，窄巷裡白天是賣島豆腐與蔬菜的傳統菜市場，但因為緊鄰老字號烘豆店 `COFFEE potohoto`，傍晚鐵捲門半開後，紅燈籠亮起，立刻變身為 `Refuge`、`Arakoya` 與 `べんり屋 玉玲瓏` 等新派小酒館與煎餃攤並存的夜生活聚落。
           </p>
-          <p class="text-xs text-stone-600 leading-relaxed">
+          <p class="text-sm sm:text-base text-stone-700 leading-relaxed">
             若週六自駕往中部的北谷與沖繩市（舊稱コザ Koza，鄰近嘉手納空軍基地），則會看見 1945 至 1972 年美國民政府（USCAR）統治時期留下的美式文化切面：塔可飯（Taco Rice）、麥根沙士（A&W Root Beer）、美式牛排館（如那霸西町 1953 年開業、曾掛有美軍公認 A 級標章的 `傑克牛排館`），這座島嶼把戰火與基地的歷史重量，全轉化成了餐桌上的混血日常。
           </p>
         </div>
@@ -485,9 +487,9 @@
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-sm font-bold text-stone-900">手指日語 ＆ 沖繩旅遊單字卡專區</h2>
-            <p class="text-[11px] text-stone-500">點選「放大展示」可全螢幕給店員看；點選「發音」可聽日文語音與羅馬拼音</p>
+            <p class="text-xs sm:text-sm text-stone-500">點選「放大展示」可全螢幕給店員看；點選「發音」可聽日文語音與羅馬拼音</p>
           </div>
-          <button onclick="toggleNewCardForm()" class="bg-ryukyu-indigo text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg shrink-0">+ 自訂字卡</button>
+          <button onclick="toggleNewCardForm()" class="bg-ryukyu-indigo text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-lg shrink-0">+ 自訂字卡</button>
         </div>
 
         <!-- 關鍵字搜尋 -->
@@ -498,13 +500,13 @@
 
         <!-- 六大情境與詞性分類按鈕 -->
         <div class="flex space-x-1.5 overflow-x-auto hide-scrollbar pb-0.5">
-          <button onclick="setFcCategory('all')" id="fc-cat-all" class="fc-cat-btn pill-active text-xs border border-stone-300 px-3 py-1 rounded-full shrink-0">全部字卡</button>
-          <button onclick="setFcCategory('日常用語')" id="fc-cat-日常用語" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">日常用語・沖繩方言</button>
-          <button onclick="setFcCategory('點餐會話')" id="fc-cat-點餐會話" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">點餐・居酒屋・客製</button>
-          <button onclick="setFcCategory('食物飲品')" id="fc-cat-食物飲品" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">菜色・燒肉部位・酒水</button>
-          <button onclick="setFcCategory('購物商品')" id="fc-cat-購物商品" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">商品・陶器・藥妝退稅</button>
-          <button onclick="setFcCategory('單字詞庫')" id="fc-cat-單字詞庫" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">動詞・名詞・數量詞</button>
-          <button onclick="setFcCategory('交通自駕')" id="fc-cat-交通自駕" class="fc-cat-btn text-xs border border-stone-300 px-3 py-1 rounded-full bg-stone-50 shrink-0">週六自駕・加油・交通</button>
+          <button onclick="setFcCategory('all')" id="fc-cat-all" class="fc-cat-btn pill-active text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full shrink-0">全部字卡</button>
+          <button onclick="setFcCategory('日常用語')" id="fc-cat-日常用語" class="fc-cat-btn text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full bg-stone-50 shrink-0">日常用語・沖繩方言</button>
+          <button onclick="setFcCategory('點餐會話')" id="fc-cat-點餐會話" class="fc-cat-btn text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full bg-stone-50 shrink-0">點餐・居酒屋・客製</button>
+          <button onclick="setFcCategory('食物飲品')" id="fc-cat-食物飲品" class="fc-cat-btn text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full bg-stone-50 shrink-0">菜色・燒肉部位・酒水</button>
+          <button onclick="setFcCategory('購物商品')" id="fc-cat-購物商品" class="fc-cat-btn text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full bg-stone-50 shrink-0">商品・陶器・藥妝退稅</button>
+          <button onclick="setFcCategory('單字詞庫')" id="fc-cat-單字詞庫" class="fc-cat-btn text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full bg-stone-50 shrink-0">動詞・名詞・數量詞</button>
+          <button onclick="setFcCategory('交通自駕')" id="fc-cat-交通自駕" class="fc-cat-btn text-xs sm:text-sm border border-stone-300 px-3.5 py-1.5 rounded-full bg-stone-50 shrink-0">週六自駕・加油・交通</button>
         </div>
       </div>
 
@@ -547,7 +549,7 @@
       <div class="bg-stone-900 text-white rounded-xl p-4 shadow-md border border-stone-700 space-y-3">
         <div class="flex items-center justify-between border-b border-stone-700 pb-2.5">
           <div>
-            <span class="text-[10px] font-mono uppercase tracking-widest bg-ryukyu-terracotta px-2 py-0.5 rounded">Cathay Century Insurance (U5 豪華享樂型)</span>
+            <span class="text-xs font-mono font-bold uppercase tracking-widest bg-ryukyu-terracotta px-2.5 py-1 rounded">Cathay Century Insurance (U5 豪華享樂型)</span>
             <h2 class="text-base font-bold mt-1">海外急難救助與保單識別卡</h2>
           </div>
           <a href="tel:+886227551258" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-2 rounded-lg shadow flex items-center space-x-1 shrink-0">
@@ -556,13 +558,13 @@
           </a>
         </div>
 
-        <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-xs font-mono">
-          <div><span class="text-stone-400 font-sans block text-[10px]">被保險人中英文姓名</span><b>徐子桓 / HSU, TZU-HUAN</b></div>
-          <div><span class="text-stone-400 font-sans block text-[10px]">保單號碼</span><b class="text-amber-300">150115TDK410705</b></div>
-          <div><span class="text-stone-400 font-sans block text-[10px]">護照號碼 (Passport No.)</span><b>361537836</b></div>
-          <div><span class="text-stone-400 font-sans block text-[10px]">身分證字號 / 出生日期</span><b>A128378959 (1993/06/15)</b></div>
-          <div class="col-span-2"><span class="text-stone-400 font-sans block text-[10px]">保險有效期間（返國班機延誤自動延長最高 72 小時）</span><b>2026/10/22 00:00 至 2026/10/26 00:00 (共 4 日)</b></div>
-          <div class="col-span-2"><span class="text-stone-400 font-sans block text-[10px]">登錄航班（適用班機延誤免檢附部分理賠文件條款）</span><b>去程 10/22 NU0302 ｜ 回程 10/25 NU0307</b></div>
+        <div class="grid grid-cols-2 gap-y-2.5 gap-x-4 text-xs sm:text-sm font-mono">
+          <div><span class="text-stone-400 font-sans block text-xs">被保險人中英文姓名</span><b>徐子桓 / HSU, TZU-HUAN</b></div>
+          <div><span class="text-stone-400 font-sans block text-xs">保單號碼</span><b class="text-amber-300">150115TDK410705</b></div>
+          <div><span class="text-stone-400 font-sans block text-xs">護照號碼 (Passport No.)</span><b>361537836</b></div>
+          <div><span class="text-stone-400 font-sans block text-xs">身分證字號 / 出生日期</span><b>A128378959 (1993/06/15)</b></div>
+          <div class="col-span-2"><span class="text-stone-400 font-sans block text-xs">保險有效期間（返國班機延誤自動延長最高 72 小時）</span><b>2026/10/22 00:00 至 2026/10/26 00:00 (共 4 日)</b></div>
+          <div class="col-span-2"><span class="text-stone-400 font-sans block text-xs">登錄航班（適用班機延誤免檢附部分理賠文件條款）</span><b>去程 10/22 NU0302 ｜ 回程 10/25 NU0307</b></div>
         </div>
 
         <div class="pt-2 border-t border-stone-700 flex flex-wrap gap-2">
@@ -576,15 +578,15 @@
         <div class="grid grid-cols-3 gap-2 text-center">
           <a href="tel:110" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
             <div class="text-base font-bold font-mono text-ryukyu-indigo">110</div>
-            <div class="text-[11px] text-stone-600">日本報警（車禍/失竊）</div>
+            <div class="text-xs text-stone-600">日本報警（車禍/失竊）</div>
           </a>
           <a href="tel:119" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
             <div class="text-base font-bold font-mono text-ryukyu-terracotta">119</div>
-            <div class="text-[11px] text-stone-600">救護車 / 火警</div>
+            <div class="text-xs text-stone-600">救護車 / 火警</div>
           </a>
           <a href="tel:0988627008" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
-            <div class="text-xs font-bold font-mono text-ryukyu-teal pt-1">098-862-7008</div>
-            <div class="text-[11px] text-stone-600 mt-0.5">駐那霸辦事處</div>
+            <div class="text-sm font-bold font-mono text-ryukyu-teal pt-1">098-862-7008</div>
+            <div class="text-xs text-stone-600 mt-0.5">駐那霸辦事處</div>
           </a>
         </div>
 
@@ -592,30 +594,30 @@
           <div class="py-2 flex items-center justify-between">
             <div>
               <div class="font-bold">台北駐日經濟文化代表處 那霸分處</div>
-              <div class="text-stone-500 font-mono text-[11px]">〒900-0015 沖縄県那覇市久茂地３丁目１５−9 アルテビル 6F (距飯店 690m)</div>
-              <div class="text-stone-500 text-[11px]">急難救助行動電話：090-1942-1107（護照遺失補發）</div>
+              <div class="text-stone-500 font-mono text-xs">〒900-0015 沖縄県那覇市久茂地３丁目１５−9 アルテビル 6F (距飯店 690m)</div>
+              <div class="text-stone-500 text-xs">急難救助行動電話：090-1942-1107（護照遺失補發）</div>
             </div>
             <a href="https://www.google.com/maps/place/?q=place_id:ChIJTf695Xdp5TQRqorKlT30RRM" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
           </div>
           <div class="py-2 flex items-center justify-between">
             <div>
               <div class="font-bold">牧志派出所（牧志交番）</div>
-              <div class="text-stone-500 font-mono text-[11px]">〒900-0013 沖縄県那覇市牧志３丁目１１−4 (距飯店 560m)</div>
-              <div class="text-stone-500 text-[11px]">國際通屋台村旁，辦理遺失物與失竊報案證明最近據點</div>
+              <div class="text-stone-500 font-mono text-xs">〒900-0013 沖縄県那覇市牧志３丁目１１−4 (距飯店 560m)</div>
+              <div class="text-stone-500 text-xs">國際通屋台村旁，辦理遺失物與失竊報案證明最近據點</div>
             </div>
             <a href="https://www.google.com/maps/place/?q=place_id:ChIJm7wm4Hpp5TQRXclwFtWLXts" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
           </div>
           <div class="py-2 flex items-center justify-between">
             <div>
               <div class="font-bold">沖繩紅十字醫院（沖縄赤十字病院）</div>
-              <div class="text-stone-500 font-mono text-[11px]">〒902-8588 沖縄県那覇市与儀１丁目３−1 (距飯店 830m)</div>
+              <div class="text-stone-500 font-mono text-xs">〒902-8588 沖縄県那覇市与儀１丁目３−1 (距飯店 830m)</div>
             </div>
             <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-aDRkW1p5TQRvwVUhm2Ya_0" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
           </div>
           <div class="py-2 flex items-center justify-between">
             <div>
               <div class="font-bold">沖繩縣立南部醫療中心・兒童醫療中心</div>
-              <div class="text-stone-500 font-mono text-[11px]">〒901-1105 沖縄県島尻郡南風原町新川 118-1 (距飯店 3.7km)</div>
+              <div class="text-stone-500 font-mono text-xs">〒901-1105 沖縄県島尻郡南風原町新川 118-1 (距飯店 3.7km)</div>
             </div>
             <a href="https://www.google.com/maps/place/?q=place_id:ChIJ0UojzVJp5TQRqBrVRwMu8Zk" target="_blank" class="text-ryukyu-ocean font-bold shrink-0 ml-2">導航</a>
           </div>
@@ -626,7 +628,7 @@
       <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
         <div>
           <h3 class="text-sm font-bold text-stone-900">互動式理賠現場採證檢核表（依 U5 保單條款建置）</h3>
-          <p class="text-[11px] text-stone-500">萬一發生狀況，離開現場前請逐一勾選確認已取得下列正本文件：</p>
+          <p class="text-xs sm:text-sm text-stone-500">萬一發生狀況，離開現場前請逐一勾選確認已取得下列正本文件：</p>
         </div>
 
         <div id="claims-checklist" class="space-y-3 text-xs"></div>
@@ -640,27 +642,27 @@
     <div class="max-w-3xl mx-auto grid grid-cols-6 text-center">
       <button onclick="switchTab('itinerary')" id="nav-itinerary" class="nav-btn tab-active py-2 flex flex-col items-center justify-center text-stone-500">
         <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        <span class="text-[10px]">行程交通</span>
+        <span class="text-[11px] sm:text-xs font-medium">行程交通</span>
       </button>
       <button onclick="switchTab('places')" id="nav-places" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
         <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        <span class="text-[10px]">地圖隨記</span>
+        <span class="text-[11px] sm:text-xs font-medium">地圖隨記</span>
       </button>
       <button onclick="switchTab('flashcards')" id="nav-flashcards" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
         <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
-        <span class="text-[10px]">手指字卡</span>
+        <span class="text-[11px] sm:text-xs font-medium">手指字卡</span>
       </button>
       <button onclick="switchTab('split')" id="nav-split" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
         <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <span class="text-[10px]">分帳退稅</span>
+        <span class="text-[11px] sm:text-xs font-medium">分帳退稅</span>
       </button>
       <button onclick="switchTab('culture')" id="nav-culture" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
         <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-        <span class="text-[10px]">風土品飲</span>
+        <span class="text-[11px] sm:text-xs font-medium">風土品飲</span>
       </button>
       <button onclick="switchTab('sos')" id="nav-sos" class="nav-btn py-2 flex flex-col items-center justify-center text-stone-500">
         <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        <span class="text-[10px]">保單急救</span>
+        <span class="text-[11px] sm:text-xs font-medium">保單急救</span>
       </button>
     </div>
   </nav>
@@ -951,17 +953,17 @@
           <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 relative">
             <div class="flex items-start justify-between gap-2">
               <div class="flex items-center space-x-2">
-                <span class="bg-ryukyu-indigo text-white font-mono text-xs font-bold px-2.5 py-1 rounded">${item.time}</span>
-                <span class="text-[11px] font-bold text-ryukyu-terracotta bg-orange-50 px-2 py-0.5 rounded">${item.cat || '行程節點'}</span>
+                <span class="bg-ryukyu-indigo text-white font-mono text-xs sm:text-sm font-bold px-3 py-1 rounded">${item.time}</span>
+                <span class="text-xs font-bold text-ryukyu-terracotta bg-orange-50 px-2.5 py-1 rounded">${item.cat || '行程節點'}</span>
               </div>
-              <button onclick="removeItineraryItem(${idx})" class="text-stone-300 hover:text-stone-500 text-xs px-1" title="刪除此節點">✕</button>
+              <button onclick="removeItineraryItem(${idx})" class="text-stone-300 hover:text-stone-600 text-sm px-1.5" title="刪除此節點">✕</button>
             </div>
-            <h3 class="text-sm font-bold text-stone-900 mt-2">${item.title}</h3>
-            ${item.addr ? `<p class="text-[11px] text-stone-500 font-mono mt-0.5">${item.addr}</p>` : ''}
-            ${item.note ? `<p class="text-xs text-stone-600 mt-1.5 leading-relaxed bg-stone-50 p-2.5 rounded-lg border border-stone-100">${item.note}</p>` : ''}
-            <div class="flex flex-wrap gap-2 mt-3 pt-2 border-t border-stone-100">
-              <a href="${gmapUrl}" target="_blank" class="bg-stone-900 text-white text-[11px] font-medium px-3 py-1.5 rounded-lg">Google 導航</a>
-              <button onclick="openTaxiModal('${safeTitle}', '${safeAddr}', 'ここまでお願いします。（請載我到這個地點）')" class="border border-stone-300 text-stone-700 text-[11px] font-medium px-3 py-1.5 rounded-lg">${state.currentDay === 3 ? '車機導航 / 地址卡' : '給司機看地址卡'}</button>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 mt-2.5 leading-snug">${item.title}</h3>
+            ${item.addr ? `<p class="text-xs sm:text-sm text-stone-500 font-mono mt-1">${item.addr}</p>` : ''}
+            ${item.note ? `<p class="text-sm text-stone-700 mt-2 leading-relaxed bg-stone-50 p-3 rounded-lg border border-stone-100">${item.note}</p>` : ''}
+            <div class="flex flex-wrap gap-2 mt-3.5 pt-2.5 border-t border-stone-100">
+              <a href="${gmapUrl}" target="_blank" class="bg-stone-900 hover:bg-stone-800 text-white text-xs sm:text-sm font-medium px-3.5 py-2 rounded-lg">Google 導航</a>
+              <button onclick="openTaxiModal('${safeTitle}', '${safeAddr}', 'ここまでお願いします。（請載我到這個地點）')" class="border border-stone-300 text-stone-700 text-xs sm:text-sm font-medium px-3.5 py-2 rounded-lg">${state.currentDay === 3 ? '車機導航 / 地址卡' : '給司機看地址卡'}</button>
             </div>
           </div>
         `;
@@ -1136,31 +1138,31 @@
         const walkMins = Math.max(1, Math.round(dist * 13));
 
         return `
-          <div class="bg-white rounded-xl p-4 shadow-sm border ${src === 1 ? 'border-l-4 border-l-ryukyu-terracotta border-stone-200' : 'border-stone-200'} space-y-2">
+          <div class="bg-white rounded-xl p-4 shadow-sm border ${src === 1 ? 'border-l-4 border-l-ryukyu-terracotta border-stone-200' : 'border-stone-200'} space-y-2.5">
             <div class="flex items-start justify-between gap-2">
               <div class="flex flex-wrap items-center gap-1.5">
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded ${src === 1 ? 'bg-ryukyu-terracotta text-white' : 'bg-stone-100 text-stone-600'}">${src === 1 ? '重要精選' : '好地點隨記'}</span>
-                <span class="text-[10px] font-medium bg-blue-50 text-ryukyu-indigo px-2 py-0.5 rounded">${region}</span>
-                <span class="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded">距飯店 ${dist} km ${dist <= 1.2 ? `(步行約 ${walkMins} 分)` : ''}</span>
-                ${rating ? `<span class="text-[10px] font-mono font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded">Google ${rating}</span>` : ''}
+                <span class="text-xs font-bold px-2.5 py-1 rounded ${src === 1 ? 'bg-ryukyu-terracotta text-white' : 'bg-stone-100 text-stone-700 font-mono'}">${src === 1 ? '重要精選' : '好地點隨記'}</span>
+                <span class="text-xs font-medium bg-blue-50 text-ryukyu-indigo px-2.5 py-1 rounded">${region}</span>
+                <span class="text-xs font-mono bg-stone-100 text-stone-700 px-2.5 py-1 rounded">距飯店 ${dist} km ${dist <= 1.2 ? `(步行約 ${walkMins} 分)` : ''}</span>
+                ${rating ? `<span class="text-xs font-mono font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded">Google ${rating}</span>` : ''}
               </div>
-              <button onclick="toggleFav('${escStr(pid)}')" class="text-xs px-2 py-0.5 rounded border ${isFav ? 'bg-amber-400 border-amber-400 text-stone-950 font-bold' : 'border-stone-200 text-stone-400'} shrink-0">
+              <button onclick="toggleFav('${escStr(pid)}')" class="text-xs sm:text-sm px-2.5 py-1 rounded border ${isFav ? 'bg-amber-400 border-amber-400 text-stone-950 font-bold' : 'border-stone-200 text-stone-500'} shrink-0">
                 ${isFav ? '已收藏' : '+ 收藏'}
               </button>
             </div>
 
             <div>
-              <h3 class="text-sm font-bold text-stone-900">${name}</h3>
-              <p class="text-[11px] text-stone-500 mt-0.5">${cat}</p>
-              <p class="text-[11px] text-stone-400 font-mono mt-0.5">${jaddr}</p>
+              <h3 class="text-base sm:text-lg font-bold text-stone-900 leading-snug">${name}</h3>
+              <p class="text-xs sm:text-sm text-stone-500 mt-1">${cat}</p>
+              <p class="text-xs sm:text-sm text-stone-400 font-mono mt-0.5">${jaddr}</p>
             </div>
 
-            ${note ? `<div class="text-xs text-stone-700 bg-stone-50 p-2.5 rounded-lg border border-stone-100 leading-relaxed whitespace-pre-line">${note}</div>` : ''}
+            ${note ? `<div class="text-sm text-stone-700 bg-stone-50 p-3 rounded-lg border border-stone-100 leading-relaxed whitespace-pre-line">${note}</div>` : ''}
 
-            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-100">
-              <a href="${gmapUrl}" target="_blank" class="bg-ryukyu-indigo text-white text-[11px] font-medium px-3 py-1.5 rounded-lg">開啟 Google Maps</a>
-              <button onclick="openTaxiModal('${safeName}', '${safeAddr}', '緯度 ${lat}, 經度 ${lng} ／ ここまでお願いします。')" class="border border-stone-300 text-stone-700 text-[11px] font-medium px-2.5 py-1.5 rounded-lg">司機指路 / 座標卡</button>
-              <button onclick="sendPlaceToItinerary('${safeName}', '${safeAddr}', '${escStr(pid)}', '${safeCat}')" class="border border-ryukyu-teal text-ryukyu-teal text-[11px] font-bold px-2.5 py-1.5 rounded-lg ml-auto">+ 排入行程表</button>
+            <div class="flex flex-wrap items-center gap-2 pt-2.5 border-t border-stone-100">
+              <a href="${gmapUrl}" target="_blank" class="bg-ryukyu-indigo hover:bg-slate-800 text-white text-xs sm:text-sm font-medium px-3.5 py-2 rounded-lg">開啟 Google Maps</a>
+              <button onclick="openTaxiModal('${safeName}', '${safeAddr}', '緯度 ${lat}, 經度 ${lng} ／ ここまでお願いします。')" class="border border-stone-300 text-stone-700 text-xs sm:text-sm font-medium px-3 py-2 rounded-lg">司機指路 / 座標卡</button>
+              <button onclick="sendPlaceToItinerary('${safeName}', '${safeAddr}', '${escStr(pid)}', '${safeCat}')" class="border border-ryukyu-teal text-ryukyu-teal text-xs sm:text-sm font-bold px-3 py-2 rounded-lg ml-auto">+ 排入行程表</button>
             </div>
           </div>
         `;
@@ -1294,7 +1296,7 @@
       renderTaxBasket();
 
       document.getElementById('members-list').innerHTML = state.members.map(m => `
-        <span class="bg-stone-100 border border-stone-300 text-stone-800 text-xs px-2.5 py-1 rounded-full flex items-center space-x-1.5">
+        <span class="bg-stone-100 border border-stone-300 text-stone-800 text-xs sm:text-sm px-3 py-1.5 rounded-full flex items-center space-x-1.5">
           <span>${m}</span>
           <button onclick="removeMember('${escStr(m)}')" class="text-stone-400 hover:text-red-600 font-bold">✕</button>
         </span>
@@ -1305,7 +1307,7 @@
       payerSelect.innerHTML = state.members.map(m => `<option value="${m}" ${m === currentPayer ? 'selected' : ''}>${m}</option>`).join('');
 
       document.getElementById('exp-splitters').innerHTML = state.members.map(m => `
-        <label class="flex items-center space-x-1.5 bg-stone-50 border border-stone-200 px-2.5 py-1.5 rounded-lg text-xs cursor-pointer">
+        <label class="flex items-center space-x-2 bg-stone-50 border border-stone-200 px-3 py-2 rounded-lg text-xs sm:text-sm cursor-pointer">
           <input type="checkbox" value="${m}" checked class="splitter-checkbox accent-ryukyu-indigo">
           <span>${m}</span>
         </label>
@@ -1359,9 +1361,9 @@
         settleContainer.innerHTML = '<div class="text-slate-300 py-1">目前所有成員帳目已平衡，無須轉帳。</div>';
       } else {
         settleContainer.innerHTML = settlements.map(s => `
-          <div class="bg-white/10 rounded-lg p-2.5 flex items-center justify-between">
-            <span><b>${s.from}</b> 應付給 <b>${s.to}</b></span>
-            <span class="font-mono font-bold text-amber-300">NT$ ${s.twd.toLocaleString()} <span class="text-[11px] text-slate-300 font-normal">(或 ¥${s.jpy.toLocaleString()})</span></span>
+          <div class="bg-white/10 rounded-lg p-3 flex items-center justify-between">
+            <span class="text-sm sm:text-base"><b>${s.from}</b> 應付給 <b>${s.to}</b></span>
+            <span class="font-mono font-bold text-base sm:text-lg text-amber-300">NT$ ${s.twd.toLocaleString()} <span class="text-xs text-slate-300 font-normal">(或 ¥${s.jpy.toLocaleString()})</span></span>
           </div>
         `).join('');
       }
@@ -1375,13 +1377,13 @@
           return `
             <div class="py-2.5 flex items-center justify-between">
               <div>
-                <div class="font-bold text-stone-900">${e.title} <span class="text-[10px] font-normal text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded ml-1">${e.method}</span></div>
-                <div class="text-[11px] text-stone-500 mt-0.5">${e.payer} 先墊 ｜ 分攤：${e.splitters.join('、')} ｜ ${e.time}</div>
+                <div class="text-sm sm:text-base font-bold text-stone-900">${e.title} <span class="text-xs font-normal text-stone-600 bg-stone-100 px-2 py-0.5 rounded ml-1">${e.method}</span></div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-1">${e.payer} 先墊 ｜ 分攤：${e.splitters.join('、')} ｜ ${e.time}</div>
               </div>
               <div class="text-right flex items-center space-x-2">
                 <div>
-                  <div class="font-mono font-bold text-stone-900">${e.currency === 'JPY' ? '¥' : 'NT$ '}${e.amount.toLocaleString()}</div>
-                  ${e.currency === 'JPY' ? `<div class="text-[10px] font-mono text-stone-400">≈ NT$ ${twdEq.toLocaleString()}</div>` : ''}
+                  <div class="text-base sm:text-lg font-mono font-bold text-stone-900">${e.currency === 'JPY' ? '¥' : 'NT$ '}${e.amount.toLocaleString()}</div>
+                  ${e.currency === 'JPY' ? `<div class="text-xs font-mono text-stone-400">≈ NT$ ${twdEq.toLocaleString()}</div>` : ''}
                 </div>
                 <button onclick="deleteExpense(${e.id})" class="text-stone-300 hover:text-red-500 px-1">✕</button>
               </div>
@@ -1446,17 +1448,17 @@
     function renderTastingNotes() {
       const container = document.getElementById('tasting-list');
       container.innerHTML = state.tastingNotes.map(t => `
-        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-1.5">
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold bg-ryukyu-indigo text-white px-2 py-0.5 rounded">${t.type}</span>
+            <span class="text-xs font-bold bg-ryukyu-indigo text-white px-2.5 py-1 rounded">${t.type}</span>
             <div class="flex items-center space-x-2">
-              <span class="text-xs font-mono font-bold text-amber-600">評分 ${t.rating} / 5.0</span>
-              <button onclick="deleteTastingNote(${t.id})" class="text-stone-300 hover:text-stone-500 text-xs">✕</button>
+              <span class="text-xs sm:text-sm font-mono font-bold text-amber-600">評分 ${t.rating} / 5.0</span>
+              <button onclick="deleteTastingNote(${t.id})" class="text-stone-300 hover:text-stone-500 text-sm px-1.5">✕</button>
             </div>
           </div>
-          <h4 class="text-sm font-bold text-stone-900">${t.name}</h4>
-          ${t.shop ? `<p class="text-xs text-ryukyu-terracotta font-medium">@ ${t.shop} <span class="text-stone-400 font-normal ml-1">(${t.time})</span></p>` : ''}
-          ${t.note ? `<p class="text-xs text-stone-600 leading-relaxed bg-stone-50 p-2.5 rounded-lg border border-stone-100">${t.note}</p>` : ''}
+          <h4 class="text-base sm:text-lg font-bold text-stone-900 leading-snug">${t.name}</h4>
+          ${t.shop ? `<p class="text-xs sm:text-sm text-ryukyu-terracotta font-medium">@ ${t.shop} <span class="text-stone-400 font-normal ml-1">(${t.time})</span></p>` : ''}
+          ${t.note ? `<p class="text-sm text-stone-700 leading-relaxed bg-stone-50 p-3 rounded-lg border border-stone-100">${t.note}</p>` : ''}
         </div>
       `).join('');
     }
@@ -1468,11 +1470,11 @@
         const safeJp = escStr(p.jp);
         const safeRoma = escStr(p.roma);
         return `
-          <button onclick="openTaxiModal('${safeZh}', '${safeRoma}', '${safeJp}')" class="bg-white text-left rounded-xl p-3.5 shadow-sm border border-stone-200 hover:border-ryukyu-indigo transition space-y-1">
-            <span class="text-[10px] font-bold text-ryukyu-teal bg-teal-50 px-2 py-0.5 rounded">${p.cat}</span>
-            <div class="text-xs font-bold text-stone-800 pt-1">${p.zh}</div>
-            <div class="text-sm font-bold text-ryukyu-indigo">${p.jp}</div>
-            <div class="text-[10px] font-mono text-stone-400">${p.roma}</div>
+          <button onclick="openTaxiModal('${safeZh}', '${safeRoma}', '${safeJp}')" class="bg-white text-left rounded-xl p-4 shadow-sm border border-stone-200 hover:border-ryukyu-indigo transition space-y-1.5">
+            <span class="text-xs font-bold text-ryukyu-teal bg-teal-50 px-2.5 py-1 rounded">${p.cat}</span>
+            <div class="text-sm font-bold text-stone-800 pt-1">${p.zh}</div>
+            <div class="text-base sm:text-lg font-bold text-ryukyu-indigo leading-snug">${p.jp}</div>
+            <div class="text-xs sm:text-sm font-mono text-stone-500">${p.roma}</div>
           </button>
         `;
       }).join('');
@@ -1488,20 +1490,20 @@
     function renderClaimsChecklist() {
       const container = document.getElementById('claims-checklist');
       container.innerHTML = CLAIMS_DATA.map(sec => `
-        <div class="border border-stone-200 rounded-xl p-3.5 bg-stone-50/60 space-y-2">
-          <div class="flex flex-wrap items-center justify-between gap-1">
-            <h4 class="font-bold text-stone-900 text-xs">${sec.title}</h4>
-            <span class="text-[10px] font-mono font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded">${sec.badge}</span>
+        <div class="border border-stone-200 rounded-xl p-4 bg-stone-50/60 space-y-2.5">
+          <div class="flex flex-wrap items-center justify-between gap-1.5">
+            <h4 class="font-bold text-stone-900 text-sm sm:text-base">${sec.title}</h4>
+            <span class="text-xs font-mono font-bold bg-amber-100 text-amber-900 px-2.5 py-1 rounded">${sec.badge}</span>
           </div>
-          <p class="text-[11px] text-stone-600 leading-relaxed">${sec.desc}</p>
-          <div class="space-y-1.5 pt-1">
+          <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">${sec.desc}</p>
+          <div class="space-y-2 pt-1">
             ${sec.items.map((itemText, idx) => {
               const key = sec.id + '_' + idx;
               const checked = !!state.checkedClaims[key];
               return `
-                <label onclick="toggleClaimCheck('${key}')" class="flex items-start space-x-2 bg-white p-2 rounded-lg border ${checked ? 'border-emerald-500 bg-emerald-50/30' : 'border-stone-200'} cursor-pointer">
+                <label onclick="toggleClaimCheck('${key}')" class="flex items-start space-x-2.5 bg-white p-2.5 rounded-lg border ${checked ? 'border-emerald-500 bg-emerald-50/30' : 'border-stone-200'} cursor-pointer">
                   <input type="checkbox" ${checked ? 'checked' : ''} onclick="event.stopPropagation(); toggleClaimCheck('${key}')" class="mt-0.5 accent-emerald-600">
-                  <span class="text-[11px] ${checked ? 'line-through text-stone-400' : 'text-stone-800 font-medium'}">${itemText}</span>
+                  <span class="text-xs sm:text-sm ${checked ? 'line-through text-stone-400' : 'text-stone-800 font-medium'} leading-relaxed">${itemText}</span>
                 </label>
               `;
             }).join('')}
@@ -1656,35 +1658,35 @@
         const speakTarget = escStr(c.kana || c.jp);
 
         return `
-          <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 flex flex-col justify-between space-y-2.5 hover:border-ryukyu-indigo transition">
-            <div class="space-y-1.5">
+          <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 flex flex-col justify-between space-y-3 hover:border-ryukyu-indigo transition">
+            <div class="space-y-2">
               <div class="flex items-center justify-between gap-1">
                 <div class="flex items-center space-x-1.5">
-                  <span class="text-[10px] font-bold bg-ryukyu-indigo text-white px-2 py-0.5 rounded">${c.cat}</span>
-                  <span class="text-[10px] font-bold text-ryukyu-teal bg-teal-50 px-2 py-0.5 rounded">${c.type}</span>
+                  <span class="text-xs font-bold bg-ryukyu-indigo text-white px-2.5 py-1 rounded">${c.cat}</span>
+                  <span class="text-xs font-bold text-ryukyu-teal bg-teal-50 px-2.5 py-1 rounded">${c.type}</span>
                 </div>
-                <div class="flex items-center space-x-1">
-                  <button onclick="speakJapanese('${speakTarget}')" class="bg-stone-100 hover:bg-stone-200 text-stone-700 text-[11px] font-bold px-2 py-1 rounded flex items-center space-x-1" title="播放日文發音">
-                    <svg class="w-3 h-3 text-ryukyu-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                <div class="flex items-center space-x-1.5">
+                  <button onclick="speakJapanese('${speakTarget}')" class="bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-bold px-2.5 py-1.5 rounded-lg flex items-center space-x-1" title="播放日文發音">
+                    <svg class="w-3.5 h-3.5 text-ryukyu-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
                     <span>發音</span>
                   </button>
-                  ${c.isCustom ? `<button onclick="deleteCustomFlashcard(${c.id})" class="text-stone-300 hover:text-red-500 text-xs px-1">✕</button>` : ''}
+                  ${c.isCustom ? `<button onclick="deleteCustomFlashcard(${c.id})" class="text-stone-300 hover:text-red-500 text-sm px-1.5">✕</button>` : ''}
                 </div>
               </div>
 
-              <div class="text-xs font-bold text-stone-700 pt-0.5">${c.zh}</div>
-              <div class="text-base font-bold text-stone-950 leading-snug tracking-wide">${c.jp}</div>
-              ${c.kana ? `<div class="text-[11px] text-stone-500">${c.kana}</div>` : ''}
+              <div class="text-sm font-bold text-stone-800 pt-0.5">${c.zh}</div>
+              <div class="text-lg sm:text-xl font-bold text-stone-950 leading-snug tracking-wide">${c.jp}</div>
+              ${c.kana ? `<div class="text-xs sm:text-sm text-stone-500">${c.kana}</div>` : ''}
             </div>
 
-            <div class="space-y-2 pt-1">
-              <div class="bg-stone-50 border border-stone-100 rounded-lg p-2 space-y-0.5">
-                ${c.roma ? `<div class="text-[11px] font-mono font-bold text-ryukyu-ocean">${c.roma}</div>` : ''}
-                ${c.pron ? `<div class="text-[11px] text-stone-600">助唸：<b>${c.pron}</b></div>` : ''}
-                ${c.note ? `<div class="text-[10px] text-stone-400 pt-0.5">${c.note}</div>` : ''}
+            <div class="space-y-2.5 pt-1">
+              <div class="bg-stone-50 border border-stone-100 rounded-lg p-2.5 space-y-1">
+                ${c.roma ? `<div class="text-xs sm:text-sm font-mono font-bold text-ryukyu-ocean">${c.roma}</div>` : ''}
+                ${c.pron ? `<div class="text-xs sm:text-sm text-stone-700">助唸：<b>${c.pron}</b></div>` : ''}
+                ${c.note ? `<div class="text-xs text-stone-500 pt-0.5">${c.note}</div>` : ''}
               </div>
 
-              <button onclick="openFlashcardModal('${sZh}', '${sJp}', '${sKana}', '${sRoma}', '${sPron}', '${sType}')" class="w-full bg-stone-900 hover:bg-ryukyu-indigo text-white text-[11px] font-bold py-2 rounded-lg transition">
+              <button onclick="openFlashcardModal('${sZh}', '${sJp}', '${sKana}', '${sRoma}', '${sPron}', '${sType}')" class="w-full bg-stone-900 hover:bg-ryukyu-indigo text-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition">
                 全螢幕放大展示（手指給店員看）
               </button>
             </div>
