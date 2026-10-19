@@ -1,0 +1,10 @@
+.DS_Store
+*.pdf
+*.backup.html
+okinawa_2026.csv
+okinawa_all_places.csv
+okinawa_selected.csv
+places_data.json
+ANTIGRAVITY_CULTURE_SUPPLEMENT.md
+GAS_INTEGRATION_PLAN.md
+node_modules/

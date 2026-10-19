@@ -1,0 +1,87 @@
+
+    /* ===== v3：點擊範圍（至少 44px） ===== */
+    .hit {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+    }
+
+    /* ===== v3：提示訊息 ===== */
+    .toast-item {
+      pointer-events: auto;
+      background: #1f2937;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 520px;
+    }
+    .toast-action {
+      color: #fcd34d;
+      font-weight: 700;
+      min-height: 36px;
+      padding: 0 6px;
+    }
+
+    /* ===== v3：對話框 ===== */
+    .dlg-panel { background: #fff; color: #2C302E; }
+    .dlg-label { display: block; font-size: 13px; color: #57534e; margin: 12px 0 4px; font-weight: 600; }
+    .dlg-input {
+      width: 100%;
+      border: 1px solid #d6d3d1;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 16px;
+      background: #fff;
+      color: inherit;
+    }
+    .dlg-btn {
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 10px;
+      border: 1px solid #d6d3d1;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+    }
+    .dlg-btn-primary { background: #1E3A5F; border-color: #1E3A5F; color: #fff; }
+
+    /* ===== v3：深色模式 ===== */
+    html[data-theme="dark"] body { background-color: #0f172a; color: #e2e8f0; }
+    html[data-theme="dark"] .bg-white,
+    html[data-theme="dark"] .dlg-panel,
+    html[data-theme="dark"] .dlg-input,
+    html[data-theme="dark"] input,
+    html[data-theme="dark"] select,
+    html[data-theme="dark"] textarea { background-color: #1e293b !important; color: #e2e8f0 !important; }
+    html[data-theme="dark"] .bg-stone-50,
+    html[data-theme="dark"] .bg-stone-100,
+    html[data-theme="dark"] .bg-amber-50,
+    html[data-theme="dark"] .bg-orange-50,
+    html[data-theme="dark"] .bg-blue-50,
+    html[data-theme="dark"] .bg-teal-50 { background-color: #273449 !important; }
+    html[data-theme="dark"] .text-stone-950,
+    html[data-theme="dark"] .text-stone-900,
+    html[data-theme="dark"] .text-stone-800 { color: #f1f5f9 !important; }
+    html[data-theme="dark"] .text-stone-700,
+    html[data-theme="dark"] .text-stone-600 { color: #cbd5e1 !important; }
+    html[data-theme="dark"] .text-stone-500,
+    html[data-theme="dark"] .text-stone-400 { color: #94a3b8 !important; }
+    html[data-theme="dark"] .border-stone-100,
+    html[data-theme="dark"] .border-stone-200,
+    html[data-theme="dark"] .border-stone-300,
+    html[data-theme="dark"] .border-amber-200,
+    html[data-theme="dark"] .dlg-input,
+    html[data-theme="dark"] .dlg-btn { border-color: #334155 !important; }
+    html[data-theme="dark"] nav { background-color: #111827 !important; border-color: #334155 !important; }
+    html[data-theme="dark"] .dlg-label { color: #94a3b8; }
+    html[data-theme="dark"] .dlg-btn-primary { background: #0D9488; border-color: #0D9488; }
+    html[data-theme="dark"] .divide-stone-100 > :not([hidden]) ~ :not([hidden]) { border-color: #334155 !important; }
