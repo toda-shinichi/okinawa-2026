@@ -315,7 +315,7 @@
           <div class="flex space-x-1.5 shrink-0">
             <button onclick="setSourceFilter('all')" id="src-all" class="src-btn pill-active text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full">全部</button>
             <button onclick="setSourceFilter(1)" id="src-1" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">重要精選 (40)</button>
-            <button onclick="setSourceFilter(2)" id="src-2" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">好地點隨記 (159)</button>
+            <button onclick="setSourceFilter(2)" id="src-2" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">好地點隨記 (162)</button>
             <button onclick="setSourceFilter('fav')" id="src-fav" class="src-btn text-xs sm:text-sm border border-stone-300 px-3 py-1.5 rounded-full bg-stone-50">已星號收藏</button>
           </div>
           <select id="place-sort" onchange="renderPlaces()" class="text-xs sm:text-sm border border-stone-300 rounded-lg px-2.5 py-1.5 bg-white shrink-0">
@@ -1060,6 +1060,10 @@
     function renderPlaces() {
       const filtered = getFilteredPlaces();
       document.getElementById('places-count-label').textContent = '符合條件共 ' + filtered.length + ' 個地點（總庫 ' + RAW_PLACES.length + ' 點）';
+      const b1 = document.getElementById('src-1');
+      if (b1) b1.textContent = '重要精選 (' + RAW_PLACES.filter(p => p[0] === 1).length + ')';
+      const b2 = document.getElementById('src-2');
+      if (b2) b2.textContent = '好地點隨記 (' + RAW_PLACES.filter(p => p[0] === 2).length + ')';
 
       const container = document.getElementById('places-container');
       if (filtered.length === 0) {
