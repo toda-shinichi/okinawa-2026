@@ -202,7 +202,7 @@ const Store = {
 
 const SyncManager = {
   // 部署 GAS 後，把網址貼在這裡（網址本身可以公開，密碼不可以）
-  API_URL: '',
+  API_URL: 'https://script.google.com/macros/s/AKfycbxI-CTm82ul8hsvGs8zHQq6riEkT7maM6TRjYRubvFbB-b0z-8YY_EdPVFlseBXXgvA/exec',
   status: 'local',   // local | syncing | ok | offline | error | auth
   lastSyncAt: 0,
   lastError: '',

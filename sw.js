@@ -1,6 +1,6 @@
 // OKINAWA 2026 離線快取 Service Worker
 // 每次修改 index.html、js/、data/ 任何檔案後，必須把 CACHE_VERSION 的數字加 1
-const CACHE_VERSION = 'okinawa-2026-v3-001';
+const CACHE_VERSION = 'okinawa-2026-v3-002';
 const TAILWIND_URL = 'https://cdn.tailwindcss.com/3.4.17';
 const LOCAL_ASSETS = [
   './',
