@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>OKINAWA 2026 | 子桓的沖繩隨身旅行助理</title>
+  <title>OKINAWA 2026 | Birds' 沖繩隨身旅行助理</title>
   <meta name="theme-color" content="#1E3A5F">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
@@ -166,7 +166,7 @@
           <span class="text-xs tracking-widest uppercase bg-ryukyu-terracotta px-2.5 py-1 rounded font-mono font-bold">2026.10.22 - 10.25</span>
           <span class="text-xs text-slate-300 font-mono">4D3N NAHA</span>
         </div>
-        <h1 class="text-xl sm:text-2xl font-bold tracking-tight mt-0.5">沖繩旅行隨身助理</h1>
+        <h1 class="text-xl sm:text-2xl font-bold tracking-tight mt-0.5">Birds' 沖繩旅行隨身助理</h1>
       </div>
       <div class="flex items-center space-x-2">
         <button onclick="openTaxiModal('ON THE SAME HOTEL', '〒900-0014 沖縄県那覇市松尾２丁目１９−28', '松尾二丁目（浮島通り・公設市場近く）')" class="bg-white/15 hover:bg-white/25 border border-white/20 text-xs sm:text-sm px-3 py-1.5 rounded flex items-center space-x-1 transition">
@@ -266,6 +266,70 @@
         </div>
       </div>
 
+      <!-- 旅日官方實用工具與通關／防災／保險 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <div class="flex items-center justify-between border-b border-stone-100 pb-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-ryukyu-ocean bg-blue-50 px-2.5 py-1 rounded font-mono">Official Travel Tools</span>
+            <h3 class="text-sm font-bold text-stone-900 mt-1">旅日官方實用工具</h3>
+          </div>
+          <span class="text-xs text-stone-500">日本官方數位服務</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- 1. Visit Japan Web -->
+          <a href="https://www.vjw.digital.go.jp" target="_blank" rel="noopener" class="border border-stone-200 rounded-lg p-3 bg-stone-50 hover:bg-stone-100 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">Visit Japan Web</span>
+                <span class="text-xs text-ryukyu-ocean font-bold">開啟官網 ↗</span>
+              </div>
+              <p class="text-xs text-stone-600 mt-1">數位入境審查、海關電子申報與入境手續 QR Code。</p>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">vjw.digital.go.jp</div>
+          </a>
+
+          <!-- 2. 日本境內旅行保險（落地後要辦，請提醒） -->
+          <a href="https://www.vjw.digital.go.jp/main/#/vjwpin001" target="_blank" rel="noopener" class="border-2 border-ryukyu-terracotta/40 bg-red-50/40 rounded-lg p-3 hover:bg-red-50 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">旅行保險（落地後申辦）</span>
+                <span class="text-xs text-ryukyu-terracotta font-bold">申辦入口 ↗</span>
+              </div>
+              <p class="text-xs text-stone-700 mt-1">訪日外國人專屬日本境內醫療旅行保險。</p>
+              <div class="mt-1.5 bg-red-100/80 text-ryukyu-terracotta text-xs font-bold px-2 py-1 rounded leading-snug">
+                落地提醒：本保險限定抵達日本境內（落地後）方可連線申辦，抵達沖繩後請記得完成手續。
+              </div>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">vjw.digital.go.jp/#/vjwpin001</div>
+          </a>
+
+          <!-- 3. 自然災害警報通知 -->
+          <a href="https://www.jnto.go.jp/safety-tips/chc/app.html" target="_blank" rel="noopener" class="border border-stone-200 rounded-lg p-3 bg-stone-50 hover:bg-stone-100 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">自然災害警報通知</span>
+                <span class="text-xs text-ryukyu-teal font-bold">App 下載 ↗</span>
+              </div>
+              <p class="text-xs text-stone-600 mt-1">觀光廳 Safety tips 防災警報 App（地震速報、海嘯、颱風與避難指示）。</p>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">jnto.go.jp/safety-tips</div>
+          </a>
+
+          <!-- 4. 日本國家旅遊資訊 -->
+          <a href="https://www.japan.travel/tw/tw/" target="_blank" rel="noopener" class="border border-stone-200 rounded-lg p-3 bg-stone-50 hover:bg-stone-100 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">日本國家旅遊資訊</span>
+                <span class="text-xs text-ryukyu-indigo font-bold">開啟導覽 ↗</span>
+              </div>
+              <p class="text-xs text-stone-600 mt-1">JNTO 繁體中文官方指南，全國交通動態、觀光景點與實用資訊。</p>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">japan.travel/tw</div>
+          </a>
+        </div>
+      </div>
+
       <!-- 時間軸行程列表 -->
       <div id="itinerary-list" class="space-y-3"></div>
 
@@ -291,7 +355,7 @@
         <div class="p-3.5 flex items-center justify-between bg-stone-50 border-b border-stone-200">
           <div>
             <h2 class="text-sm font-bold text-stone-900">重要地點地圖（Icon 分類互動版）</h2>
-            <p class="text-xs text-stone-500">子桓自建 Google My Maps 圖層（連線時可縮放點擊）</p>
+            <p class="text-xs text-stone-500">Birds' 自建 Google My Maps 圖層（連線時可縮放點擊）</p>
           </div>
           <button onclick="toggleIframeMap()" id="toggle-map-btn" class="text-xs bg-ryukyu-indigo text-white px-3 py-1.5 rounded font-medium">收合地圖</button>
         </div>
@@ -671,9 +735,73 @@
         </div>
       </div>
 
+      <!-- 旅日官方實用工具與通關／防災／保險 -->
+      <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
+        <div class="flex items-center justify-between border-b border-stone-100 pb-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-ryukyu-ocean bg-blue-50 px-2.5 py-1 rounded font-mono">Official Travel Tools</span>
+            <h3 class="text-sm font-bold text-stone-900 mt-1">旅日官方實用工具</h3>
+          </div>
+          <span class="text-xs text-stone-500">日本官方數位服務</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- 1. Visit Japan Web -->
+          <a href="https://www.vjw.digital.go.jp" target="_blank" rel="noopener" class="border border-stone-200 rounded-lg p-3 bg-stone-50 hover:bg-stone-100 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">Visit Japan Web</span>
+                <span class="text-xs text-ryukyu-ocean font-bold">開啟官網 ↗</span>
+              </div>
+              <p class="text-xs text-stone-600 mt-1">數位入境審查、海關電子申報與入境手續 QR Code。</p>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">vjw.digital.go.jp</div>
+          </a>
+
+          <!-- 2. 日本境內旅行保險（落地後要辦，請提醒） -->
+          <a href="https://www.vjw.digital.go.jp/main/#/vjwpin001" target="_blank" rel="noopener" class="border-2 border-ryukyu-terracotta/40 bg-red-50/40 rounded-lg p-3 hover:bg-red-50 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">旅行保險（落地後申辦）</span>
+                <span class="text-xs text-ryukyu-terracotta font-bold">申辦入口 ↗</span>
+              </div>
+              <p class="text-xs text-stone-700 mt-1">訪日外國人專屬日本境內醫療旅行保險。</p>
+              <div class="mt-1.5 bg-red-100/80 text-ryukyu-terracotta text-xs font-bold px-2 py-1 rounded leading-snug">
+                落地提醒：本保險限定抵達日本境內（落地後）方可連線申辦，抵達沖繩後請記得完成手續。
+              </div>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">vjw.digital.go.jp/#/vjwpin001</div>
+          </a>
+
+          <!-- 3. 自然災害警報通知 -->
+          <a href="https://www.jnto.go.jp/safety-tips/chc/app.html" target="_blank" rel="noopener" class="border border-stone-200 rounded-lg p-3 bg-stone-50 hover:bg-stone-100 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">自然災害警報通知</span>
+                <span class="text-xs text-ryukyu-teal font-bold">App 下載 ↗</span>
+              </div>
+              <p class="text-xs text-stone-600 mt-1">觀光廳 Safety tips 防災警報 App（地震速報、海嘯、颱風與避難指示）。</p>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">jnto.go.jp/safety-tips</div>
+          </a>
+
+          <!-- 4. 日本國家旅遊資訊 -->
+          <a href="https://www.japan.travel/tw/tw/" target="_blank" rel="noopener" class="border border-stone-200 rounded-lg p-3 bg-stone-50 hover:bg-stone-100 transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-stone-900">日本國家旅遊資訊</span>
+                <span class="text-xs text-ryukyu-indigo font-bold">開啟導覽 ↗</span>
+              </div>
+              <p class="text-xs text-stone-600 mt-1">JNTO 繁體中文官方指南，全國交通動態、觀光景點與實用資訊。</p>
+            </div>
+            <div class="text-xs text-stone-400 mt-2 font-mono">japan.travel/tw</div>
+          </a>
+        </div>
+      </div>
+
       <!-- 沖繩當地緊急聯絡與醫療駐館座標 -->
       <div class="bg-white rounded-xl p-4 shadow-sm border border-stone-200 space-y-3">
-        <h3 class="text-sm font-bold text-stone-900">沖繩緊急電話與你地圖內的應變據點</h3>
+        <h3 class="text-sm font-bold text-stone-900">沖繩緊急電話與地圖應變據點</h3>
         <div class="grid grid-cols-3 gap-2 text-center">
           <a href="tel:110" class="border border-stone-200 rounded-lg p-2 bg-stone-50">
             <div class="text-base font-bold font-mono text-ryukyu-indigo">110</div>
@@ -806,7 +934,7 @@
     // ==================== 2. 狀態管理與預設資料 ====================
 
     const DEFAULT_BANNERS = {
-      1: '<b>10/22 (週四) 交通模式：單軌電車 (Yui Rail) ＋ 漫步</b><br>那霸機場國內線航廈 2F 連通道搭乘單軌電車至「牧志站」或「美榮橋站」（車程約 16 分鐘，可刷 Suica 或信用卡感應進站），步行約 8 分鐘抵達 ON THE SAME HOTEL。',
+      1: '<b>10/22 (週四) 交通模式：單軌電車 (Yui Rail) ＋ 漫步</b><br>那霸機場國內線航廈 2F 連通道搭乘單軌電車至「牧志站」或「美榮橋站」（車程約 16 分鐘，可刷 Suica 或信用卡感應進站），步行約 8 分鐘抵達 ON THE SAME HOTEL。<div class="mt-2 pt-2 border-t border-amber-200 text-xs text-stone-700"><b>落地提醒</b>：抵達那霸機場請備妥 <a href="https://www.vjw.digital.go.jp" target="_blank" rel="noopener" class="text-ryukyu-ocean underline font-bold">Visit Japan Web</a> 通關 QR Code；落地後請記得先至官方入口辦理 <a href="https://www.vjw.digital.go.jp/main/#/vjwpin001" target="_blank" rel="noopener" class="text-ryukyu-terracotta underline font-bold">日本境內旅行保險</a>。</div>',
       2: '<b>10/23 (週五) 交通模式：單軌電車 ＋ 公車 / 計程車</b><br>白天可從牧志站搭單軌電車直達「首里站」散步喝咖啡；傍晚返回「安里站」走進榮町市場與壺屋通小酌。',
       3: '<b>10/24 (週六) 交通模式：ORBIT RENT A CAR 租車自駕日</b><br>住處步行 2 分鐘（140m）即達松尾二丁目的 ORBIT RENT A CAR 取車。請務必攜帶：<b>1. 台灣駕照正本、2. 日文譯本、3. 護照</b>。點選下方各景點的「車機導航卡」可查看電話與座標。',
       4: '<b>10/25 (週日) 交通模式：單軌電車 ＋ 步行採買</b><br>把握最後半天在松尾、浮島通或新都心 San-A 採買伴手禮。NU0307 班機 17:55 起飛，建議 <b>15:15 前</b> 搭單軌電車返回那霸機場國際線航廈報到。'
@@ -814,7 +942,7 @@
 
     const DEFAULT_ITINERARY = {
       1: [
-        { time: '10:05', title: '搭乘 JTA 日本越洋航空 NU0302 起飛', cat: '航班交通', addr: '桃園國際機場 (TPE) → 那霸機場 (OKA) 12:40 抵達', pid: 'ChIJjSyLjsRp5TQRkP5WN6rOTFA', note: '預定 12:40 抵達那霸機場。入境後可搭乘單軌電車前往市區。' },
+        { time: '10:05', title: '搭乘 JTA 日本越洋航空 NU0302 起飛', cat: '航班交通', addr: '桃園國際機場 (TPE) → 那霸機場 (OKA) 12:40 抵達', pid: 'ChIJjSyLjsRp5TQRkP5WN6rOTFA', note: '預定 12:40 抵達那霸機場。通關請備妥 Visit Japan Web (VJW) QR Code；落地後請先至專屬入口辦理日本境內旅行保險。入境後可搭乘單軌電車前往市區。' },
         { time: '14:00', title: 'ON THE SAME HOTEL 寄放行李 / 入住', cat: '核心住宿', addr: '〒900-0014 沖縄県那覇市松尾２丁目１９−28', pid: 'ChIJhwJPV4Jp5TQRLsNITjiDb_c', note: '位於浮島通旁，下樓轉角就是咖啡館與選物小店。' },
         { time: '14:30', title: '沖繩麵 EIBUN 或 第一牧志公設市場 燕食堂', cat: '在地午餐', addr: '〒902-0065 沖縄県那覇市壺屋１丁目５−14', pid: 'ChIJ_Ty9RXBp5TQRfJ_DPaea3TM', note: '距離住處僅 260m，品嚐炙燒軟骨豬肉新派沖繩麵（若人多可改去 230m 外的 STAND EIBUN 或公設市場二樓燕食堂）。' },
         { time: '16:00', title: 'Tamagusuku Coffee Roasters 淺焙手沖', cat: '午後咖啡', addr: '〒900-0014 沖縄県那覇市松尾２丁目１９−39 202', pid: 'ChIJq6q623Bp5TQRyBCEGsY59Cg', note: '就在飯店隔壁 60m 二樓的自家烘焙咖啡館，果酸明亮乾淨。' },

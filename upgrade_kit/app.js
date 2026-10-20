@@ -699,7 +699,7 @@ function openSettings(firstRun) {
       ${members.map(m => `<option value="${escapeHtml(m)}" ${m === me ? 'selected' : ''}>${escapeHtml(m)}</option>`).join('')}
     </select>
     <label class="dlg-label">雲端同步密碼</label>
-    <input id="set-token" type="password" autocomplete="off" class="dlg-input" value="${escapeHtml(SyncManager.token())}" placeholder="向子桓索取">
+    <input id="set-token" type="password" autocomplete="off" class="dlg-input" value="${escapeHtml(SyncManager.token())}" placeholder="向主辦人索取">
     <p class="text-xs text-stone-500 mt-1">${SyncManager.API_URL ? '' : '尚未設定雲端網址，目前只存在本機。'}最後同步：${formatClock(SyncManager.lastSyncAt)}｜待送出 ${Store.pendingCount()} 筆${SyncManager.lastError ? '｜' + escapeHtml(SyncManager.lastError) : ''}</p>
     <label class="dlg-label">外觀</label>
     <select id="set-theme" class="dlg-input">
